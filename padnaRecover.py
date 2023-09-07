@@ -28,8 +28,14 @@ try:
     # Create a SmartDataFrame
     df = SmartDataframe(df, config={"llm": OpenAI(api_token="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")})  # Replace with your OpenAI API token
 
+    # Convert 'Value' to numeric, replacing non-numeric values with NaN
+    df['Value'] = pd.to_numeric(df['Value'], errors='coerce')
+
+    # Replace NaN values in 'Value' with 0
+    df['Value'].fillna(0, inplace=True)
+
     # Ask a question
-    answer = df.chat('Please list all the products')
+    answer = df.chat('List Small Products in Central Banks with value >4 in FS Industry')
 
     # Print the answer
     print("Answer:", answer)

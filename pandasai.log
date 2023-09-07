@@ -2602,3 +2602,1207 @@ result = analyze_data(dfs)
 
 [9 rows x 12 columns]}
 2023-09-07 08:55:16 [INFO] Executed in: 16.562641143798828s
+2023-09-07 10:26:32 [INFO] Question: list 10 companies from US with employees > 20
+2023-09-07 10:26:32 [INFO] Running PandasAI with openai LLM...
+2023-09-07 10:26:32 [INFO] Prompt ID: 8b7ee971-160a-408f-914d-e788841a2a5a
+2023-09-07 10:26:51 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to include only companies from the US with more than 20 employees
+    filtered_df = dfs[0][(dfs[0]['Country'] == 'United States') & (dfs[0]['Total Employee Range'] > '20')]
+    
+    # Select the columns to display
+    selected_columns = ['Unique Identifier', 'Name', 'Industry', 'Market Segment', 'Market Sub-Segment', 'Product Category']
+    
+    # Get the top 10 companies based on the number of employees
+    top_10_companies = filtered_df.nlargest(10, 'Total Employee Range')[selected_columns]
+    
+    # Return the result as a dataframe
+    return {"type": "dataframe", "value": top_10_companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 10:26:51 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Country'] == 'United States') & (dfs[0]['Total Employee Range'] > '20')]
+    selected_columns = ['Unique Identifier', 'Name', 'Industry', 'Market Segment', 'Market Sub-Segment', 'Product Category']
+    top_10_companies = filtered_df.nlargest(10, 'Total Employee Range')[selected_columns]
+    return {'type': 'dataframe', 'value': top_10_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 10:26:51 [WARNING] Error of executing code
+2023-09-07 10:26:51 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2023-09-07 10:26:51 [INFO] Failed with error: Column 'Total Employee Range' has dtype object, cannot use method 'nlargest' with this dtype. Retrying
+2023-09-07 10:27:10 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    dfs[0]['Total Employee Range'] = pd.to_numeric(dfs[0]['Total Employee Range'], errors='coerce')
+    filtered_df = dfs[0][(dfs[0]['Country'] == 'United States') & (dfs[0]['Total Employee Range'] > 20)]
+    selected_columns = ['Unique Identifier', 'Name', 'Industry', 'Market Segment', 'Market Sub-Segment', 'Product Category']
+    top_10_companies = filtered_df.nlargest(10, 'Total Employee Range')[selected_columns]
+    return {'type': 'dataframe', 'value': top_10_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 10:27:10 [INFO] Answer: {'type': 'dataframe', 'value': Empty DataFrame
+Columns: [Unique Identifier, Name, Industry, Market Segment, Market Sub-Segment, Product Category]
+Index: []}
+2023-09-07 10:27:10 [INFO] Executed in: 37.203662157058716s
+2023-09-07 10:28:36 [INFO] Question: list companies in Chicago with employees > 10
+2023-09-07 10:28:36 [INFO] Running PandasAI with openai LLM...
+2023-09-07 10:28:36 [INFO] Prompt ID: 6e33fb26-d2e9-4c5f-b3f3-a9f91f8113db
+2023-09-07 10:28:51 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to include only companies in Chicago with employees > 10
+    filtered_df = dfs[0][(dfs[0]['City'] == 'Chicago') & (dfs[0]['Total Employee Range'] > '10')]
+    
+    # Select the columns to display
+    selected_columns = ['Unique Identifier', 'Name', 'Industry', 'Market Segment', 'Market Sub-Segment', 'Product Category']
+    
+    # Get the filtered dataframe with selected columns
+    result_df = filtered_df[selected_columns]
+    
+    # Return the result as a dataframe
+    return {"type": "dataframe", "value": result_df}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 10:28:51 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['City'] == 'Chicago') & (dfs[0]['Total Employee Range'] > '10')]
+    selected_columns = ['Unique Identifier', 'Name', 'Industry', 'Market Segment', 'Market Sub-Segment', 'Product Category']
+    result_df = filtered_df[selected_columns]
+    return {'type': 'dataframe', 'value': result_df}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 10:28:51 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier  ...                                   Product Category
+76         FTTT000179  ...  blockchain, DeFi, dapps, trading, blockchain i...
+77         FTTT000920  ...  settlement, crypto, NFT, custody, liquidity, r...
+83         FTTT000433  ...  Finance, Protective Investing, Financial Techn...
+458        FTTT000125  ...  applied machine learning, deep learning, insur...
+477        FTTT000614  ...                           HR, Talent head hunting 
+508        FTTT000486  ...  Insurance, Homeowners Insurance, Condo Insuran...
+659        FTTT000138  ...  Online Finance, Personal Loans, Technology, an...
+714        FTTT000126  ...  Derivatives Compliance Solutions, Extensive Kn...
+742        FTTT000105  ...  Omnichannel Customer ecperience, End to end re...
+
+[9 rows x 6 columns]}
+2023-09-07 10:28:51 [INFO] Executed in: 15.00045895576477s
+2023-09-07 10:31:47 [INFO] Question: list companies from Chicago
+2023-09-07 10:31:47 [INFO] Running PandasAI with openai LLM...
+2023-09-07 10:31:47 [INFO] Prompt ID: 8d9eba1d-7047-4101-bb50-d8b6d73feaf9
+2023-09-07 10:32:00 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the companies from Chicago
+    chicago_companies = dfs[0][dfs[0]['City'] == 'Chicago']
+    
+    # Return the filtered companies
+    return {"type": "dataframe", "value": chicago_companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 10:32:00 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    chicago_companies = dfs[0][dfs[0]['City'] == 'Chicago']
+    return {'type': 'dataframe', 'value': chicago_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 10:32:00 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier            Name  ... Total Employee Range                                Company Description
+76         FTTT000179  BloXroute Labs  ...               51-200  With over 120 clients worldwide, Flyer Financi...
+77         FTTT000920       Zero Hash  ...               10001+  Refinitiv, an LSEG (London Stock Exchange Grou...
+83         FTTT000433  Halo Investing  ...                 2-10  ALT 5 Sigma, Inc. is a leading institutional s...
+458        FTTT000125          Arturo  ...               51-200  Our mission at Pay.com is to create an all-inc...
+468        FTTT000752       Snapsheet  ...                                                                        
+477        FTTT000614     Omna Search  ...              201-500  BioCatch is the leader in Behavioral Biometric...
+508        FTTT000486   Kin Insurance  ...               51-200  Credit where it's due. Built for financial ins...
+659        FTTT000138           Avant  ...               51-200  Founded in 1987, Croesus is a leading WealthTe...
+714        FTTT000126          Ascent  ...               51-200  Do you have 360-degree visibility of your clie...
+742        FTTT000105          Amount  ...                 2-10  InterGen Data is an AI/ML-based Life Event Pre...
+936        FTTT000676        PractiFI  ...                                                                        
+963        FTTT000906         Ycharts  ...                                                                        
+
+[12 rows x 12 columns]}
+2023-09-07 10:32:00 [INFO] Executed in: 12.961181879043579s
+2023-09-07 10:34:04 [INFO] Question: list companies in US
+2023-09-07 10:34:04 [INFO] Running PandasAI with openai LLM...
+2023-09-07 10:34:04 [INFO] Prompt ID: bd46aedb-aefc-4e75-877a-1bf7a8b8b313
+2023-09-07 10:34:19 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies in US
+    us_companies = dfs[0][dfs[0]['Country'] == 'United States']
+    
+    # Select relevant columns
+    us_companies = us_companies[['Unique Identifier', 'Name', 'Industry', 'Market Segment', 'Market Sub-Segment', 'Product Category']]
+    
+    # Convert dataframe to a list of dictionaries
+    us_companies_list = us_companies.to_dict('records')
+    
+    # Return the result
+    return {"type": "dataframe", "value": us_companies_list}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 10:34:19 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    us_companies = dfs[0][dfs[0]['Country'] == 'United States']
+    us_companies = us_companies[['Unique Identifier', 'Name', 'Industry', 'Market Segment', 'Market Sub-Segment', 'Product Category']]
+    us_companies_list = us_companies.to_dict('records')
+    return {'type': 'dataframe', 'value': us_companies_list}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 10:34:19 [INFO] Answer: {'type': 'dataframe', 'value': [{'Unique Identifier': 'FTTT000019', 'Name': 'Credora', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets', 'Market Sub-Segment': '', 'Product Category': 'Lending'}, {'Unique Identifier': 'FTTT000390', 'Name': 'FloQast', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Middle Office', 'Product Category': 'Accounting, SaaS, Internet, Closing Software, Reconciliations, Financial Statement Close Process, and Close Management Software'}, {'Unique Identifier': 'FTTT000097', 'Name': 'AlphaPoint', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets', 'Market Sub-Segment': 'Digital Assets', 'Product Category': 'Enterprise Blockchain Solutions, Forex Exchange, Digital Asset Exchange Technology Platform, White Label Exchange Software, Crypto Exchange Software, and Tokenization'}, {'Unique Identifier': 'FTTT000209', 'Name': 'Capitolis', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets', 'Market Sub-Segment': '', 'Product Category': 'Capital Markets Technology'}, {'Unique Identifier': 'FTTT000221', 'Name': 'Chainalysis', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets', 'Market Sub-Segment': 'Digital Assets', 'Product Category': 'Bitcoin'}, {'Unique Identifier': 'FTTT000304', 'Name': 'Digital Asset', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets', 'Market Sub-Segment': 'Digital Assets', 'Product Category': 'blockchain, hyperledger, DAML, smart contracts, and cloud'}, {'Unique Identifier': 'FTTT000384', 'Name': 'Fireblocks', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets', 'Market Sub-Segment': 'Digital Assets, Custody', 'Product Category': 'Cybersecurity, Blockchain, Finance, Crypto, Custody, Digital Assets, MPC, Capital Markets, Digital Asset Custody, Tokenization, Digital Asset Settlement, Web3, DeFi, and NFTs'}, {'Unique Identifier': 'FTTT000448', 'Name': 'iCapital Network', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets', 'Market Sub-Segment': 'Alternate Investments, Private Equity and Venture Capital', 'Product Category': 'HNW Fundraising Platform, Alternative Investments, Private Equity and Hedge Funds, Private Investor Network, Private Access Vehicles, Custom Fund Solutions, and Private Credit'}, {'Unique Identifier': 'FTTT000605', 'Name': 'Numerix', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets', 'Market Sub-Segment': 'Middle Office', 'Product Category': 'FinTech, Risk Technology Architecture, Financial Technology, Trading & Risk Analytics, Financial Services, Counterparty Risk, FRTB, XVAs, Model Validation, Front Office Analytics, MIddle Office Analytics, Back Office Analytics, Banking, Hedge Funds, and Insurance'}, {'Unique Identifier': 'FTTT000798', 'Name': 'Talos', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets', 'Market Sub-Segment': 'Digital Assets, Custody', 'Product Category': 'Digital assets trading'}, {'Unique Identifier': 'FTTT000844', 'Name': 'TRM Labs', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets', 'Market Sub-Segment': 'Crypto Exchange', 'Product Category': 'Anti-money laundering, Blockchain analysis, Transaction monitoring, Crypto compliance, Blockchain forensics, and Sanctions compliance'}, {'Unique Identifier': 'FTTT000025', 'Name': 'Brassica', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets', 'Market Sub-Segment': 'Private Equity and Venture Capital, Broker-dealers, RIAs, Private Bank', 'Product Category': 'Compliance and Enabelment API'}, {'Unique Identifier': 'FTTT000026', 'Name': 'martini.ai', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets', 'Market Sub-Segment': 'Investment Bank, Broker-dealers, Hedge Funds', 'Product Category': 'Credit Risk estimates'}, {'Unique Identifier': 'FTTT000087', 'Name': 'Archblock', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets', 'Market Sub-Segment': 'Digital Assets, Crypto Exchanges, Asset Managers', 'Product Category': 'Blockchain Solutions'}, {'Unique Identifier': 'FTTT000089', 'Name': 'Alchemy', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets', 'Market Sub-Segment': 'Digital Assets, Crypto Exchanges', 'Product Category': 'Blockchain Solutions'}, {'Unique Identifier': 'FTTT000132', 'Name': 'Atomic', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets', 'Market Sub-Segment': 'Middle Office', 'Product Category': 'Innovation, Company Building, and Startups'}, {'Unique Identifier': 'FTTT000072', 'Name': 'Forge', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets', 'Market Sub-Segment': 'Back Office', 'Product Category': 'secondary shares trading platform, private markets, fintech, invest in pre-ipo companies, secondary marketplace, private market data, private market index, and buy and sell private company shares'}, {'Unique Identifier': 'FTTT000259', 'Name': 'ConsenSys', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets', 'Market Sub-Segment': 'Crypto Exchange', 'Product Category': 'Cryptocurrency, Blockchain, Web 3.0, Ethereum, Fintech, Decentralized Applications (dApps), and solidity'}, {'Unique Identifier': 'FTTT000416', 'Name': 'Genesis Global Technology', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets', 'Market Sub-Segment': 'Invesmtent Bank, Insitutional Investor, Exchanges', 'Product Category': 'End-user computing, legacy innovation,  ePlatforms'}, {'Unique Identifier': 'FTTT000170', 'Name': 'BitGo', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets, Fintech & SME', 'Market Sub-Segment': 'Crypto Exchange, Broker-dealers, Brokerage Firm, Institutional Investor, Neobank, Custodian', 'Product Category': 'Multi-Signature Bitcoin Security, Comprehensive Portfolio Management, BitGo Enterprise™, Cryptocurrency, Institutional Custodian, Digital Wallet, Private Blockchains, Digital Wallet, offline vaults, Digital Assets, Digital Currency, Cryptowallet, Lending, Trading, Custody, Security, Digital Assets, Portfolio, Tax, Self-Managed Custody, and Insured Custody'}, {'Unique Identifier': 'FTTT000177', 'Name': 'Blockdaemon', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets, Fintech & SME', 'Market Sub-Segment': 'Crypto Exchange, Broker-dealers, Custodian', 'Product Category': 'blockchain, DevOps, and Nodes'}, {'Unique Identifier': 'FTTT000920', 'Name': 'Zero Hash', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets, Fintech & SME, Enterprise & Corporates', 'Market Sub-Segment': 'Investment Bank, Brokerage Firms', 'Product Category': 'settlement, crypto, NFT, custody, liquidity, regulation, and onramp'}, {'Unique Identifier': 'FTTT000228', 'Name': 'Chime', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Banking services'}, {'Unique Identifier': 'FTTT000364', 'Name': 'FalconX', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets, Wealth Mgmt', 'Market Sub-Segment': 'Instituional Investor, Asset Manager, VC & PE', 'Product Category': 'Blockchain, Crypto, Cryptocurrencies, Trading, and Brokerage'}, {'Unique Identifier': 'FTTT000098', 'Name': 'AlphaSense', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets, Wealth Mgmt, CIB', 'Market Sub-Segment': 'Investment Banks, Hedge Funds', 'Product Category': 'semantic search, investment research, company research, competitive intelligence, market intelligence, sentiment analysis, equity research, market research, and corporate strategy'}, {'Unique Identifier': 'FTTT000205', 'Name': 'Canoe', 'Industry': 'Financial Services', 'Market Segment': 'CIB, Wealth Mgmt', 'Market Sub-Segment': 'Private Equity & Venture Capital, Hedge Funds, Private Credit Funds, IFA, Family Office, Private Bank', 'Product Category': 'Alternative Investments, AI, Machine-Learning, Data Extraction, Document Management, Institutional Investors, Family Office, Endowments & Foundations, Pension Fund, Wealth Manager, Fund of Funds, Investment Consultant, OCIO, RIA, Fund Administrator, Data Intelligence, Valuations and Transactions, Intelligent Data Solution, and Canoe'}, {'Unique Identifier': 'FTTT000037', 'Name': 'Spendflo', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporate', 'Market Sub-Segment': 'Middle Office', 'Product Category': 'Software spend reduction, SaaS Management, SaaS Procurement, Negotiation as a service, and IT Ops'}, {'Unique Identifier': 'FTTT000288', 'Name': 'DailyPay', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporate', 'Market Sub-Segment': 'Marketplaces, Gig Economy, Manufacturing, Retail, Logistics, Hospitality, Construction', 'Product Category': 'Finance as a Service, On-Demand Finance, Receivable Factoring, Financial Wellness, FinTech, and Technology'}, {'Unique Identifier': 'FTTT000372', 'Name': 'Finagraph', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporate', 'Market Sub-Segment': 'Profesional Services', 'Product Category': 'Loan Compliance Analysis, Asset Based Lending Software, Financial Data Software, Financial Data Analysis Software, Financial Intelligence, Financial Data, Fintech, M&A Software, Financial Due Diligence Software, Business Valuation Software, Forensic Accounting Software, and Loan Monitoring Tools'}, {'Unique Identifier': 'FTTT000376', 'Name': 'Finix', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporate', 'Market Sub-Segment': 'Technology', 'Product Category': 'Payment Systems, Payment Facilitation, Risk and Undewriting, Payment Infrastructure, APIs, and Payments'}, {'Unique Identifier': 'FTTT000401', 'Name': 'Forter', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporate', 'Market Sub-Segment': 'Merchant, eCommerce', 'Product Category': 'fraud prevention, ecommerce, data analytics, and risk management'}, {'Unique Identifier': 'FTTT000052', 'Name': 'Moxo', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporate, Wealth Mgmt', 'Market Sub-Segment': 'Law, Education, Private Bank', 'Product Category': 'Digital Banking'}, {'Unique Identifier': 'FTTT000139', 'Name': 'Avidxchange', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': 'payables automation, electronic invoicing, visibility, best practices, portfolio, automation, paperless, change management, workflow, and payables process'}, {'Unique Identifier': 'FTTT000145', 'Name': 'Balance', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporates', 'Market Sub-Segment': 'Merchants, Wholesalers, Manufacturing, Marketplaces', 'Product Category': 'B2B Chekout, Payments, '}, {'Unique Identifier': 'FTTT000446', 'Name': 'Hyperscience', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': 'Artificial Intelligence, Machine Learning, Intelligent Automation, Intelligent Document Processing, Insurance Automation, Data Extraction, Digital Transformation, Business Process Automation, Business Process Management, Financial Process Automation, Enterprise Solutions, Robotic Process Automation, Billing & Payment Solutions, Smart Document Processing, Document Capture, Invoice Processing, Electronic Data Capture, Handwritten Text Recognition, and Customer Onboarding'}, {'Unique Identifier': 'FTTT000550', 'Name': 'Melio', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': 'small business payments, accounts payable, accounts receivable, online payments, and business to business payments'}, {'Unique Identifier': 'FTTT000552', 'Name': 'Mesh', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporates', 'Market Sub-Segment': 'Travel', 'Product Category': 'Automation, Data management, Datay analytics, Reporting, SaaS'}, {'Unique Identifier': 'FTTT000741', 'Name': 'Signifyd', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporates', 'Market Sub-Segment': 'Merchants', 'Product Category': 'Machine Learning, Fraud Expertise, Fraud Prevention & Protection, Guaranteed Payments, Guaranteed Fraud Protection, ecommerce, Friction-free ecommerce, and Revenue growth'}, {'Unique Identifier': 'FTTT000765', 'Name': 'SpotOn', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporates', 'Market Sub-Segment': 'Hospitality', 'Product Category': ''}, {'Unique Identifier': 'FTTT000819', 'Name': 'Tipalti', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporates', 'Market Sub-Segment': 'Finance', 'Product Category': 'accounts payable, global payments, crowdsourcing, supplier payments, affiliate payment, e-commerce, sharing economy, publisher payment, Adtech, invoice workflow automation, OFAC/AML, tax compliance, supplier management, reconciliation, and supply chain finance'}, {'Unique Identifier': 'FTTT000837', 'Name': 'Trantor', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporates', 'Market Sub-Segment': 'Back Office', 'Product Category': 'AWS Services, Security & Compliance, DevOps, Automation & Artificial Intelligence, Center of Excellence, Machine Learning, Enterprise Services, Technology & Marketing, Fintech, Martech, Product Co-Development, and Analytics'}, {'Unique Identifier': 'FTTT000161', 'Name': 'Beyond Identity', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporates', 'Market Sub-Segment': 'Technology', 'Product Category': 'Internet security, Phising protection'}, {'Unique Identifier': 'FTTT000769', 'Name': 'Square', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporates, Fintech & SME', 'Market Sub-Segment': 'Merchants, Retail', 'Product Category': 'PoS, Payment services, ePoS, Omnichannel'}, {'Unique Identifier': 'FTTT000278', 'Name': 'Cross River Bank', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporates, Fintech & SME, Retail Banks', 'Market Sub-Segment': 'Neobanks, Merchants, Marketplaces, Digital Assets', 'Product Category': 'Platform lending, payment rails, card & account  programs, investors'}, {'Unique Identifier': 'FTTT000035', 'Name': 'Thematic', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporates, Retail Bank,', 'Market Sub-Segment': '', 'Product Category': 'customer sentiment analysis, customer feedback analysis, coding open ended questions, nps analytics, customer experience, text analytics, customer insights, customer retention, customer loyalty, natural language processing, customer analytics, sentiment analysis, net promoter score, customer feedback, and employee feedback'}, {'Unique Identifier': 'FTTT000414', 'Name': 'Gemini', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Middle Office', 'Product Category': 'Crypto exchange'}, {'Unique Identifier': 'FTTT000159', 'Name': 'BetterCloud', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporates, Retail Banks, CIB, Capital Markets', 'Market Sub-Segment': 'Back Office', 'Product Category': 'Google Apps, Enterprise SaaS Application, Cloud Technology, Cloud Security, Google Apps Management, Google Drive Security, Cloud Management, Office 365, G Suite, Salesforce, Zendesk, Dropbox, Confluence, JIRA Software, JIRA Service Desk, Namely, and Slack'}, {'Unique Identifier': 'FTTT000224', 'Name': 'ChargeBee Technologies', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corproates', 'Market Sub-Segment': 'Technology', 'Product Category': 'Recurring Billing, Subscription Management, Payment Gateway Integration, Invoicing, Automated transactional emails, Taxes, Accounting, Revenue Recognition, SaaS Metrics, and Pricing Iteration'}, {'Unique Identifier': 'FTTT000157', 'Name': 'Belong Home', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Home rental'}, {'Unique Identifier': 'FTTT000203', 'Name': 'Cambridge Mobile Telematics', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Middle Office', 'Product Category': 'Mobile Sensing, Behavioral Analytics, Driver safety, Machine Learning, Telematics Processing, Smartphone Telematics, Connected Insurance, Behavior-Based Insurance, Distracted Driving, Connected fleets, IoT, Insurtech, and Insuretech'}, {'Unique Identifier': 'FTTT000217', 'Name': 'Cedar', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Middle Office', 'Product Category': 'Management Consulting, Balanced Scorecard Strategy, Bank Transformation, Cost Reduction Strategies, Digital Transformation, Financial Services, FinTech, Cedar Toolbox, Process Transformation, Corporate Strategy, Corporate Finance, Marketing & Sales, Digital,Technology & Data, Operations, People & Organisation, and Private Equity'}, {'Unique Identifier': 'FTTT000267', 'Name': 'Cowbell Cyber', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Risk & Compliance', 'Product Category': 'Cyber Insurance, Cyber Risk Assessment, Cyber risk monitoring, Continuous underwriting, Adaptive Insurance, Cyber Security, and Risk Management'}, {'Unique Identifier': 'FTTT000422', 'Name': 'GLMX - Access, Automate, Analyze', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Risk & Compliance', 'Product Category': 'Money Markets and Trading Platforms'}, {'Unique Identifier': 'FTTT000440', 'Name': 'HighRadius', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporate', 'Market Sub-Segment': 'Retail', 'Product Category': 'Receivables Management SaaS Solutions, Cash Application Automation, SAP Receivables Management (formerly FSCM), Deductions & Trade Promotion Solutions, Credit Decision Solutions, Collections Solutions, Receivables Management Software, A/R Software, Order to Cash, Treasury, and Cash Forecasting'}, {'Unique Identifier': 'FTTT000444', 'Name': 'Hydrogen', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Wealth Mgmt, Fintech & SME', 'Market Sub-Segment': '', 'Product Category': ''}, {'Unique Identifier': 'FTTT000447', 'Name': 'HYPR', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Enterprise & Corporate, Payment, Insurance', 'Market Sub-Segment': '', 'Product Category': 'Cybersecurity, Mobile Security, Infrastrucure, Data Security, Security, Wireless, Privacy, SaaS, Software, Cloud, Enterprise, Authentication, Internet of Things, and Identity'}, {'Unique Identifier': 'FTTT000455', 'Name': 'Immuta', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Enterprise & Corporate', 'Market Sub-Segment': 'Technology, Manufacturing', 'Product Category': 'Data Privacy, Data Science, Auditing, Compliance, GDPR, CCPA, Compliance, Data Analytics, Cloud Computing , Data Access, AI, ML, Data Governance, Data Access Governance, Data Engineering, Data Security, Big Data , Cloud, Cloud-based Security, and Multi-Cloud'}, {'Unique Identifier': 'FTTT000459', 'Name': 'Innovest Systems', 'Industry': 'Financial Services', 'Market Segment': 'Wealth', 'Market Sub-Segment': 'Middle Office', 'Product Category': 'Tax Reporting, Benefit disbursements, documenting printing '}, {'Unique Identifier': 'FTTT000462', 'Name': 'Integral Development Corp.', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets, Payments, Fintech & SME', 'Market Sub-Segment': 'Brokerage Firm, PSP, Digital Assets', 'Product Category': 'White label FX trading systems, FX trading and connnectivity network, FX Liquidity Aggregation, White label retail margin trading solutions, Execution Management System (EMS), FX services for real money managers, FX Cloud, cloud-based SaaS, cloud-based SaaS technology to financial markets , SaaS, BankFX, MarginFX, FX workflow management, FX market structure, FX infrastructure, and SaaS for FX trading'}, {'Unique Identifier': 'FTTT000473', 'Name': 'JKL Web Technologies', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Middle Office', 'Product Category': 'Performance Testing, Usability Testing, Accessibility Testing, Web Design/Redesign, Security Testing, and Organic Search Engine Optimization'}, {'Unique Identifier': 'FTTT000511', 'Name': 'Ledgex', 'Industry': 'Financial Services', 'Market Segment': 'Wealth Mgmt', 'Market Sub-Segment': 'Family Office, Asset Manager', 'Product Category': 'Portfolio Management, Portfolio Monitoring, Risk Management, Investor Relationship Management, Private Equity, Hedge Funds, Real Estate, Managed Accounts, Fund of Funds, Family Office, Insitutional Investors, Endowments, Pension Funds, and OCIOs'}, {'Unique Identifier': 'FTTT000524', 'Name': 'LightPoint Financial Technology', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets', 'Market Sub-Segment': 'Hedge Funds, Asset Manager, Family Office', 'Product Category': 'Investment Fund Management Solutions, Risk Monitoring, and Hedge Fund Solutions'}, {'Unique Identifier': 'FTTT000528', 'Name': 'Lithic', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintechs & SMEs, Enterprise & Corporates', 'Market Sub-Segment': 'Neobank, Travel, Marketplaces, Technology, BNPL', 'Product Category': 'Paymet cards, financial management, data management, insights, reporting'}, {'Unique Identifier': 'FTTT000560', 'Name': 'Miro', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporates', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Co working, API, Sdk, Security'}, {'Unique Identifier': 'FTTT000561', 'Name': 'Mission Lane', 'Industry': 'Financial Services', 'Market Segment': 'Lender', 'Market Sub-Segment': 'Risk & Compliance', 'Product Category': 'Credit card, Debit card, Money management'}, {'Unique Identifier': 'FTTT000565', 'Name': 'Modulus Global', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets', 'Market Sub-Segment': 'Investment Bank, Brokerage Firm', 'Product Category': 'Financial Technology, Software and Hardware Design, High Frequency Trading, and Artificial Intelligence'}, {'Unique Identifier': 'FTTT000577', 'Name': 'MOS', 'Industry': 'Financial Services', 'Market Segment': 'Lender', 'Market Sub-Segment': 'Risk & Compliance', 'Product Category': 'Education, Civic Tech, User Privacy, Data Security, Web Applications, Financial Aid, Fintech, and Banking'}, {'Unique Identifier': 'FTTT000581', 'Name': 'MyVest (Acquired TIAA)', 'Industry': 'Financial Services', 'Market Segment': 'Wealth Mgmt', 'Market Sub-Segment': 'RIA, Family Office', 'Product Category': 'Enterprise Wealth Management, Portfolio Rebalancing & Tax Optimization, Overlay Portfolio Management, Managed Accounts, and Digital Wealth Management'}, {'Unique Identifier': 'FTTT000586', 'Name': 'Nayya', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': 'Employee benefits'}, {'Unique Identifier': 'FTTT000598', 'Name': 'Nova Credit', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Lender, Fintech & SME', 'Market Sub-Segment': 'Personal Loan, Small business lending', 'Product Category': 'Creddit Reporting,  '}, {'Unique Identifier': 'FTTT000604', 'Name': 'Numerated', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Lender, Fintech & SME', 'Market Sub-Segment': 'Credit Unions, Community Bank, Regional Bank', 'Product Category': 'Financial Technology, Banking, Lending, Real-Time Lending, FinTech, Online Lending, Lending Automation, and Loan Origination'}, {'Unique Identifier': 'FTTT000869', 'Name': 'Velocity Global', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Back Office', 'Product Category': 'Employer of Record (EoR), International PEO), Global Immigration, Agent of Record (AoR), Independent Contractor Compliance, International Employment, Global Payroll, International HR, International Business, Foreign Business, Human Resources, HR, Global Strategy, Global Work Platform, Global PEO, Work Anywhere, and Remote Work'}, {'Unique Identifier': 'FTTT000620', 'Name': 'OpenInvest (Acquired JP Morgan)', 'Industry': 'Financial Services', 'Market Segment': 'Wealth Mgmt', 'Market Sub-Segment': '', 'Product Category': 'investment strategy, wealth management, finance technology, software engineering, socially responsible investing, and ESG'}, {'Unique Identifier': 'FTTT000634', 'Name': 'Parafin', 'Industry': 'Financial Services', 'Market Segment': 'Lender', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Venture capital, financing '}, {'Unique Identifier': 'FTTT000657', 'Name': 'Petal', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': '', 'Product Category': 'Credit, Debt management '}, {'Unique Identifier': 'FTTT000471', 'Name': 'Jeeves', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Expense management , card services, finances'}, {'Unique Identifier': 'FTTT000671', 'Name': 'Point Digital Finance', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Morgage, Lending, HEI'}, {'Unique Identifier': 'FTTT000680', 'Name': 'Prime Trust', 'Industry': 'Financial Services', 'Market Segment': 'Wealth Mgmt', 'Market Sub-Segment': 'Crypto Exchange, Digital Asset, Custodian, Asset Manager', 'Product Category': "Escrow Services, Custodian Accounts, Retirement Accounts, Asset Protection Trusts, Fintech Services, Funds Processing, IRA's & 401K, Anti-Money Laundering (AML) Checks, Investor Services, Private Equity Solutions, Debt Securities, Qualified Custodian, Bitcoin Custodian, Ethereum Custodian, Compliance Solutions, ERC20 Tokens Custodian, Trustee for Stablecoins, and Asset-Backed Token Trustee"}, {'Unique Identifier': 'FTTT000281', 'Name': 'Current', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Finance, Fintech, Money, Payments, Banking, Deposits, and Financial Services'}, {'Unique Identifier': 'FTTT000692', 'Name': 'QRails', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporates, Fintech & SME', 'Market Sub-Segment': '', 'Product Category': 'Payment , payrole, benefits '}, {'Unique Identifier': 'FTTT000702', 'Name': 'Ramp', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporates', 'Market Sub-Segment': 'Technology', 'Product Category': 'Corporate Cards, Business Cards, Spend Management, Finance Automation, Expense Management, Reimbursement Management, Bill Pay, and Accounts Payable'}, {'Unique Identifier': 'FTTT000710', 'Name': 'Republic', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Crowdfunding, Investing, Fundraising, Startups, Tech, Equity crowdfunding, Crowdfunding, Blockchain, Cryptocurrency, Venture Capital, NFT, and Angel Investing'}, {'Unique Identifier': 'FTTT000711', 'Name': 'Rev Worldwide', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintechs & SMEs, Enterprise & Corporates', 'Market Sub-Segment': 'Travel', 'Product Category': 'Mobile Payments, Payments Program Management, Travel Payments, Travel Loyalty, Multi-Currency Payments, Cross Border Payments, Crypto, Mobile Wallets, Fintech, Payments Processing, Digital Wallets, Banking As A Service, Payments Innovation, Debit Cards, Prepaid Cards, Global Payments, and Innovation'}, {'Unique Identifier': 'FTTT000731', 'Name': 'SecurityScorecard', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': 'Third party security, risk management, vendor risk management, security ratings, Threat Intelligence, Third Party Risk Management, and cybersecurity'}, {'Unique Identifier': 'FTTT000195', 'Name': 'Built Technologies', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Middle Office', 'Product Category': 'Financial Services Technology, Construction Lending, CRE Lending, Bank Compliance, Risk Mitigation, SaaS- based company, Renovation Lending, Builder Finance, FinTech, Homebuilder Finance, Residential Construction Lending, Commercial Construction Lending, Digital Lending, construction finance, and SaaS'}, {'Unique Identifier': 'FTTT000755', 'Name': 'Socure', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintechs & SMEs, Enterprise & Corporates', 'Market Sub-Segment': 'Gaming, Telecom, eCommerce', 'Product Category': 'Cyber-Security, Fraud Detection, Anti-Money Laundering, Document Verification, Know Your Customer, Identity Verification, Synthetic Identity Fraud Capture, Document Verification, Synthetic Identity Fraud , KYC, AML, CIP, Digital Trust, and Fraud Prevention'}, {'Unique Identifier': 'FTTT000796', 'Name': 'Tactive', 'Industry': 'Financial Services', 'Market Segment': 'Wealth Mgmt', 'Market Sub-Segment': '', 'Product Category': 'Consultancy, Investments,  Risk assessment'}, {'Unique Identifier': 'FTTT000797', 'Name': 'Tala', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank', 'Market Sub-Segment': '', 'Product Category': 'Mobile Technology, Credit Scores, Financial Inclusion, Big Data, Economic Development, Direct Lending, Emerging Markets, Data Science, Risk Analytics, and Fintech'}, {'Unique Identifier': 'FTTT000808', 'Name': 'Theta Lake', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Capital Markets, Wealth Mgmt, Enterprise & Corporates, ', 'Market Sub-Segment': 'Asset Managers, Education, Manufacturing', 'Product Category': 'compliance, ucaas, collaboration, ai, nlp, regtech, fintech, fiserv, regulations, surveillance, Enterprise Information Archiving, Electronic Communications Archiving, Compliance and Security for Modern Communication Tools , Compliant Archiving, Data Loss Prevention (DLP), Compliance Monitoring , Data security, Information security, Communications monitoring, Zoom compliance, MS Teams Compliance, Webex Compliance, Ring Central Compliance, Ediscovery, Risk-Based Surveillance , Record Retention, and mobile messaging compliance'}, {'Unique Identifier': 'FTTT000826', 'Name': 'Total Expert', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Lenders, Insurance', 'Market Sub-Segment': 'Mortgage, Community Bank, Regional Bank, Credit Union, ', 'Product Category': 'Marketing and Sales Software for Financial Services, Customer Experience, and CRM'}, {'Unique Identifier': 'FTTT000842', 'Name': 'Tribal Credit', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporate', 'Market Sub-Segment': '', 'Product Category': 'Expenses, Corporate Cards, finnance products'}, {'Unique Identifier': 'FTTT000854', 'Name': 'Two Sigma', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets', 'Market Sub-Segment': 'Hedge Fund', 'Product Category': 'investment management, technology, software development, quantitative modeling, and data science'}, {'Unique Identifier': 'FTTT000862', 'Name': 'Uplift', 'Industry': 'Financial Services', 'Market Segment': 'Enterprise & Corporates', 'Market Sub-Segment': 'Travel, Retail, eCommerce', 'Product Category': 'e-commerce, travel, Fintech, and Finance'}, {'Unique Identifier': 'FTTT000867', 'Name': 'Valon', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Front Office', 'Product Category': 'fintech and consumertech'}, {'Unique Identifier': 'FTTT000034', 'Name': 'Elevate', 'Industry': 'Financial Services', 'Market Segment': 'Lenders', 'Market Sub-Segment': 'Front Office', 'Product Category': 'FinTech, Consumer Loans, Personal Lending, Credit, Consumer Finance, Technology, Financial Literacy, and Underbanked'}, {'Unique Identifier': 'FTTT000425', 'Name': 'Green Dot', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs, Enterprise & Corporate', 'Market Sub-Segment': 'Neobank, Retail, PSP', 'Product Category': 'Digital Banking, Fintech, and Mobile Banking'}, {'Unique Identifier': 'FTTT000658', 'Name': 'Pilot.com', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs, Enterprise & Corporates', 'Market Sub-Segment': 'Back Office', 'Product Category': 'Accounting, CFO, Tax services '}, {'Unique Identifier': 'FTTT000861', 'Name': 'Upgrade', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Front Office', 'Product Category': 'FinTech, Personal Loans, Credit Monitoring, Consumer Credit, Credit Lines, Deposit Accounts, Checking Accounts, and Savings Accounts'}, {'Unique Identifier': 'FTTT000624', 'Name': 'Orum.io', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs, Enterprise & Corporates, Insurance', 'Market Sub-Segment': 'Middle Office', 'Product Category': 'API intergrtion, payments '}, {'Unique Identifier': 'FTTT000039', 'Name': 'Tradier', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs, Retail Banks, Wealth Mgmt', 'Market Sub-Segment': 'Brokerage Firm', 'Product Category': 'API, FinTech, and Retail and Institutional Brokerage'}, {'Unique Identifier': 'FTTT000314', 'Name': 'DriveWealth', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs, Retail Banks, Wealth Mgmt', 'Market Sub-Segment': 'Brokerage Firm', 'Product Category': 'Financial Services, Fintech, and Technology'}, {'Unique Identifier': 'FTTT000191', 'Name': 'Broker Buddha', 'Industry': 'Financial Services', 'Market Segment': 'Insurance', 'Market Sub-Segment': '', 'Product Category': ''}, {'Unique Identifier': 'FTTT000208', 'Name': 'Cape Analytics', 'Industry': 'Financial Services', 'Market Segment': 'Insurance', 'Market Sub-Segment': 'General Commercial, Property and Casualty Insurers', 'Product Category': 'computer vision, machine learning, geospatial imagery, artificial intelligence, cloud computing, risk analysis, and property intelligence'}, {'Unique Identifier': 'FTTT000049', 'Name': 'Worksmart', 'Industry': 'Financial Services', 'Market Segment': 'Insurance', 'Market Sub-Segment': 'Back Office', 'Product Category': 'Managed IT Services, Project Management and Implementation, Onsite and Helpdesk Support, IT Consulting, Disaster Recovery and Business Continuity Planning, Computer Network Design, Hosted Servers and Desktops, Mobile Device Management, Cloud Services, and Cybersecurity Tools and Planning'}, {'Unique Identifier': 'FTTT000129', 'Name': 'At-Bay', 'Industry': 'Financial Services', 'Market Segment': 'Insurance', 'Market Sub-Segment': '', 'Product Category': 'Cyber Insurance, Cyber, Cyber liability, Insurance, IT Security, Risk Management, Tech E&O, Private Enterprises, Cyber Security, Insurtech, and Insurtech MGA'}, {'Unique Identifier': 'FTTT000125', 'Name': 'Arturo', 'Industry': 'Financial Services', 'Market Segment': 'Insurance', 'Market Sub-Segment': 'General Commercial', 'Product Category': 'applied machine learning, deep learning, insurance, reit, pere, and data science'}, {'Unique Identifier': 'FTTT000633', 'Name': 'Papaya Global', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Back Office', 'Product Category': 'Global Payroll, Payroll, Payments, HR, EOR, global payments , and Global Payments'}, {'Unique Identifier': 'FTTT000429', 'Name': 'Guideline', 'Industry': 'Financial Services', 'Market Segment': 'Insurance', 'Market Sub-Segment': 'Front Office', 'Product Category': '401(k), Personal Finance, Company Benefits, Startups, Finance, Investment, and Retirement'}, {'Unique Identifier': 'FTTT000430', 'Name': 'Guidewire', 'Industry': 'Financial Services', 'Market Segment': 'Insurance', 'Market Sub-Segment': 'General Domestic, Health, Property and Casualty', 'Product Category': 'Data management and BI, Predictive Analytics, Risk Analysis, Cloud Platform, Unified digital, core, analytics, and AI, Cloud Ops, Cyber, Property risk data, and HazardHub'}, {'Unique Identifier': 'FTTT000254', 'Name': 'Collective Health', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Risk & Compliance', 'Product Category': 'Health Insurance and Health Benefits'}, {'Unique Identifier': 'FTTT000754', 'Name': 'Socotra', 'Industry': 'Financial Services', 'Market Segment': 'Insurance', 'Market Sub-Segment': 'General Domestic, Property and Casualty', 'Product Category': 'Insurance'}, {'Unique Identifier': 'FTTT000716', 'Name': 'Rippling', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Back Office', 'Product Category': 'HR, IT, Payroll, Expenses, Corporae cards SaaS'}, {'Unique Identifier': 'FTTT000211', 'Name': 'Caribou', 'Industry': 'Financial Services', 'Market Segment': 'Lender', 'Market Sub-Segment': 'Retail Refinancing Solutions', 'Product Category': 'Refinance, Auto, car insurance, and auto insurance'}, {'Unique Identifier': 'FTTT000153', 'Name': 'Behalf', 'Industry': 'Financial Services', 'Market Segment': 'Lenders', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Purchase Financing, Supplier Terms, Trade Credit, Credit Terms, and Alternative Lending'}, {'Unique Identifier': 'FTTT000591', 'Name': 'Neuro-ID', 'Industry': 'Financial Services', 'Market Segment': 'Lenders, Insurance', 'Market Sub-Segment': '', 'Product Category': 'Real-Time Behavioral Analytics, Digital Body Language, Advanced Machine Learning, Neuroscience, FinTech, Credit Risk, Fraud, InsurTech, Digital Customer, Behavioral Data, Human-Computer Interaction, Data Science, New Account Opening, Verification, Customer Journey, Digital Forms, Behavioral Analytics, and Digital Customer Experience'}, {'Unique Identifier': 'FTTT000186', 'Name': 'Branch', 'Industry': 'Financial Services', 'Market Segment': 'Payments, Enterprise & Corporates', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Deep Linking, Mobile Analytics, Mobile Referral, Mobile Install Attribution, Mobile Growth, Attribution, Mobile Ecosystem, Mobile Apps, and Martech'}, {'Unique Identifier': 'FTTT000672', 'Name': 'PolicyGenius', 'Industry': 'Financial Services', 'Market Segment': 'Insurance', 'Market Sub-Segment': 'Front Office', 'Product Category': 'insurance education, insurance brokerage, Long-term disability insurance, Term life insurance, Homeowners insurance, Critical illness insurance, Accident insurance, Auto insurance, Long-term care insurance, fintech, financial services, and insurtech'}, {'Unique Identifier': 'FTTT000807', 'Name': 'The Zebra', 'Industry': 'Financial Services', 'Market Segment': 'Insurance', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Insurance, Comparison, Agency, auto insurance, home insurance, insurtech, industry research, and UX'}, {'Unique Identifier': 'FTTT000334', 'Name': 'Embroker', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Middle Office', 'Product Category': 'Insurance, Enterprise Software, Risk Management, D&O, EPLI, E&O, Cyber, Professional Liability, P&C, Startups, Technology, Law, Accounting, Real Estate, and Construction'}, {'Unique Identifier': 'FTTT000266', 'Name': 'CoverWallet', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Insurance, General Liability, Workers Compensation, Small Businesses, D&O Insurance, E&O Insurance, Cyber Liability, Commercial Property Insurance, Commercial Auto Insurance, Professional Insurance, Employment Practices Liability (EPLI), Insurance quotes, Insurtech, Fintech, and Internet'}, {'Unique Identifier': 'FTTT000486', 'Name': 'Kin Insurance', 'Industry': 'Financial Services', 'Market Segment': 'Insurance', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Insurance, Homeowners Insurance, Condo Insurance, and InsureTech'}, {'Unique Identifier': 'FTTT000593', 'Name': 'Next Insurance', 'Industry': 'Financial Services', 'Market Segment': 'Insurance', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Insurance, Small Businesses, InsureTech, insurtech, Entrepreneurs, and Technology'}, {'Unique Identifier': 'FTTT000298', 'Name': 'Deep Labs', 'Industry': 'Financial Services', 'Market Segment': 'Payments, Retail Bank', 'Market Sub-Segment': 'Issuing Bank, PSP', 'Product Category': 'Next Generation Platforms, Decisioning Systems, Payments, Artificial Intelligence, Persona-Based Intelligence, Financial Services, Identity, Identity Verification, AML, False Declines, Digital Onboarding, Marketing Decisioning, Account Takeover, Fraud, and Marketplaces'}, {'Unique Identifier': 'FTTT000426', 'Name': 'Greenlight', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank', 'Market Sub-Segment': 'Neobank', 'Product Category': 'Card services, savings '}, {'Unique Identifier': 'FTTT000773', 'Name': 'Stash', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Investing, Financial Technology, Personal Finance, and Banking'}, {'Unique Identifier': 'FTTT000160', 'Name': 'Betterment', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Investing, Online brokerage, Investment advice, Savings, Financial advice, Retirement advice, Automated investing, Checking, and Money management'}, {'Unique Identifier': 'FTTT000479', 'Name': 'Kasasa', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank', 'Market Sub-Segment': 'Credit Union', 'Product Category': 'Marketing, Finance, Advertising, Banking, FinTech, Innovation, Financial Marketing, Marketing Automation, Digital Marketing, Content Marketing, Customer Service, Retail Experience, and Financial Technology'}, {'Unique Identifier': 'FTTT000596', 'Name': 'Nomis Solutions', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank', 'Market Sub-Segment': 'Personal Loan, Mortgages, Savings & Pensions, Small Business Lending', 'Product Category': 'pricing, optimization, profitability management, software, big data, analytics, retail banking, deposits, lending, competitive analytics, business intelligence, mortgage, fintech, enterprise analytics, auto finance, and consumer lending'}, {'Unique Identifier': 'FTTT000879', 'Name': 'Volante Technologies', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, CIB', 'Market Sub-Segment': 'Middle Office', 'Product Category': 'Accelerated payments integration, Corporate Payments on-boarding (Host to Host Channel), Payments Tokenization Technology, Payment Hub (engines), Payment Clearing Gateways, Banking API integration, Payments Processing in the Cloud, Dodd Frank Regulatory reporting, Regulatory Transaction Reporting, Derivatives Processing, Corporate Actions Message integration, Market Data Integration, Clearing and Settlement Message Integration, ISO 20022 Migration, Digital Transformation, Real-time Payments, Instant Payments, Open Banking, PSD2, Payments as a Service, and End-to-end Payments Processing'}, {'Unique Identifier': 'FTTT000508', 'Name': 'Ladder', 'Industry': 'Financial Services', 'Market Segment': 'Insurance', 'Market Sub-Segment': 'Life', 'Product Category': 'life insurance, insurance, insurtech, fintech, innovation, financialplanning, investment, personalfinance, innovation, tech, finance, lifestyle, savemoney, underwriting, insurance quote, term life, term life insurance, insurance policy, life insurance policy, and American life insurance'}, {'Unique Identifier': 'FTTT000345', 'Name': 'Ethos', 'Industry': 'Financial Services', 'Market Segment': 'Insurance', 'Market Sub-Segment': 'Life', 'Product Category': 'Life Insurance, Term Life Insurance, and Technology'}, {'Unique Identifier': 'FTTT000751', 'Name': 'Snapdocs', 'Industry': 'Financial Services', 'Market Segment': 'Lender', 'Market Sub-Segment': 'Back Office', 'Product Category': 'Loan Software, Accounting Integration, Loan Automation, Loan Document Security and Compliance, Secure Mortgage Document Transfer, Mortgage Closing, Notary Search, Title Automation, Escrow, Notary Matching, and Mortgage Management Software'}, {'Unique Identifier': 'FTTT000434', 'Name': 'Happy Money', 'Industry': 'Financial Services', 'Market Segment': 'Lender', 'Market Sub-Segment': 'Personal Loans', 'Product Category': 'Loans'}, {'Unique Identifier': 'FTTT000803', 'Name': 'Avoka (Acquired Temenos)', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintech & SME, Enterprise & Corporates', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Omni-Channel Experience, Frictionless Digital Transactions, Digital Customer Acquisition, Systems of Engagement, Digital Front Office, Digital Transformation in Banking, Salesforce for Financial Services, customer experience in banking, Bank Account Origination, customer acquisition, KYC, AML, and customer onboarding'}, {'Unique Identifier': 'FTTT000575', 'Name': 'Moov', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintech & SME, Enterprise & Corporates', 'Market Sub-Segment': 'Neobanks, Merchants', 'Product Category': 'Payment services'}, {'Unique Identifier': 'FTTT000859', 'Name': 'Unit', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintech & SME, Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': 'fintech, banking, infrastructure, fintech infrastructure, banking as a service, card issuing, and lending'}, {'Unique Identifier': 'FTTT000929', 'Name': 'Bond', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintech & SME, Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': 'Fintech, APIs, Infrastructure-as-a-Service, Compliance, Banking, and Credit Building'}, {'Unique Identifier': 'FTTT000930', 'Name': 'CardAssets', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintech & SME, Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': ''}, {'Unique Identifier': 'FTTT000931', 'Name': 'Cardless', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintech & SME, Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': ''}, {'Unique Identifier': 'FTTT000932', 'Name': 'Cardworks', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintech & SME, Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': ''}, {'Unique Identifier': 'FTTT000933', 'Name': 'Cascade Fintech', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintech & SME, Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': 'Fintech Compliance, Startups, and Fintech Compliance Training'}, {'Unique Identifier': 'FTTT000934', 'Name': 'CoreCard', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintech & SME, Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': 'credit card software, prepaid software, bankcard software, fleet software, card management software, card processing software, Revolving Credit Software, Loans System of Record, Prepaid Processing, Credit Processing, Private Label Processing, Card Issuer, Issuer Processing, Visa/Mastercard/Discover, PCI Compliant, Collections, and Credit Origination'}, {'Unique Identifier': 'FTTT000868', 'Name': 'Varo Bank', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Mobile Banking, User Interface, Financial Services, Risk Management, Design Research, Customer Experience, Digital Banking, Financial Inclusion, FDIC Insured, Bank, OCC Chartered Bank, and Secure'}, {'Unique Identifier': 'FTTT000935', 'Name': 'Corserv', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintech & SME, Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': 'Credit Card Issuing Solution, Community Card/Agent Bank Solution, Fintech Payment Enabler, Payment APIs, Issuer Processor, Debit card issuing, Credit card issuing, and Prepaid card issuing'}, {'Unique Identifier': 'FTTT000936', 'Name': 'FIS', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintech & SME, Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': 'Information Technology'}, {'Unique Identifier': 'FTTT000937', 'Name': 'Galileo', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintech & SME, Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': 'Innovative Payment Technology Platforms, Real-time authorization decisioning, Issuing Payments Processor, Full service API, Online Turnkey Payment Solution, Program Management Services, Big Data, Analytics, Reporting, finance, fintech, payments, crypto, banking, investing, asset managment, investments, Galileo Instant, Galileo Pro, Digital Banking, Challenger Banking, Push Provisioning, Real-Time Funding, Just-in-time Funding, Card Issuing, Financial Inclusion, Neobanks, processing platform, debit cards, prepaid cards, credit cards, credit products, bnpl, lending, fraud, and buy now pay later'}, {'Unique Identifier': 'FTTT000940', 'Name': 'i2c', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintech & SME, Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': 'Payment Processing & Mobile Commerce, Loyalty Solutions, Billing & Settlement Platform, Acquiring Solutions, Digital Banking, Campaign Management, Program Management, Lending, Core Banking, APIs, Installment Loans, Issuer Processing, Credit Issuing, Debit Issuing, Prepaid Issuing, Electronic Payments, Multi-Purse, Multi-Currency Processing, Fraud Management, Analytics, Open Banking, Payments, Banking as a Service, BaaS, BNPL, and Cryptocurrency'}, {'Unique Identifier': 'FTTT000941', 'Name': 'Increase', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintech & SME, Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': 'ACH, Cards, Real-Time Payments, Bank Accounts, Checks, Wires'}, {'Unique Identifier': 'FTTT000945', 'Name': 'Q2/Helix', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintech & SME, Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': 'Banking Technology, Banking Software, Online Banking, Mobile Banking, Security, Digital banking, Lending, Payments, Fintech, Commercial banking, Business banking, Banking as a Service, Compliance, Leasing, and Retail banking'}, {'Unique Identifier': 'FTTT000946', 'Name': 'Qolo', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintech & SME, Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': ''}, {'Unique Identifier': 'FTTT000947', 'Name': 'Railsbank', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintech & SME, Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': 'Banking As A Platform (BaaP), Banking APIs, Compliance Technology, Ledger Technology, Risk Technology, Compliance Monitoring, Transaction Banking, Card Issuing, Payments, Currencies, Open Banking, Visa, Mastercard, BaaS, SaaS, API, Banking, Embedded Finance, and FinTech'}, {'Unique Identifier': 'FTTT000949', 'Name': 'Shazam', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintech & SME, Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': 'Debit card, Core, Fraud, ATM, Merchant, Marketing, Training, Risk, Automated Clearing House (ACH), and Payments'}, {'Unique Identifier': 'FTTT000950', 'Name': 'SynapseFi', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintech & SME, Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': 'Payments, Bank Transfers, Bank Account Creation, ACH, Next Day Payments, API, Fintech, Debit Card, Cryptocurrency, and Banking as a Service'}, {'Unique Identifier': 'FTTT000951', 'Name': 'Synctera', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintech & SME, Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': 'Fintech, Bank, Compliance, Banking as a Service, Ledger, Embedded Finance, Debit Cards, Financial Services, Credit, Lending, Operations, Engineering, and Software'}, {'Unique Identifier': 'FTTT000022', 'Name': 'FiVerity', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Fintech & SME, Enterprise & Corporates,', 'Market Sub-Segment': 'Community Bank, Regional Bank, Credit Unions, Neobanks, eCommerce', 'Product Category': 'artificial intelligence, machine learning, risk, risk mitigation, synthetic identity fraud, fraud, and cyber fraud'}, {'Unique Identifier': 'FTTT000421', 'Name': 'Glia', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Insurance, Wealth Mgmt, Lender, Fintechs & SMEs', 'Market Sub-Segment': 'Credit Union, Small business lending, small business banking, neobank', 'Product Category': 'Consultative Sales, Inbound Sales, SaaS, Platform, Engagement Centers, Customer Experience, Acquisition, Customer Support, Customer Service, Online Sales, and Contact Center'}, {'Unique Identifier': 'FTTT000138', 'Name': 'Avant', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Online Finance, Personal Loans, Technology, and Consumer Finance'}, {'Unique Identifier': 'FTTT000301', 'Name': 'Deserve', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Lender, Payment, Fintech & SME, Enterprise & Corporate', 'Market Sub-Segment': 'Issuing Bank, Merchant', 'Product Category': 'Consumer Analytics, Big Data, FinTech, Credit Card, Scholarships, and Financial Resources'}, {'Unique Identifier': 'FTTT000024', 'Name': 'Pagaya Technologies', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Lenders', 'Market Sub-Segment': '', 'Product Category': 'Marketplace Lending, Machine Learning, Data Science, Quantitative Asset Management, Deep Learning, Alternative Asset Management, Big Data, and Alternative Credit'}, {'Unique Identifier': 'FTTT000027', 'Name': 'Clerkie', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Lenders, Fintech & SME', 'Market Sub-Segment': 'Debt Collection Agent', 'Product Category': 'fintech, artificial intelligence, and personal finance'}, {'Unique Identifier': 'FTTT000124', 'Name': 'Array', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Lenders, Fintech & SME', 'Market Sub-Segment': 'Back Office', 'Product Category': 'SaaS, Marketing '}, {'Unique Identifier': 'FTTT000297', 'Name': 'Deel', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Back Office', 'Product Category': 'Payment Services, independent contractors, remote hiring, remote work, financial service, business, EOR, Payroll, HR, and HRIS'}, {'Unique Identifier': 'FTTT000431', 'Name': 'Gusto', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Back Office', 'Product Category': 'payroll, saas, compliance, software, HR, and benefits'}, {'Unique Identifier': 'FTTT000922', 'Name': 'Zeta', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Payments, Fintech & SME', 'Market Sub-Segment': 'Issuing Bank, Acquirer, Payments Processor, Neobank', 'Product Category': 'banking technology solutions, credit card processing, payment processing, financial technology solutions, banking as a service, embedded finance, embedded banking, credit card management, core banking solutions, digital banking solutions, and Next gen banking technology'}, {'Unique Identifier': 'FTTT000891', 'Name': 'Wealthfront', 'Industry': 'Financial Services', 'Market Segment': 'Wealth Mgmt & Private Bank', 'Market Sub-Segment': 'Front Office', 'Product Category': 'personal finance, investment management, portfolio management, software, and financial planning'}, {'Unique Identifier': 'FTTT000032', 'Name': 'Oscilar', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Payments, Lenders, Fintechs & SMEs', 'Market Sub-Segment': 'PSP, Neobank, BNPL, Marketplaces', 'Product Category': 'Wealth Management'}, {'Unique Identifier': 'FTTT000635', 'Name': 'Paxos', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Wealth Mgmt, Capital Markets, Fintech & SME', 'Market Sub-Segment': 'Neobanks, Brokerage Firms, Private Bank, Custodian, Broker-dealers', 'Product Category': 'Blockchain Solutions, Blockchain Technology, Blockchain Settlement, Financial Technology, Post-Trade, Distributed Ledger Technology, stablecoins, financial market infrastructure, blockchain, cryptocurrency, fintech, enterprise solutions, defi, altcoins, and regulated crypto'}, {'Unique Identifier': 'FTTT000276', 'Name': 'BUSINESSNEXT', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Wealth Mgmt, CIB, Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': 'Customer Relationship Management (CRM) solutions, Business Intelligence, Scalable CRM solution, SaaS CRM solution for SMEs, Sales force Automation, Marketing Automation, Customer Service Management, and Social CRM'}, {'Unique Identifier': 'FTTT000171', 'Name': 'BitSight', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank, Wealth Mgmt, Enterprise & Corporates', 'Market Sub-Segment': 'Logistics, Utilities, Retail, Manufacturing, PSP, Private Bank', 'Product Category': 'Security Ratings, Vendor Risk Management, Third Party Risk, Cyber Risk Management, Security Benchmarking, Third Party Risk Management, Security Performance, Continuous Monitoring, Cyber Insurance Underwriting, Cyber Risk Management, Cybersecurity Solutions, Mergers & Acquisitions Due Diligence, Cyber Insurance Risk Management, Third Party Security Risk, Cyber Risk Aggregation, Security Risk Management, Security Performance Management, and Cybersecurity'}, {'Unique Identifier': 'FTTT000875', 'Name': 'Very Good Security', 'Industry': 'Financial Services', 'Market Segment': 'Retail Banks, CIB, Fintech & SMEs, Enterprise & Corporates', 'Market Sub-Segment': 'PSPs, Merchants', 'Product Category': 'Data Security, PCI Compliance, SOC2, Compliance, Security, Privacy, Data Privacy, and security infrastructure'}, {'Unique Identifier': 'FTTT000685', 'Name': 'Prove', 'Industry': 'Financial Services', 'Market Segment': 'Retail Banks, CIB, Lenders, Enterprise & Corporates, Fintech & SME', 'Market Sub-Segment': '', 'Product Category': 'Authentication, Security'}, {'Unique Identifier': 'FTTT000394', 'Name': 'Flyhomes', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Back Office', 'Product Category': 'Real Estate Brokerage, Home Buyer Advice, Home Valuations, Fintech, and Mortgage'}, {'Unique Identifier': 'FTTT000520', 'Name': 'Lev', 'Industry': 'Financial Services', 'Market Segment': 'Lender', 'Market Sub-Segment': 'Commercial Real Estate Financing', 'Product Category': 'Real Estate Finance, Commercial Mortgages, Commercial Real Estate Finance, FinTech, and Startup'}, {'Unique Identifier': 'FTTT000720', 'Name': 'Roofstock', 'Industry': 'Financial Services', 'Market Segment': 'Capital Markets, Wealth Mgmt', 'Market Sub-Segment': 'Alternate Investments', 'Product Category': 'Real Estate Investing, Technology, Rental Properties, Online Marketplace, and Investment Properties'}, {'Unique Identifier': 'FTTT000441', 'Name': 'HomeLight', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Real Estate Technology, Realtor Search, Agent Matching, Vertical Marketplace, Homeownership, Home Selling, Real Estate, Marketplaces, Proptech, and Fintech'}, {'Unique Identifier': 'FTTT000309', 'Name': 'Divvy Homes', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': '', 'Product Category': 'Real estate, Operations, Logistics, Data Science, Pricing, Analytics, Rent-to-own, Housing, REIT, Homeownership, Credit, Risk, Economics, Sales, Underwriting, Lending, and Marketing'}, {'Unique Identifier': 'FTTT000557', 'Name': 'Middesk', 'Industry': 'Financial Services', 'Market Segment': 'Retail Banks, Fintechs & SMEs, Insurance, Enterprise & Corporates, Payments', 'Market Sub-Segment': 'Neobanks, Marketplace', 'Product Category': 'Venture capital, financing '}, {'Unique Identifier': 'FTTT000709', 'Name': 'Remote', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Back Office', 'Product Category': 'Remote Jobs, PEO, Hiring, remote work, global employment, payroll, EOR, remote hiring, Global Benefits, Global Tax and Compliance Management, international payroll, IP Protection, Automated payments, human resource management, contractor management, owned entities, visas and immigration,, employee onboarding, time off approvals, employment documentation management, incentives and expenses management, salary calculation, HRIS, HRMS, and Global Equity Management'}, {'Unique Identifier': 'FTTT000629', 'Name': 'Pacaso', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Residental property envestment, advisory '}, {'Unique Identifier': 'FTTT000481', 'Name': 'Kasisto', 'Industry': 'Financial Services', 'Market Segment': 'Retail Banks, Fintechs & SMEs, Wealth Mgmt', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Artificial Intelligence and Financial Technology'}, {'Unique Identifier': 'FTTT000606', 'Name': 'Nymbus', 'Industry': 'Financial Services', 'Market Segment': 'Retail Banks, Lenders, Fintechs & SMEs', 'Market Sub-Segment': '', 'Product Category': 'Banking Technology, Banking Software, Digital Banking, Financial Technology, Core Banking, FinTech, Finserv, Banking as a Service, BaaS, Niche Banking, Niche Marketing, Onboarding, Lending, Digital-Only Banks, and Marketing Services'}, {'Unique Identifier': 'FTTT000061', 'Name': 'Harvest', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Back Office', 'Product Category': 'SBA 7(a) Loan Origination & Servicing and SBA 504 & Conventional Commercial Real Estate Loan Originations'}, {'Unique Identifier': 'FTTT000839', 'Name': 'Treasury Prime', 'Industry': 'Financial Services', 'Market Segment': 'Retail Banks, Lenders, Fintechs & SMEs', 'Market Sub-Segment': 'Neobank, ', 'Product Category': 'Auomation, SaaS, API'}, {'Unique Identifier': 'FTTT000021', 'Name': 'IDPartner', 'Industry': 'Financial Services', 'Market Segment': 'Retail Banks, Lenders, Insurance, Enterprise & Corporates, Fintech & SME, Insurance', 'Market Sub-Segment': 'Compliance, Digital Assets, Payment Service Providers, ', 'Product Category': 'ID Verification'}, {'Unique Identifier': 'FTTT000172', 'Name': 'Biz2Credit', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Small business loans, SBA loans, Traditional bank loans, Business lines of credit, Equipment financing, Business acquisition loans, Commercial real estate loans, Refinancing, Merchant cash advances, Business loans, FinTech, Risk Management Software, Online Lending, Marketplace Lending, Cloud Banking, Digital Business Loans, Artificial Intelligence, Financial Technology, SaaS, Business Financing, SBA Loans, Business lending, and Finance'}, {'Unique Identifier': 'FTTT000181', 'Name': 'BlueVine', 'Industry': 'Financial Services', 'Market Segment': 'Retail Bank', 'Market Sub-Segment': 'Neobank', 'Product Category': 'Small businesses, Working capital financing, Invoice Financing, Business Line of Credit, Term Loan, Business Checking Account, and Small Business Banking'}, {'Unique Identifier': 'FTTT000341', 'Name': 'Envestnet / Yodlee', 'Industry': 'Financial Services', 'Market Segment': 'Retail Banks, Lenders, Wealth Mgmt, Fintechs & SMEs, Enterprise & Corporates', 'Market Sub-Segment': 'Middle Office', 'Product Category': 'FinTech, Financial Data APIs, Personal Financial Management (PFM), Digital Banking, and Mobile'}, {'Unique Identifier': 'FTTT000627', 'Name': 'Oyster', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Front Office', 'Product Category': 'software, compliance, outsourcing, risk, cybersecurity, digital assets, operations, technology, finance and accounting, strategy, expert witness, trading, policies and procedures, and training'}, {'Unique Identifier': 'FTTT000664', 'Name': 'Plaid', 'Industry': 'Financial Services', 'Market Segment': 'Retail Banks, Lenders, Wealth Mgmt, Fintechs & SMEs, Enterprise & Corporates', 'Market Sub-Segment': '', 'Product Category': 'Finance account connection tool'}, {'Unique Identifier': 'FTTT000210', 'Name': 'CaptivateIQ', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Middle Office', 'Product Category': 'Software, Sales Commissions, SaaS, Internet, Payroll, Incentive Compensation, Sales Performance Management, SPM, Incentives, and Sales'}, {'Unique Identifier': 'FTTT000908', 'Name': 'YieldStreet', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Specialty Finance Marketplace, Investment Services, Start Up, Fin.Tech, Investment Management, Financial Services, Wealth Management, Asset Backed, real estate, legal finance, consumer, commercial, marine finance, capital raise, closed-end funds, IRA, savings, passive income, and alternative investments'}, {'Unique Identifier': 'FTTT000187', 'Name': 'Brex', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Spend Management, Integrations, Financial Modeling, Automation '}, {'Unique Identifier': 'FTTT000687', 'Name': 'Public', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Front Office', 'Product Category': 'stocks, treasuries, crypto, ETFs, and alternative assets, '}, {'Unique Identifier': 'FTTT000637', 'Name': 'PayCargo', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Back Office', 'Product Category': 'Supply Chain Finance, Online Receivables, Online Payables, Online Payment Platform, Online Exception/Dispute Tools, Factoring, Shipper Financing, Carrier Advanced Receivables Financing, and Online Payments'}, {'Unique Identifier': 'FTTT000800', 'Name': 'TaxBit', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Risk & Compliance', 'Product Category': 'Tax & accounting, SaaS'}, {'Unique Identifier': 'FTTT000882', 'Name': 'Vouch Insurance', 'Industry': 'Financial Services', 'Market Segment': 'Insurance', 'Market Sub-Segment': 'Risk & Compliance', 'Product Category': 'Tech company insurance'}, {'Unique Identifier': 'FTTT000306', 'Name': 'Digits', 'Industry': 'Financial Services', 'Market Segment': 'Fintechs & SMEs', 'Market Sub-Segment': 'Risk & Compliance', 'Product Category': 'Transaction review, reporting, analytics, reference, advisory  '}, {'Unique Identifier': 'FTTT000058', 'Name': 'Altruist', 'Industry': 'Financial Services', 'Market Segment': 'Wealth Mgmt', 'Market Sub-Segment': 'RIAs', 'Product Category': 'fintech, UX, and transparency'}, {'Unique Identifier': 'FTTT000004', 'Name': '55ip (acquired JP Morgan)', 'Industry': 'Financial Services', 'Market Segment': 'Wealth Mgmt', 'Market Sub-Segment': 'Front Office', 'Product Category': 'portfolio management, investment management, tax aware investing, financial services technology, portfolio rebalancing, investment management technology, automated investment management, dynamic portfolio management, wealthtech, active tax management, and index investing'}, {'Unique Identifier': 'FTTT000045', 'Name': 'Voyant (AssetMark)', 'Industry': 'Financial Services', 'Market Segment': 'Wealth Mgmt', 'Market Sub-Segment': 'RIAs', 'Product Category': 'Financial Planning'}, {'Unique Identifier': 'FTTT000574', 'Name': 'MoonPay', 'Industry': 'Financial Services', 'Market Segment': 'Lender', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Web3, Paymetns, enterprise -scale smart contract development, digital asset management '}, {'Unique Identifier': 'FTTT000070', 'Name': 'CogniCor', 'Industry': 'Financial Services', 'Market Segment': 'Wealth Mgmt', 'Market Sub-Segment': 'RIAs, Broker-dealers', 'Product Category': 'Artificial Intelligence, Enterprise SaaS, Customer Experience, Enterprise Virtual Assistant, Virtual Assistant, Chatbot, Financial Services, Fintech, Insurtech, Digital Assistant, Knowledge management, Digital transformation, Conversational AI, Natural Language Processing, Machine Learning, Wealth Management, Insurance, Asset Management, Retail finance, Software as a service, Cloud, AI Startup, and Finance'}, {'Unique Identifier': 'FTTT000198', 'Name': 'C2FO', 'Industry': 'Financial Services', 'Market Segment': 'Lender', 'Market Sub-Segment': 'Middle Office', 'Product Category': 'Working Capital Efficiency, Cash Flow Optimization, DSO Reduction, Early Cash Flow Delivery, Receivables Finance, Capital Finance, Early Payment, Dynamic Customer Finance, Dynamic Supplier Finance, and Working Capital Knowledge'}, {'Unique Identifier': 'FTTT000269', 'Name': 'Credibly', 'Industry': 'Financial Services', 'Market Segment': 'Lender', 'Market Sub-Segment': 'Front Office', 'Product Category': 'Working Capital Loans, Business Expansion Loans, Short-Term Loans, Merchant Cash Advance, Small Business Loans, ISO, Small Business Financing, Small Business Line of Credit, and Finance'}, {'Unique Identifier': 'FTTT000117', 'Name': 'Bento Engine', 'Industry': 'Financial Services', 'Market Segment': 'Wealth Mgmt', 'Market Sub-Segment': 'RIAs', 'Product Category': 'SaaS, Software, Technology, APIs, Wealth Management, Private Banking, Advice, Holistic, CRM, Financial Planning, Advisor Succes, Practice Management, Business Development, Growth, Share of Wallet, Loyalty, Referral Rates, and NPS'}, {'Unique Identifier': 'FTTT000201', 'Name': 'CAIS', 'Industry': 'Financial Services', 'Market Segment': 'Wealth Mgmt', 'Market Sub-Segment': 'IFAs, Asset Managers, Family Offices', 'Product Category': 'Alternatives Investments, Capital Markets, Structured Solutions, Financial Technology, Outsourced Service Provider, and Wealth Management Focus'}, {'Unique Identifier': 'FTTT000310', 'Name': 'Docupace', 'Industry': 'Financial Services', 'Market Segment': 'Wealth Mgmt', 'Market Sub-Segment': 'RIA', 'Product Category': 'web-based, imaging, document management, workflow, saas, straight thru processing, client onboarding, advisor transitions, cybersecurity, e-signature, Regulation BI, and new account opening'}, {'Unique Identifier': 'FTTT000335', 'Name': 'eMoney Advisor', 'Industry': 'Financial Services', 'Market Segment': 'Wealth Mgmt', 'Market Sub-Segment': 'Family Offices, RIAs', 'Product Category': 'Wealth management, financial planning, client management, advisor marketing, Computer Software, financial planning technology, and financial technology'}, {'Unique Identifier': 'FTTT000346', 'Name': 'Eton Solutions', 'Industry': 'Financial Services', 'Market Segment': 'Wealth Mgmt', 'Market Sub-Segment': 'Family Offices', 'Product Category': 'Wealth Management, Family Office, Investment Management, FinTech, software, and accounting'}, {'Unique Identifier': 'FTTT000470', 'Name': 'Jacobi', 'Industry': 'Financial Services', 'Market Segment': 'Wealth Mgmt', 'Market Sub-Segment': 'Asset Managers, RIAs, Family Offices, Pension Funds', 'Product Category': 'Technology, Investment Technology, financial services, investment analytics, portfolio design, client engagement, and multi-asset'}, {'Unique Identifier': 'FTTT000676', 'Name': 'PractiFI', 'Industry': 'Financial Services', 'Market Segment': 'Wealth Mgmt', 'Market Sub-Segment': 'RIAs, Family Offices', 'Product Category': 'CRM and practice management for financial advisers, brokers and accountants'}, {'Unique Identifier': 'FTTT000876', 'Name': 'Vise', 'Industry': 'Financial Services', 'Market Segment': 'Wealth Mgmt', 'Market Sub-Segment': 'RIAs', 'Product Category': 'Investment Management, RIA, Financial Advisors, Fintech, Financial Services, Portfolio Management, Investment Methodology, Personalized Investing, Customized Investing, Direct Indexing, Factor Investing, and ESG Investing'}, {'Unique Identifier': 'FTTT000336', 'Name': 'Empaxis', 'Industry': 'Financial Services', 'Market Segment': 'Wealth Mgmt, Capital Markets', 'Market Sub-Segment': 'Asset Manager, Family Office, Hedge Fund, Private Bank, RIA', 'Product Category': 'Portfolio Accounting, Fund Accounting, Reconciliation, Migrations from Advent Axys to APX, Performance Reporting, Cost Basis, Billing, Security Master File Maintenance, Corporate Actions Processing, and Pricing'}, {'Unique Identifier': 'FTTT000060', 'Name': 'InterGen Data', 'Industry': 'Financial Services', 'Market Segment': 'Wealth Mgmt, Insurance', 'Market Sub-Segment': '', 'Product Category': "Wealth Management, Brokerage, Financial Services, Artificial Intelligence, Insurance, Clearance and Settlement, Registered Investment Advisor, Predictive Analytics, KPI's, Machine Learning, Insights, Financial Wellness, and Marketing"}, {'Unique Identifier': 'FTTT000038', 'Name': 'IRALOGIX', 'Industry': 'Financial Services', 'Market Segment': 'Wealth Mgmt, Retail Bank', 'Market Sub-Segment': 'IFAs, Brokerage Firms, Private Banks', 'Product Category': 'Investment Platform'}, {'Unique Identifier': 'FTTT000074', 'Name': 'Clearwater Analytics', 'Industry': 'Financial Services', 'Market Segment': 'Wealth, Capital Markets, Insurance', 'Market Sub-Segment': 'Asset Managers', 'Product Category': 'Integrated Investment Accounting, Compliance, Performance & Risk Reporting, daily aggregation, reconciliation and validation of investment data, Complete investment portfolio transparency, Automated GAAP, STAT and Tax Investment Accounting, and saas'}]}
+2023-09-07 10:34:19 [INFO] Executed in: 15.056461095809937s
+2023-09-07 10:41:24 [INFO] Question: list companies in Chicago with employees > 10
+2023-09-07 10:41:24 [INFO] Running PandasAI with openai LLM...
+2023-09-07 10:41:24 [INFO] Prompt ID: 5cad0643-3942-4c05-b4f4-d4d26ff551b8
+2023-09-07 10:41:39 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to include only companies in Chicago with employees > 10
+    filtered_df = dfs[0][(dfs[0]['City'] == 'Chicago') & (dfs[0]['Total Employee Range'] > '10')]
+    
+    # Select the columns to display
+    selected_columns = ['Unique Identifier', 'Name', 'Industry', 'Market Segment', 'Market Sub-Segment', 'Product Category']
+    
+    # Return the filtered dataframe with selected columns
+    return {"type": "dataframe", "value": filtered_df[selected_columns]}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 10:41:39 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['City'] == 'Chicago') & (dfs[0]['Total Employee Range'] > '10')]
+    selected_columns = ['Unique Identifier', 'Name', 'Industry', 'Market Segment', 'Market Sub-Segment', 'Product Category']
+    return {'type': 'dataframe', 'value': filtered_df[selected_columns]}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 10:41:39 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier  ...                                   Product Category
+76         FTTT000179  ...  blockchain, DeFi, dapps, trading, blockchain i...
+77         FTTT000920  ...  settlement, crypto, NFT, custody, liquidity, r...
+83         FTTT000433  ...  Finance, Protective Investing, Financial Techn...
+458        FTTT000125  ...  applied machine learning, deep learning, insur...
+477        FTTT000614  ...                           HR, Talent head hunting 
+508        FTTT000486  ...  Insurance, Homeowners Insurance, Condo Insuran...
+659        FTTT000138  ...  Online Finance, Personal Loans, Technology, an...
+714        FTTT000126  ...  Derivatives Compliance Solutions, Extensive Kn...
+742        FTTT000105  ...  Omnichannel Customer ecperience, End to end re...
+
+[9 rows x 6 columns]}
+2023-09-07 10:41:39 [INFO] Executed in: 14.959529876708984s
+2023-09-07 12:06:52 [INFO] Question: Provide list of companies with employees > 100
+2023-09-07 12:06:52 [INFO] Running PandasAI with openai LLM...
+2023-09-07 12:06:52 [INFO] Prompt ID: af614c2f-91a6-4ef2-ad24-40404df205a8
+2023-09-07 12:07:08 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies with employees > 100
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    
+    # Return the filtered companies dataframe
+    return {"type": "dataframe", "value": filtered_companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 12:07:08 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    return {'type': 'dataframe', 'value': filtered_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 12:07:08 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier                Name  ... Total Employee Range                                Company Description
+0          FTTT000307     Diligence Vault  ...               51-200  DiligenceVault is the first two-sided and glob...
+1          FTTT000019             Credora  ...                11-50  Credora is building confidence in credit marke...
+2          FTTT000065                IMTC  ...                11-50  IMTC is the only cloud-native dedicated fixed ...
+3          FTTT000068         AgenaTrader  ...                11-50  AgenaTrader, a multi asset, multi broker, mult...
+4          FTTT000071           FundSense  ...                 2-10  The FundSense platform enables asset managers ...
+..                ...                 ...  ...                  ...                                                ...
+751        FTTT000597            NorthRow  ...                11-50  ABAKA is an award-winning Enterprise SaaS plat...
+752        FTTT000875  Very Good Security  ...               51-200  At TIFIN Wealth, we develop technologies that ...
+753        FTTT000573            Moonfare  ...                11-50  Our aim is to get everyone invested all the ti...
+754        FTTT000490  Know Your Customer  ...            1001-5000  Clearwater Analytics (NYSE: CWAN) is the leadi...
+755        FTTT000685               Prove  ...                11-50  Xignite is leading the disruption of the marke...
+
+[716 rows x 12 columns]}
+2023-09-07 12:07:08 [INFO] Executed in: 15.94780707359314s
+2023-09-07 12:07:08 [INFO] 127.0.0.1 - - [07/Sep/2023 12:07:08] "POST /result HTTP/1.1" 200 -
+2023-09-07 12:07:52 [INFO] Question: Provide companies in US with employees >100
+2023-09-07 12:07:52 [INFO] Running PandasAI with openai LLM...
+2023-09-07 12:07:52 [INFO] Prompt ID: bef98bf2-a3d0-4c09-8c02-d093355c5f4d
+2023-09-07 12:08:06 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies in US with employees >100
+    filtered_df = dfs[0][(dfs[0]['Country'] == 'United States') & (dfs[0]['Total Employee Range'] == '10001+')]
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": filtered_df}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 12:08:06 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Country'] == 'United States') & (dfs[0]['Total Employee Range'] == '10001+')]
+    return {'type': 'dataframe', 'value': filtered_df}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 12:08:06 [INFO] Answer: {'type': 'dataframe', 'value':    Unique Identifier       Name            Industry  ...     City Total Employee Range                                Company Description
+77        FTTT000920  Zero Hash  Financial Services  ...  Chicago               10001+  Refinitiv, an LSEG (London Stock Exchange Grou...
+
+[1 rows x 12 columns]}
+2023-09-07 12:08:06 [INFO] Executed in: 14.158959150314331s
+2023-09-07 12:08:06 [INFO] 127.0.0.1 - - [07/Sep/2023 12:08:06] "POST /result HTTP/1.1" 200 -
+2023-09-07 12:14:18 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-07 12:18:27 [INFO] Question: Provide list of companies with employees > 100
+2023-09-07 12:18:27 [INFO] Running PandasAI with openai LLM...
+2023-09-07 12:18:27 [INFO] Prompt ID: 0931be5a-44a1-418c-b3ac-f3262f3401ad
+2023-09-07 12:18:27 [INFO] Using cached response
+2023-09-07 12:18:27 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies with employees > 100
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    
+    # Return the filtered companies dataframe
+    return {"type": "dataframe", "value": filtered_companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 12:18:27 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    return {'type': 'dataframe', 'value': filtered_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 12:18:27 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier                Name  ... Total Employee Range                                Company Description
+0          FTTT000307     Diligence Vault  ...               51-200  DiligenceVault is the first two-sided and glob...
+1          FTTT000019             Credora  ...                11-50  Credora is building confidence in credit marke...
+2          FTTT000065                IMTC  ...                11-50  IMTC is the only cloud-native dedicated fixed ...
+3          FTTT000068         AgenaTrader  ...                11-50  AgenaTrader, a multi asset, multi broker, mult...
+4          FTTT000071           FundSense  ...                 2-10  The FundSense platform enables asset managers ...
+..                ...                 ...  ...                  ...                                                ...
+751        FTTT000597            NorthRow  ...                11-50  ABAKA is an award-winning Enterprise SaaS plat...
+752        FTTT000875  Very Good Security  ...               51-200  At TIFIN Wealth, we develop technologies that ...
+753        FTTT000573            Moonfare  ...                11-50  Our aim is to get everyone invested all the ti...
+754        FTTT000490  Know Your Customer  ...            1001-5000  Clearwater Analytics (NYSE: CWAN) is the leadi...
+755        FTTT000685               Prove  ...                11-50  Xignite is leading the disruption of the marke...
+
+[716 rows x 12 columns]}
+2023-09-07 12:18:27 [INFO] Executed in: 0.009987115859985352s
+2023-09-07 12:18:27 [INFO] 127.0.0.1 - - [07/Sep/2023 12:18:27] "[35m[1mPOST /result HTTP/1.1[0m" 500 -
+2023-09-07 12:18:27 [INFO] 127.0.0.1 - - [07/Sep/2023 12:18:27] "[36mGET /result?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2023-09-07 12:18:27 [INFO] 127.0.0.1 - - [07/Sep/2023 12:18:27] "[36mGET /result?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2023-09-07 12:18:27 [INFO] 127.0.0.1 - - [07/Sep/2023 12:18:27] "[36mGET /result?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2023-09-07 12:18:27 [INFO] 127.0.0.1 - - [07/Sep/2023 12:18:27] "[36mGET /result?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2023-09-07 12:23:58 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-07 12:24:09 [INFO] Question: Provide list of companies with employees > 100
+2023-09-07 12:24:09 [INFO] Running PandasAI with openai LLM...
+2023-09-07 12:24:09 [INFO] Prompt ID: c3c2aaab-dacd-4ba0-8816-2a06d8c5d1c6
+2023-09-07 12:24:09 [INFO] Using cached response
+2023-09-07 12:24:09 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies with employees > 100
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    
+    # Return the filtered companies dataframe
+    return {"type": "dataframe", "value": filtered_companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 12:24:09 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    return {'type': 'dataframe', 'value': filtered_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 12:24:09 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier                Name  ... Total Employee Range                                Company Description
+0          FTTT000307     Diligence Vault  ...               51-200  DiligenceVault is the first two-sided and glob...
+1          FTTT000019             Credora  ...                11-50  Credora is building confidence in credit marke...
+2          FTTT000065                IMTC  ...                11-50  IMTC is the only cloud-native dedicated fixed ...
+3          FTTT000068         AgenaTrader  ...                11-50  AgenaTrader, a multi asset, multi broker, mult...
+4          FTTT000071           FundSense  ...                 2-10  The FundSense platform enables asset managers ...
+..                ...                 ...  ...                  ...                                                ...
+751        FTTT000597            NorthRow  ...                11-50  ABAKA is an award-winning Enterprise SaaS plat...
+752        FTTT000875  Very Good Security  ...               51-200  At TIFIN Wealth, we develop technologies that ...
+753        FTTT000573            Moonfare  ...                11-50  Our aim is to get everyone invested all the ti...
+754        FTTT000490  Know Your Customer  ...            1001-5000  Clearwater Analytics (NYSE: CWAN) is the leadi...
+755        FTTT000685               Prove  ...                11-50  Xignite is leading the disruption of the marke...
+
+[716 rows x 12 columns]}
+2023-09-07 12:24:09 [INFO] Executed in: 0.006528139114379883s
+2023-09-07 12:24:09 [INFO] 127.0.0.1 - - [07/Sep/2023 12:24:09] "POST /result HTTP/1.1" 200 -
+2023-09-07 12:27:32 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-07 12:27:45 [INFO] Question: Provide list of companies with employees > 100
+2023-09-07 12:27:45 [INFO] Running PandasAI with openai LLM...
+2023-09-07 12:27:45 [INFO] Prompt ID: abb9f3bb-e0bb-4ada-83c0-c55be34f3c89
+2023-09-07 12:27:45 [INFO] Using cached response
+2023-09-07 12:27:45 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies with employees > 100
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    
+    # Return the filtered companies dataframe
+    return {"type": "dataframe", "value": filtered_companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 12:27:45 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    return {'type': 'dataframe', 'value': filtered_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 12:27:45 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier                Name  ... Total Employee Range                                Company Description
+0          FTTT000307     Diligence Vault  ...               51-200  DiligenceVault is the first two-sided and glob...
+1          FTTT000019             Credora  ...                11-50  Credora is building confidence in credit marke...
+2          FTTT000065                IMTC  ...                11-50  IMTC is the only cloud-native dedicated fixed ...
+3          FTTT000068         AgenaTrader  ...                11-50  AgenaTrader, a multi asset, multi broker, mult...
+4          FTTT000071           FundSense  ...                 2-10  The FundSense platform enables asset managers ...
+..                ...                 ...  ...                  ...                                                ...
+751        FTTT000597            NorthRow  ...                11-50  ABAKA is an award-winning Enterprise SaaS plat...
+752        FTTT000875  Very Good Security  ...               51-200  At TIFIN Wealth, we develop technologies that ...
+753        FTTT000573            Moonfare  ...                11-50  Our aim is to get everyone invested all the ti...
+754        FTTT000490  Know Your Customer  ...            1001-5000  Clearwater Analytics (NYSE: CWAN) is the leadi...
+755        FTTT000685               Prove  ...                11-50  Xignite is leading the disruption of the marke...
+
+[716 rows x 12 columns]}
+2023-09-07 12:27:45 [INFO] Executed in: 0.007091999053955078s
+2023-09-07 12:27:45 [INFO] 127.0.0.1 - - [07/Sep/2023 12:27:45] "POST /result HTTP/1.1" 200 -
+2023-09-07 12:29:57 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-07 12:31:32 [INFO] Question: Provide list of companies with employees > 100
+2023-09-07 12:31:32 [INFO] Running PandasAI with openai LLM...
+2023-09-07 12:31:32 [INFO] Prompt ID: d91899f1-91a2-4648-873e-3e7df974baa7
+2023-09-07 12:31:32 [INFO] Using cached response
+2023-09-07 12:31:32 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies with employees > 100
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    
+    # Return the filtered companies dataframe
+    return {"type": "dataframe", "value": filtered_companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 12:31:32 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    return {'type': 'dataframe', 'value': filtered_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 12:31:32 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier                Name  ... Total Employee Range                                Company Description
+0          FTTT000307     Diligence Vault  ...               51-200  DiligenceVault is the first two-sided and glob...
+1          FTTT000019             Credora  ...                11-50  Credora is building confidence in credit marke...
+2          FTTT000065                IMTC  ...                11-50  IMTC is the only cloud-native dedicated fixed ...
+3          FTTT000068         AgenaTrader  ...                11-50  AgenaTrader, a multi asset, multi broker, mult...
+4          FTTT000071           FundSense  ...                 2-10  The FundSense platform enables asset managers ...
+..                ...                 ...  ...                  ...                                                ...
+751        FTTT000597            NorthRow  ...                11-50  ABAKA is an award-winning Enterprise SaaS plat...
+752        FTTT000875  Very Good Security  ...               51-200  At TIFIN Wealth, we develop technologies that ...
+753        FTTT000573            Moonfare  ...                11-50  Our aim is to get everyone invested all the ti...
+754        FTTT000490  Know Your Customer  ...            1001-5000  Clearwater Analytics (NYSE: CWAN) is the leadi...
+755        FTTT000685               Prove  ...                11-50  Xignite is leading the disruption of the marke...
+
+[716 rows x 12 columns]}
+2023-09-07 12:31:32 [INFO] Executed in: 0.008208990097045898s
+2023-09-07 12:31:32 [INFO] 127.0.0.1 - - [07/Sep/2023 12:31:32] "[35m[1mPOST /result HTTP/1.1[0m" 500 -
+2023-09-07 12:31:32 [INFO] 127.0.0.1 - - [07/Sep/2023 12:31:32] "[36mGET /result?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2023-09-07 12:31:32 [INFO] 127.0.0.1 - - [07/Sep/2023 12:31:32] "[36mGET /result?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2023-09-07 12:31:32 [INFO] 127.0.0.1 - - [07/Sep/2023 12:31:32] "[36mGET /result?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2023-09-07 12:32:21 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-07 12:32:31 [INFO] Question: Provide list of companies with employees > 100
+2023-09-07 12:32:31 [INFO] Running PandasAI with openai LLM...
+2023-09-07 12:32:31 [INFO] Prompt ID: 9200139d-1633-4dc2-afd4-fbb9cc28cc6f
+2023-09-07 12:32:31 [INFO] Using cached response
+2023-09-07 12:32:31 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies with employees > 100
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    
+    # Return the filtered companies dataframe
+    return {"type": "dataframe", "value": filtered_companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 12:32:31 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    return {'type': 'dataframe', 'value': filtered_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 12:32:31 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier                Name  ... Total Employee Range                                Company Description
+0          FTTT000307     Diligence Vault  ...               51-200  DiligenceVault is the first two-sided and glob...
+1          FTTT000019             Credora  ...                11-50  Credora is building confidence in credit marke...
+2          FTTT000065                IMTC  ...                11-50  IMTC is the only cloud-native dedicated fixed ...
+3          FTTT000068         AgenaTrader  ...                11-50  AgenaTrader, a multi asset, multi broker, mult...
+4          FTTT000071           FundSense  ...                 2-10  The FundSense platform enables asset managers ...
+..                ...                 ...  ...                  ...                                                ...
+751        FTTT000597            NorthRow  ...                11-50  ABAKA is an award-winning Enterprise SaaS plat...
+752        FTTT000875  Very Good Security  ...               51-200  At TIFIN Wealth, we develop technologies that ...
+753        FTTT000573            Moonfare  ...                11-50  Our aim is to get everyone invested all the ti...
+754        FTTT000490  Know Your Customer  ...            1001-5000  Clearwater Analytics (NYSE: CWAN) is the leadi...
+755        FTTT000685               Prove  ...                11-50  Xignite is leading the disruption of the marke...
+
+[716 rows x 12 columns]}
+2023-09-07 12:32:31 [INFO] Executed in: 0.0063478946685791016s
+2023-09-07 12:32:31 [INFO] 127.0.0.1 - - [07/Sep/2023 12:32:31] "POST /result HTTP/1.1" 200 -
+2023-09-07 12:32:35 [INFO] 127.0.0.1 - - [07/Sep/2023 12:32:35] "GET / HTTP/1.1" 200 -
+2023-09-07 12:32:39 [INFO] Question: Provide companies in US with employees >100
+2023-09-07 12:32:39 [INFO] Running PandasAI with openai LLM...
+2023-09-07 12:32:39 [INFO] Prompt ID: 9523bd0e-8396-492d-bf74-56117889668d
+2023-09-07 12:32:53 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies in US with employees >100
+    filtered_df = dfs[0][(dfs[0]['Country'] == 'United States') & (dfs[0]['Total Employee Range'] > '100')]
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": filtered_df}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 12:32:53 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Country'] == 'United States') & (dfs[0]['Total Employee Range'] > '100')]
+    return {'type': 'dataframe', 'value': filtered_df}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 12:32:53 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier                Name  ... Total Employee Range                                Company Description
+1          FTTT000019             Credora  ...                11-50  Credora is building confidence in credit marke...
+8          FTTT000390             FloQast  ...               51-200  AlphaPoint is a white-label software company p...
+11         FTTT000097          AlphaPoint  ...               51-200  Redefining post-trade processing from trade-ma...
+16         FTTT000209           Capitolis  ...               51-200  If relationships are the lifeblood of your bus...
+17         FTTT000221         Chainalysis  ...                11-50  Curv provides the industry’s first cloud-based...
+..                ...                 ...  ...                  ...                                                ...
+736        FTTT000635               Paxos  ...               51-200  FNZ is the global platform opening up wealth. ...
+737        FTTT000276        BUSINESSNEXT  ...              201-500  Contemi Solutions helps financial service prov...
+739        FTTT000171            BitSight  ...            1001-5000  Avaloq is a premium provider of front-to-back ...
+752        FTTT000875  Very Good Security  ...               51-200  At TIFIN Wealth, we develop technologies that ...
+755        FTTT000685               Prove  ...                11-50  Xignite is leading the disruption of the marke...
+
+[162 rows x 12 columns]}
+2023-09-07 12:32:53 [INFO] Executed in: 13.660006046295166s
+2023-09-07 12:32:53 [INFO] 127.0.0.1 - - [07/Sep/2023 12:32:53] "POST /result HTTP/1.1" 200 -
+2023-09-07 12:34:38 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-07 12:34:52 [INFO] Question: Provide companies in US with employees >100
+2023-09-07 12:34:52 [INFO] Running PandasAI with openai LLM...
+2023-09-07 12:34:52 [INFO] Prompt ID: c6ae8cce-7fd3-43a3-a37a-f84c0b1fe35e
+2023-09-07 12:35:06 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies in US with employees >100
+    filtered_df = dfs[0][(dfs[0]['Country'] == 'United States') & (dfs[0]['Total Employee Range'] > '100')]
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": filtered_df}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 12:35:06 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Country'] == 'United States') & (dfs[0]['Total Employee Range'] > '100')]
+    return {'type': 'dataframe', 'value': filtered_df}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 12:35:06 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier                Name  ... Total Employee Range                                Company Description
+1          FTTT000019             Credora  ...                11-50  Credora is building confidence in credit marke...
+8          FTTT000390             FloQast  ...               51-200  AlphaPoint is a white-label software company p...
+11         FTTT000097          AlphaPoint  ...               51-200  Redefining post-trade processing from trade-ma...
+16         FTTT000209           Capitolis  ...               51-200  If relationships are the lifeblood of your bus...
+17         FTTT000221         Chainalysis  ...                11-50  Curv provides the industry’s first cloud-based...
+..                ...                 ...  ...                  ...                                                ...
+736        FTTT000635               Paxos  ...               51-200  FNZ is the global platform opening up wealth. ...
+737        FTTT000276        BUSINESSNEXT  ...              201-500  Contemi Solutions helps financial service prov...
+739        FTTT000171            BitSight  ...            1001-5000  Avaloq is a premium provider of front-to-back ...
+752        FTTT000875  Very Good Security  ...               51-200  At TIFIN Wealth, we develop technologies that ...
+755        FTTT000685               Prove  ...                11-50  Xignite is leading the disruption of the marke...
+
+[162 rows x 12 columns]}
+2023-09-07 12:35:06 [INFO] Executed in: 13.941794872283936s
+2023-09-07 12:35:06 [INFO] 127.0.0.1 - - [07/Sep/2023 12:35:06] "POST /result HTTP/1.1" 200 -
+2023-09-07 12:45:03 [INFO] Question: Provide list of companies with employees > 100
+2023-09-07 12:45:03 [INFO] Running PandasAI with openai LLM...
+2023-09-07 12:45:03 [INFO] Prompt ID: d7a8f1ce-cc95-4ea5-9a3a-355bdc46372f
+2023-09-07 12:45:03 [INFO] Using cached response
+2023-09-07 12:45:03 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies with employees > 100
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    
+    # Return the filtered companies dataframe
+    return {"type": "dataframe", "value": filtered_companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 12:45:03 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    return {'type': 'dataframe', 'value': filtered_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 12:45:03 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier                Name  ... Total Employee Range                                Company Description
+0          FTTT000307     Diligence Vault  ...               51-200  DiligenceVault is the first two-sided and glob...
+1          FTTT000019             Credora  ...                11-50  Credora is building confidence in credit marke...
+2          FTTT000065                IMTC  ...                11-50  IMTC is the only cloud-native dedicated fixed ...
+3          FTTT000068         AgenaTrader  ...                11-50  AgenaTrader, a multi asset, multi broker, mult...
+4          FTTT000071           FundSense  ...                 2-10  The FundSense platform enables asset managers ...
+..                ...                 ...  ...                  ...                                                ...
+751        FTTT000597            NorthRow  ...                11-50  ABAKA is an award-winning Enterprise SaaS plat...
+752        FTTT000875  Very Good Security  ...               51-200  At TIFIN Wealth, we develop technologies that ...
+753        FTTT000573            Moonfare  ...                11-50  Our aim is to get everyone invested all the ti...
+754        FTTT000490  Know Your Customer  ...            1001-5000  Clearwater Analytics (NYSE: CWAN) is the leadi...
+755        FTTT000685               Prove  ...                11-50  Xignite is leading the disruption of the marke...
+
+[716 rows x 12 columns]}
+2023-09-07 12:45:03 [INFO] Executed in: 0.014869928359985352s
+2023-09-07 12:45:03 [INFO] 127.0.0.1 - - [07/Sep/2023 12:45:03] "POST /result HTTP/1.1" 200 -
+2023-09-07 12:45:14 [INFO] 127.0.0.1 - - [07/Sep/2023 12:45:14] "GET / HTTP/1.1" 200 -
+2023-09-07 12:45:28 [INFO] Question: Provide companies in US with employees >100
+2023-09-07 12:45:28 [INFO] Running PandasAI with openai LLM...
+2023-09-07 12:45:28 [INFO] Prompt ID: 53c00597-32d9-46b3-84a3-342b58118783
+2023-09-07 12:45:43 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies in US with employees >100
+    filtered_df = dfs[0][(dfs[0]['Country'] == 'United States') & (dfs[0]['Total Employee Range'] > '100')]
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": filtered_df}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 12:45:43 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Country'] == 'United States') & (dfs[0]['Total Employee Range'] > '100')]
+    return {'type': 'dataframe', 'value': filtered_df}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 12:45:43 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier                Name  ... Total Employee Range                                Company Description
+1          FTTT000019             Credora  ...                11-50  Credora is building confidence in credit marke...
+8          FTTT000390             FloQast  ...               51-200  AlphaPoint is a white-label software company p...
+11         FTTT000097          AlphaPoint  ...               51-200  Redefining post-trade processing from trade-ma...
+16         FTTT000209           Capitolis  ...               51-200  If relationships are the lifeblood of your bus...
+17         FTTT000221         Chainalysis  ...                11-50  Curv provides the industry’s first cloud-based...
+..                ...                 ...  ...                  ...                                                ...
+736        FTTT000635               Paxos  ...               51-200  FNZ is the global platform opening up wealth. ...
+737        FTTT000276        BUSINESSNEXT  ...              201-500  Contemi Solutions helps financial service prov...
+739        FTTT000171            BitSight  ...            1001-5000  Avaloq is a premium provider of front-to-back ...
+752        FTTT000875  Very Good Security  ...               51-200  At TIFIN Wealth, we develop technologies that ...
+755        FTTT000685               Prove  ...                11-50  Xignite is leading the disruption of the marke...
+
+[162 rows x 12 columns]}
+2023-09-07 12:45:43 [INFO] Executed in: 15.416543960571289s
+2023-09-07 12:45:43 [INFO] 127.0.0.1 - - [07/Sep/2023 12:45:43] "POST /result HTTP/1.1" 200 -
+2023-09-07 12:46:39 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-07 12:46:54 [INFO] Question: Provide list of companies with employees > 100
+2023-09-07 12:46:54 [INFO] Running PandasAI with openai LLM...
+2023-09-07 12:46:54 [INFO] Prompt ID: 5c06e185-410c-4baa-a6e6-7ab5da779fbd
+2023-09-07 12:46:54 [INFO] Using cached response
+2023-09-07 12:46:54 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies with employees > 100
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    
+    # Return the filtered companies dataframe
+    return {"type": "dataframe", "value": filtered_companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 12:46:54 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    return {'type': 'dataframe', 'value': filtered_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 12:46:55 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier                Name  ... Total Employee Range                                Company Description
+0          FTTT000307     Diligence Vault  ...               51-200  DiligenceVault is the first two-sided and glob...
+1          FTTT000019             Credora  ...                11-50  Credora is building confidence in credit marke...
+2          FTTT000065                IMTC  ...                11-50  IMTC is the only cloud-native dedicated fixed ...
+3          FTTT000068         AgenaTrader  ...                11-50  AgenaTrader, a multi asset, multi broker, mult...
+4          FTTT000071           FundSense  ...                 2-10  The FundSense platform enables asset managers ...
+..                ...                 ...  ...                  ...                                                ...
+751        FTTT000597            NorthRow  ...                11-50  ABAKA is an award-winning Enterprise SaaS plat...
+752        FTTT000875  Very Good Security  ...               51-200  At TIFIN Wealth, we develop technologies that ...
+753        FTTT000573            Moonfare  ...                11-50  Our aim is to get everyone invested all the ti...
+754        FTTT000490  Know Your Customer  ...            1001-5000  Clearwater Analytics (NYSE: CWAN) is the leadi...
+755        FTTT000685               Prove  ...                11-50  Xignite is leading the disruption of the marke...
+
+[716 rows x 12 columns]}
+2023-09-07 12:46:55 [INFO] Executed in: 0.006198883056640625s
+2023-09-07 12:46:55 [INFO] 127.0.0.1 - - [07/Sep/2023 12:46:55] "POST /result HTTP/1.1" 200 -
+2023-09-07 12:49:03 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-07 12:49:20 [INFO] Question: Provide companies in US with employees >100
+2023-09-07 12:49:20 [INFO] Running PandasAI with openai LLM...
+2023-09-07 12:49:20 [INFO] Prompt ID: af43d6bc-de8f-4dc7-a48f-6f1a17a50674
+2023-09-07 12:49:34 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies in US with employees >100
+    filtered_df = dfs[0][(dfs[0]['Country'] == 'United States') & (dfs[0]['Total Employee Range'] == '10001+')]
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": filtered_df}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 12:49:34 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Country'] == 'United States') & (dfs[0]['Total Employee Range'] == '10001+')]
+    return {'type': 'dataframe', 'value': filtered_df}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 12:49:34 [INFO] Answer: {'type': 'dataframe', 'value':    Unique Identifier       Name            Industry  ...     City Total Employee Range                                Company Description
+77        FTTT000920  Zero Hash  Financial Services  ...  Chicago               10001+  Refinitiv, an LSEG (London Stock Exchange Grou...
+
+[1 rows x 12 columns]}
+2023-09-07 12:49:34 [INFO] Executed in: 14.062397241592407s
+2023-09-07 12:49:34 [INFO] 127.0.0.1 - - [07/Sep/2023 12:49:34] "POST /result HTTP/1.1" 200 -
+2023-09-07 12:52:42 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-07 12:52:56 [INFO] 127.0.0.1 - - [07/Sep/2023 12:52:56] "POST /result HTTP/1.1" 200 -
+2023-09-07 12:53:30 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-07 12:53:37 [INFO] 127.0.0.1 - - [07/Sep/2023 12:53:37] "POST /result HTTP/1.1" 200 -
+2023-09-07 12:54:47 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-07 12:55:19 [INFO] 127.0.0.1 - - [07/Sep/2023 12:55:19] "POST /result HTTP/1.1" 200 -
+2023-09-07 12:56:25 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-07 12:57:19 [INFO] Question: Provide list of companies with employees > 100
+2023-09-07 12:57:19 [INFO] Running PandasAI with openai LLM...
+2023-09-07 12:57:19 [INFO] Prompt ID: 4348314a-650c-4b78-9aab-5bf040b81751
+2023-09-07 12:57:19 [INFO] Using cached response
+2023-09-07 12:57:19 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies with employees > 100
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    
+    # Return the filtered companies dataframe
+    return {"type": "dataframe", "value": filtered_companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 12:57:19 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    return {'type': 'dataframe', 'value': filtered_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 12:57:19 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier                Name  ... Total Employee Range                                Company Description
+0          FTTT000307     Diligence Vault  ...               51-200  DiligenceVault is the first two-sided and glob...
+1          FTTT000019             Credora  ...                11-50  Credora is building confidence in credit marke...
+2          FTTT000065                IMTC  ...                11-50  IMTC is the only cloud-native dedicated fixed ...
+3          FTTT000068         AgenaTrader  ...                11-50  AgenaTrader, a multi asset, multi broker, mult...
+4          FTTT000071           FundSense  ...                 2-10  The FundSense platform enables asset managers ...
+..                ...                 ...  ...                  ...                                                ...
+751        FTTT000597            NorthRow  ...                11-50  ABAKA is an award-winning Enterprise SaaS plat...
+752        FTTT000875  Very Good Security  ...               51-200  At TIFIN Wealth, we develop technologies that ...
+753        FTTT000573            Moonfare  ...                11-50  Our aim is to get everyone invested all the ti...
+754        FTTT000490  Know Your Customer  ...            1001-5000  Clearwater Analytics (NYSE: CWAN) is the leadi...
+755        FTTT000685               Prove  ...                11-50  Xignite is leading the disruption of the marke...
+
+[716 rows x 12 columns]}
+2023-09-07 12:57:19 [INFO] Executed in: 0.016463041305541992s
+2023-09-07 12:57:19 [INFO] 127.0.0.1 - - [07/Sep/2023 12:57:19] "POST /result HTTP/1.1" 200 -
+2023-09-07 12:58:25 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-07 12:58:49 [INFO] Question: Provide list of companies with employees > 100
+2023-09-07 12:58:49 [INFO] Running PandasAI with openai LLM...
+2023-09-07 12:58:49 [INFO] Prompt ID: a88bb4e0-f7bb-45b0-802d-3ea1417c3c6a
+2023-09-07 12:58:49 [INFO] Using cached response
+2023-09-07 12:58:49 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies with employees > 100
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    
+    # Return the filtered companies dataframe
+    return {"type": "dataframe", "value": filtered_companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 12:58:49 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    return {'type': 'dataframe', 'value': filtered_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 12:58:49 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier                Name  ... Total Employee Range                                Company Description
+0          FTTT000307     Diligence Vault  ...               51-200  DiligenceVault is the first two-sided and glob...
+1          FTTT000019             Credora  ...                11-50  Credora is building confidence in credit marke...
+2          FTTT000065                IMTC  ...                11-50  IMTC is the only cloud-native dedicated fixed ...
+3          FTTT000068         AgenaTrader  ...                11-50  AgenaTrader, a multi asset, multi broker, mult...
+4          FTTT000071           FundSense  ...                 2-10  The FundSense platform enables asset managers ...
+..                ...                 ...  ...                  ...                                                ...
+751        FTTT000597            NorthRow  ...                11-50  ABAKA is an award-winning Enterprise SaaS plat...
+752        FTTT000875  Very Good Security  ...               51-200  At TIFIN Wealth, we develop technologies that ...
+753        FTTT000573            Moonfare  ...                11-50  Our aim is to get everyone invested all the ti...
+754        FTTT000490  Know Your Customer  ...            1001-5000  Clearwater Analytics (NYSE: CWAN) is the leadi...
+755        FTTT000685               Prove  ...                11-50  Xignite is leading the disruption of the marke...
+
+[716 rows x 12 columns]}
+2023-09-07 12:58:49 [INFO] Executed in: 0.0070667266845703125s
+2023-09-07 12:58:49 [INFO] 127.0.0.1 - - [07/Sep/2023 12:58:49] "POST /result HTTP/1.1" 200 -
+2023-09-07 13:05:16 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-07 13:14:21 [INFO] Question: provide list of companies from Chicago with employees > 100
+2023-09-07 13:14:21 [INFO] Running PandasAI with openai LLM...
+2023-09-07 13:14:21 [INFO] Prompt ID: 6f349061-3bc5-40c3-8556-59d8cc0a4262
+2023-09-07 13:14:36 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to get companies from Chicago with employees > 100
+    chicago_companies = dfs[0][(dfs[0]['City'] == 'Chicago') & (dfs[0]['Total Employee Range'] > '100')]
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": chicago_companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 13:14:36 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    chicago_companies = dfs[0][(dfs[0]['City'] == 'Chicago') & (dfs[0]['Total Employee Range'] > '100')]
+    return {'type': 'dataframe', 'value': chicago_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 13:14:36 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier            Name  ... Total Employee Range                                Company Description
+76         FTTT000179  BloXroute Labs  ...               51-200  With over 120 clients worldwide, Flyer Financi...
+77         FTTT000920       Zero Hash  ...               10001+  Refinitiv, an LSEG (London Stock Exchange Grou...
+83         FTTT000433  Halo Investing  ...                 2-10  ALT 5 Sigma, Inc. is a leading institutional s...
+458        FTTT000125          Arturo  ...               51-200  Our mission at Pay.com is to create an all-inc...
+477        FTTT000614     Omna Search  ...              201-500  BioCatch is the leader in Behavioral Biometric...
+508        FTTT000486   Kin Insurance  ...               51-200  Credit where it's due. Built for financial ins...
+659        FTTT000138           Avant  ...               51-200  Founded in 1987, Croesus is a leading WealthTe...
+714        FTTT000126          Ascent  ...               51-200  Do you have 360-degree visibility of your clie...
+742        FTTT000105          Amount  ...                 2-10  InterGen Data is an AI/ML-based Life Event Pre...
+
+[9 rows x 12 columns]}
+2023-09-07 13:14:36 [INFO] Executed in: 15.608274936676025s
+2023-09-07 13:14:36 [INFO] 127.0.0.1 - - [07/Sep/2023 13:14:36] "POST /result HTTP/1.1" 200 -
+2023-09-07 13:24:06 [INFO] Question: Provide companies in US with employees >100
+2023-09-07 13:24:06 [INFO] Running PandasAI with openai LLM...
+2023-09-07 13:24:06 [INFO] Prompt ID: bf0a9fff-dac3-4cda-b0a1-ec3fe5dbb919
+2023-09-07 13:24:21 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies in US with employees >100
+    filtered_df = dfs[0][(dfs[0]['Country'] == 'United States') & (dfs[0]['Total Employee Range'] == '10001+')]
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": filtered_df}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 13:24:21 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Country'] == 'United States') & (dfs[0]['Total Employee Range'] == '10001+')]
+    return {'type': 'dataframe', 'value': filtered_df}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 13:24:21 [INFO] Answer: {'type': 'dataframe', 'value':    Unique Identifier       Name            Industry  ...     City Total Employee Range                                Company Description
+77        FTTT000920  Zero Hash  Financial Services  ...  Chicago               10001+  Refinitiv, an LSEG (London Stock Exchange Grou...
+
+[1 rows x 12 columns]}
+2023-09-07 13:24:21 [INFO] Executed in: 14.94637417793274s
+2023-09-07 13:24:21 [INFO] 127.0.0.1 - - [07/Sep/2023 13:24:21] "POST /result HTTP/1.1" 200 -
+2023-09-07 13:24:48 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading

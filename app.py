@@ -7,7 +7,8 @@ from pandasai.llm import OpenAI
 
 app = Flask(__name__)
 
-# Create a function to perform the Google Sheets and OpenAI operations
+# Define your functions here (perform_operations, etc.)
+
 def perform_operations(user_input):
     try:
         # Authenticate with Google Sheets using the JSON key file
@@ -53,12 +54,18 @@ def perform_operations(user_input):
         # Handle errors here and return an error message
         return f"An error occurred: {str(e)}"
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
+    return render_template('index.html')
+
+@app.route('/result', methods=['POST'])
+def result():
     if request.method == 'POST':
         user_input = request.form['user_input']
-        result = perform_operations(user_input)
-        return render_template('index.html', result=result)
+        # Call your perform_operations function here with user_input
+        # Store the result in a variable named 'answer'
+        answer = perform_operations(user_input)  # Replace with the actual function call
+        return render_template('result.html', answer=answer)  # Pass 'answer' to the template
     return render_template('index.html', result=None)
 
 if __name__ == '__main__':
