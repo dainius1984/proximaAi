@@ -1,0 +1,2604 @@
+2023-09-04 20:58:52 [INFO] Question: Which are the 5 happiest countries?
+2023-09-04 20:58:52 [INFO] Running PandasAI with openai LLM...
+2023-09-04 20:58:52 [INFO] Prompt ID: 5c88ab25-15ab-4dde-b759-3fac7c1ccaa8
+2023-09-04 20:58:53 [INFO] error_code=invalid_api_key error_message='Incorrect API key provided: YOUR_API**OKEN. You can find your API key at https://platform.openai.com/account/api-keys.' error_param=None error_type=invalid_request_error message='OpenAI API error received' stream_error=False
+2023-09-04 21:00:38 [INFO] Question: Which are the 5 happiest countries?
+2023-09-04 21:00:38 [INFO] Running PandasAI with openai LLM...
+2023-09-04 21:00:38 [INFO] Prompt ID: b208a53c-d235-4ea1-a583-4021f799cc09
+2023-09-04 21:00:53 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Code goes here (do not add comments)
+    # 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    # Filter the dataframe to include only the columns 'country' and 'happiness_index'
+    df = dfs[0][['country', 'happiness_index']]
+    
+    # Sort the dataframe by 'happiness_index' in descending order
+    df_sorted = df.sort_values(by='happiness_index', ascending=False)
+    
+    # Select the top 5 happiest countries
+    top_5_happiest_countries = df_sorted.head(5)
+    
+    # 4. Output: return a dictionary of:
+    # - type (possible values "text", "number", "dataframe", "plot")
+    # - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    return {"type": "dataframe", "value": top_5_happiest_countries}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-04 21:00:53 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0][['country', 'happiness_index']]
+    df_sorted = df.sort_values(by='happiness_index', ascending=False)
+    top_5_happiest_countries = df_sorted.head(5)
+    return {'type': 'dataframe', 'value': top_5_happiest_countries}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-04 21:00:53 [INFO] Answer: {'type': 'dataframe', 'value':           country  happiness_index
+6          Canada             7.23
+7       Australia             7.22
+1  United Kingdom             7.16
+3         Germany             7.07
+0   United States             6.94}
+2023-09-04 21:00:53 [INFO] Executed in: 15.442463874816895s
+2023-09-04 21:04:07 [INFO] Question: Which are the 5 happiest countries?
+2023-09-04 21:04:07 [INFO] Running PandasAI with openai LLM...
+2023-09-04 21:04:07 [INFO] Prompt ID: 74dfb885-47ca-4b50-9eef-c0fcbacdae7a
+2023-09-04 21:04:23 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Code goes here (do not add comments)
+    # 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    # Filter the dataframe to keep only the columns 'country' and 'happiness_index'
+    df = dfs[0][['country', 'happiness_index']]
+    
+    # Sort the dataframe by 'happiness_index' in descending order
+    df_sorted = df.sort_values(by='happiness_index', ascending=False)
+    
+    # Keep only the top 5 rows
+    df_top_5 = df_sorted.head(5)
+    
+    # 4. Output: return a dictionary of:
+    # - type (possible values "text", "number", "dataframe", "plot")
+    # - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    return {"type": "dataframe", "value": df_top_5}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-04 21:04:23 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0][['country', 'happiness_index']]
+    df_sorted = df.sort_values(by='happiness_index', ascending=False)
+    df_top_5 = df_sorted.head(5)
+    return {'type': 'dataframe', 'value': df_top_5}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-04 21:04:23 [INFO] Answer: {'type': 'dataframe', 'value':           country  happiness_index
+6          Canada             7.23
+7       Australia             7.22
+1  United Kingdom             7.16
+3         Germany             7.07
+0   United States             6.94}
+2023-09-04 21:04:23 [INFO] Executed in: 15.276877641677856s
+2023-09-04 21:05:36 [INFO] Question: Which are the 5 happiest countries?
+2023-09-04 21:05:36 [INFO] Running PandasAI with openai LLM...
+2023-09-04 21:05:36 [INFO] Prompt ID: 8681bfe5-9299-4e43-bb3f-a97936e4d233
+2023-09-04 21:05:53 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Code goes here (do not add comments)
+    # 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    # Sort the dataframe by happiness_index in descending order
+    sorted_df = dfs[0].sort_values(by='happiness_index', ascending=False)
+    
+    # Select the top 5 happiest countries
+    top_5_happiest_countries = sorted_df.head(5)
+    
+    # 4. Output: return a dictionary of:
+    # - type (possible values "text", "number", "dataframe", "plot")
+    # - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    return {"type": "dataframe", "value": top_5_happiest_countries}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-04 21:05:53 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    sorted_df = dfs[0].sort_values(by='happiness_index', ascending=False)
+    top_5_happiest_countries = sorted_df.head(5)
+    return {'type': 'dataframe', 'value': top_5_happiest_countries}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-04 21:05:53 [INFO] Answer: {'type': 'dataframe', 'value':           country             gdp  happiness_index
+6          Canada   1607402389504             7.23
+7       Australia   1490967855104             7.22
+1  United Kingdom   2891615567872             7.16
+3         Germany   3435817336832             7.07
+0   United States  19294482071552             6.94}
+2023-09-04 21:05:53 [INFO] Executed in: 16.888427019119263s
+2023-09-04 21:06:15 [INFO] Question: Which are the 5 happiest countries?
+2023-09-04 21:06:15 [INFO] Running PandasAI with openai LLM...
+2023-09-04 21:06:15 [INFO] Prompt ID: 9d514129-943f-4166-aa4e-4eae7ac653c1
+2023-09-04 21:06:31 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Code goes here (do not add comments)
+    # 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    # Filter the dataframe to include only the columns 'country' and 'happiness_index'
+    df = dfs[0][['country', 'happiness_index']]
+    
+    # Sort the dataframe by 'happiness_index' in descending order
+    df_sorted = df.sort_values(by='happiness_index', ascending=False)
+    
+    # Select the top 5 happiest countries
+    top_5_happiest_countries = df_sorted.head(5)
+    
+    # 4. Output: return a dictionary of:
+    # - type (possible values "text", "number", "dataframe", "plot")
+    # - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    return {"type": "dataframe", "value": top_5_happiest_countries}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-04 21:06:31 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0][['country', 'happiness_index']]
+    df_sorted = df.sort_values(by='happiness_index', ascending=False)
+    top_5_happiest_countries = df_sorted.head(5)
+    return {'type': 'dataframe', 'value': top_5_happiest_countries}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-04 21:06:31 [INFO] Answer: {'type': 'dataframe', 'value':           country  happiness_index
+6          Canada             7.23
+7       Australia             7.22
+1  United Kingdom             7.16
+3         Germany             7.07
+0   United States             6.94}
+2023-09-04 21:06:31 [INFO] Executed in: 15.415467023849487s
+2023-09-04 21:09:15 [INFO] Question: Which are the 5 happiest countries?
+2023-09-04 21:09:15 [INFO] Running PandasAI with openai LLM...
+2023-09-04 21:09:15 [INFO] Prompt ID: b958b2c0-d734-496f-8b9e-68c381c7aa45
+2023-09-04 21:09:15 [INFO] error_code=invalid_api_key error_message='Incorrect API key provided: sk-sk-Ou******************************************ZHjX. You can find your API key at https://platform.openai.com/account/api-keys.' error_param=None error_type=invalid_request_error message='OpenAI API error received' stream_error=False
+2023-09-04 21:09:19 [INFO] Question: Which are the 5 happiest countries?
+2023-09-04 21:09:19 [INFO] Running PandasAI with openai LLM...
+2023-09-04 21:09:19 [INFO] Prompt ID: ebccadd9-14d1-453f-98e1-62f89203082a
+2023-09-04 21:09:19 [INFO] error_code=invalid_api_key error_message='Incorrect API key provided: sk-sk-Ou******************************************ZHjX. You can find your API key at https://platform.openai.com/account/api-keys.' error_param=None error_type=invalid_request_error message='OpenAI API error received' stream_error=False
+2023-09-04 21:11:08 [INFO] Question: Which are the 5 happiest countries?
+2023-09-04 21:11:08 [INFO] Running PandasAI with openai LLM...
+2023-09-04 21:11:08 [INFO] Prompt ID: 3db75746-4125-4174-8c40-dbe9f19e1bca
+2023-09-04 21:11:22 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Code goes here (do not add comments)
+    # 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    # Filter the dataframe to include only the columns 'country' and 'happiness_index'
+    df = dfs[0][['country', 'happiness_index']]
+    
+    # Sort the dataframe by 'happiness_index' in descending order
+    df_sorted = df.sort_values(by='happiness_index', ascending=False)
+    
+    # Select the top 5 happiest countries
+    top_5_happiest_countries = df_sorted.head(5)
+    
+    # 4. Output: return a dictionary of:
+    # - type (possible values "text", "number", "dataframe", "plot")
+    # - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    return {"type": "dataframe", "value": top_5_happiest_countries}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-04 21:11:22 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0][['country', 'happiness_index']]
+    df_sorted = df.sort_values(by='happiness_index', ascending=False)
+    top_5_happiest_countries = df_sorted.head(5)
+    return {'type': 'dataframe', 'value': top_5_happiest_countries}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-04 21:11:22 [INFO] Answer: {'type': 'dataframe', 'value':           country  happiness_index
+6          Canada             7.23
+7       Australia             7.22
+1  United Kingdom             7.16
+3         Germany             7.07
+0   United States             6.94}
+2023-09-04 21:11:22 [INFO] Executed in: 14.298219919204712s
+2023-09-06 08:48:58 [INFO] Question: What are top companies?
+2023-09-06 08:55:28 [INFO] Question: Which are the countries with GDP greater than 3000000000000?
+2023-09-06 08:56:53 [INFO] Question: Which are the countries with GDP greater than 3000000000000?
+2023-09-06 08:57:14 [INFO] Question: Which are the countries with GDP greater than 3000000000000?
+2023-09-06 09:00:23 [INFO] Question: Which are the countries with GDP greater than 3000000000000?
+2023-09-06 09:00:23 [INFO] Running PandasAI with openai LLM...
+2023-09-06 09:00:23 [INFO] Prompt ID: 9ec3a792-dce1-4e24-9915-d07cd355aa61
+2023-09-06 09:00:38 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to get countries with GDP greater than 3000000000000
+    filtered_df = dfs[0][dfs[0]['gdp'] > 3000000000000]
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": filtered_df}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 09:00:38 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][dfs[0]['gdp'] > 3000000000000]
+    return {'type': 'dataframe', 'value': filtered_df}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 09:00:38 [INFO] Answer: {'type': 'dataframe', 'value':          country             gdp
+0  United States  19294482071552
+3        Germany   3435817336832
+8          Japan   4380756541440
+9          China  14631844184064}
+2023-09-06 09:00:38 [INFO] Executed in: 15.18262791633606s
+2023-09-06 09:00:38 [ERROR] Could not load configuration
+Traceback (most recent call last):
+  File "/Users/marcinchmielnicki/panda/venv/lib/python3.11/site-packages/pandasai/config.py", line 19, in load_config
+    with open(find_closest("pandasai.json"), "r") as f:
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/marcinchmielnicki/panda/venv/lib/python3.11/site-packages/pandasai/helpers/path.py", line 37, in find_closest
+    return os.path.join(find_project_root(filename), filename)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/marcinchmielnicki/panda/venv/lib/python3.11/site-packages/pandasai/helpers/path.py", line 29, in find_project_root
+    raise ValueError("Could not find the root folder of the project.")
+ValueError: Could not find the root folder of the project.
+2023-09-06 09:02:28 [INFO] Question: Which are the countries with GDP greater than 3000000000000?
+2023-09-06 09:02:28 [INFO] Running PandasAI with openai LLM...
+2023-09-06 09:02:28 [INFO] Prompt ID: e370139f-e22f-417c-a998-40dd0ca4bfd8
+2023-09-06 09:02:45 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter countries with GDP greater than 3000000000000
+    filtered_df = dfs[0][dfs[0]['gdp'] > 3000000000000]
+    
+    # Get the list of countries
+    countries = filtered_df['country'].tolist()
+    
+    # Return the result as text
+    return {"type": "text", "value": f"The countries with GDP greater than 3000000000000 are: {', '.join(countries)}."}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 09:02:45 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][dfs[0]['gdp'] > 3000000000000]
+    countries = filtered_df['country'].tolist()
+    return {'type': 'text', 'value': f"The countries with GDP greater than 3000000000000 are: {', '.join(countries)}."}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 09:02:45 [INFO] Answer: {'type': 'text', 'value': 'The countries with GDP greater than 3000000000000 are: United States, Germany, Japan, China.'}
+2023-09-06 09:02:45 [INFO] Executed in: 17.23177433013916s
+2023-09-06 09:07:03 [INFO] Question: Which are the countries with GDP greater than 3000000000000?
+2023-09-06 09:07:03 [INFO] Running PandasAI with openai LLM...
+2023-09-06 09:07:03 [INFO] Prompt ID: e9c7e76c-a356-4e41-8538-b4d0b36e6e07
+2023-09-06 09:07:21 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to get countries with GDP greater than 3000000000000
+    filtered_df = dfs[0][dfs[0]['Unnamed: 1'] > 3000000000000]
+    
+    # Get the list of countries
+    countries = filtered_df['Unnamed: 0'].tolist()
+    
+    # Return the result as text
+    result = {
+        "type": "text",
+        "value": f"The countries with GDP greater than 3000000000000 are: {', '.join(countries)}"
+    }
+    
+    return result
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 09:07:21 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][dfs[0]['Unnamed: 1'] > 3000000000000]
+    countries = filtered_df['Unnamed: 0'].tolist()
+    result = {'type': 'text', 'value': f"The countries with GDP greater than 3000000000000 are: {', '.join(countries)}"}
+    return result
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 09:07:21 [WARNING] Error of executing code
+2023-09-06 09:07:21 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2023-09-06 09:07:21 [INFO] Failed with error: '>' not supported between instances of 'str' and 'int'. Retrying
+2023-09-06 09:07:39 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][dfs[0]['Unnamed: 1'].astype(float) > 3000000000000]
+    countries = filtered_df['Unnamed: 0'].tolist()
+    result = {'type': 'text', 'value': f"The countries with GDP greater than 3000000000000 are: {', '.join(countries)}"}
+    return result
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 09:07:39 [WARNING] Error of executing code
+2023-09-06 09:07:39 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2023-09-06 09:07:39 [INFO] Failed with error: could not convert string to float: 'Industry'. Retrying
+2023-09-06 09:07:56 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][dfs[0]['Unnamed: 1'].astype(float) > 3000000000000]
+    countries = filtered_df['Unnamed: 0'].tolist()
+    result = {'type': 'text', 'value': f"The countries with GDP greater than 3000000000000 are: {', '.join(countries)}"}
+    return result
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 09:07:56 [WARNING] Error of executing code
+2023-09-06 09:08:47 [INFO] Question: List all market segments names
+2023-09-06 09:08:47 [INFO] Running PandasAI with openai LLM...
+2023-09-06 09:08:47 [INFO] Prompt ID: 5f9415cb-c6c2-438c-ba61-0fadf6768a29
+2023-09-06 09:09:05 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Get the market segment column from the first dataframe
+    market_segment_column = dfs[0]['What product / business segment do you sell to']
+    
+    # Remove any missing values
+    market_segment_column = market_segment_column.dropna()
+    
+    # Convert the column to a list and remove duplicates
+    market_segments = list(set(market_segment_column.tolist()))
+    
+    # Return the market segments as a dataframe
+    return {"type": "dataframe", "value": pd.DataFrame(market_segments, columns=["Market Segments"])}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 09:09:05 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    market_segment_column = dfs[0]['What product / business segment do you sell to']
+    market_segment_column = market_segment_column.dropna()
+    market_segments = list(set(market_segment_column.tolist()))
+    return {'type': 'dataframe', 'value': pd.DataFrame(market_segments, columns=['Market Segments'])}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 09:09:05 [INFO] Answer: {'type': 'dataframe', 'value':                                    Market Segments
+0                   private and commercial banking
+1    project financing for sustainable development
+2                                     Credit Cards
+3                     mortgage loans restructuring
+4            wealth management, investment banking
+..                                             ...
+516                               syndicated loans
+517                      retail banking in Asturia
+518    Retail, corporate and institutional banking
+519                      Sharia investment banking
+520     Investment banking and corporate financing
+
+[521 rows x 1 columns]}
+2023-09-06 09:09:05 [INFO] Executed in: 17.92705988883972s
+2023-09-06 09:10:44 [INFO] Question: List all Market Segments
+2023-09-06 09:10:44 [INFO] Running PandasAI with openai LLM...
+2023-09-06 09:10:44 [INFO] Prompt ID: 3fdc6378-32a7-485f-b70b-9c939b898df9
+2023-09-06 09:10:59 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Get the Market Sub-Segment column from the first dataframe
+    market_segments = dfs[0]['Unnamed: 4'].unique().tolist()
+    
+    # Prepare the output
+    output = {
+        "type": "text",
+        "value": "Market Segments:\n" + "\n".join(market_segments)
+    }
+    
+    return output
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 09:10:59 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    market_segments = dfs[0]['Unnamed: 4'].unique().tolist()
+    output = {'type': 'text', 'value': 'Market Segments:\n' + '\n'.join(market_segments)}
+    return output
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 09:10:59 [WARNING] Error of executing code
+2023-09-06 09:10:59 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2023-09-06 09:10:59 [INFO] Failed with error: sequence item 5: expected str instance, float found. Retrying
+2023-09-06 09:11:15 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    market_segments = dfs[0]['Unnamed: 4'].dropna().unique().tolist()
+    output = {'type': 'text', 'value': 'Market Segments:\n' + '\n'.join(market_segments)}
+    return output
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 09:11:15 [INFO] Answer: {'type': 'text', 'value': 'Market Segments:\nMarket Sub-Segment\nBack Office\nMiddle Office\nFront Office\nRisk & Compliance'}
+2023-09-06 09:11:15 [INFO] Executed in: 31.10266399383545s
+2023-09-06 09:13:18 [INFO] Question: List all Market Segments
+2023-09-06 09:13:18 [INFO] Running PandasAI with openai LLM...
+2023-09-06 09:13:18 [INFO] Prompt ID: c0cdb822-7a70-4bcb-bcd1-cad16400b7f5
+2023-09-06 09:13:31 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Code goes here (do not add comments)
+    market_segments = dfs[0]['Market Segments'].unique()
+    return {"type": "dataframe", "value": market_segments}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 09:13:31 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    market_segments = dfs[0]['Market Segments'].unique()
+    return {'type': 'dataframe', 'value': market_segments}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 09:13:31 [INFO] Answer: {'type': 'dataframe', 'value': array(['Retail Banks', 'Lenders', 'Fintechs & SMEs',
+       'Corporate & Investment Banks', 'Capital Markets',
+       'Wealth Mgmt & Private Banks', 'Enterprise & Corporates',
+       'Insurance', 'Central Banks', 'Payments', nan], dtype=object)}
+2023-09-06 09:13:31 [INFO] Executed in: 13.08656907081604s
+2023-09-06 09:13:36 [INFO] Question: Please provide list of Market Segments
+2023-09-06 09:13:36 [INFO] Running PandasAI with openai LLM...
+2023-09-06 09:13:36 [INFO] Prompt ID: 88f8b5e0-3cc8-40b1-911b-1ebf3d904a8a
+2023-09-06 09:13:50 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Get the Market Segments from the first dataframe
+    market_segments = dfs[0]['Market Segments'].unique().tolist()
+    
+    # Return the list of Market Segments
+    return {"type": "text", "value": market_segments}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 09:13:50 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    market_segments = dfs[0]['Market Segments'].unique().tolist()
+    return {'type': 'text', 'value': market_segments}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 09:13:50 [INFO] Answer: {'type': 'text', 'value': ['Retail Banks', 'Lenders', 'Fintechs & SMEs', 'Corporate & Investment Banks', 'Capital Markets', 'Wealth Mgmt & Private Banks', 'Enterprise & Corporates', 'Insurance', 'Central Banks', 'Payments', nan]}
+2023-09-06 09:13:50 [INFO] Executed in: 13.898781061172485s
+2023-09-06 09:40:47 [INFO] Question: 
+2023-09-06 09:40:47 [INFO] Running PandasAI with openai LLM...
+2023-09-06 09:40:47 [INFO] Prompt ID: c1212444-25cd-494f-97ba-cbd75914d945
+2023-09-06 09:41:13 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Code goes here (do not add comments)
+    # Prepare: Preprocessing and cleaning data if necessary
+    df = dfs[0].copy()
+    df['Total Employee Range'] = df['Total Employee Range'].str.replace('-', 'to')
+    
+    # Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    grouped_df = df.groupby('Country')['Name'].count().reset_index()
+    filtered_df = grouped_df[grouped_df['Name'] > 10]
+    
+    # Analyze: Conducting the actual analysis
+    result = {
+        "type": "dataframe",
+        "value": filtered_df
+    }
+    
+    return result
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 09:41:13 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0].copy()
+    df['Total Employee Range'] = df['Total Employee Range'].str.replace('-', 'to')
+    grouped_df = df.groupby('Country')['Name'].count().reset_index()
+    filtered_df = grouped_df[grouped_df['Name'] > 10]
+    result = {'type': 'dataframe', 'value': filtered_df}
+    return result
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 09:41:13 [INFO] Answer: {'type': 'dataframe', 'value':            Country  Name
+1        Australia    11
+6           Brazil    13
+8           Canada    26
+14          France    23
+15         Germany    35
+19           India    24
+23         Ireland    15
+24          Israel    13
+31     Netherlands    17
+40       Singapore    28
+46     Switzerland    36
+48              UK    58
+49              US   207
+54  United Kingdom   118
+55   United States   215}
+2023-09-06 09:41:13 [INFO] Executed in: 26.180317878723145s
+2023-09-06 09:42:46 [INFO] Question: 
+2023-09-06 09:42:46 [INFO] Running PandasAI with openai LLM...
+2023-09-06 09:42:46 [INFO] Prompt ID: 08d01084-2144-44c9-b13c-2874ff5aeaa8
+2023-09-06 09:43:05 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Prepare: Preprocessing and cleaning data if necessary
+    df = dfs[0].copy()
+    
+    # Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    total_employees = df['Total Employee Range'].str.split('-', expand=True)[1].astype(int)
+    avg_employees = total_employees.mean()
+    
+    # Analyze: Conducting the actual analysis
+    output = {
+        "type": "text",
+        "value": f"The average number of employees is {avg_employees:.2f}."
+    }
+    
+    return output
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 09:43:05 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0].copy()
+    total_employees = df['Total Employee Range'].str.split('-', expand=True)[1].astype(int)
+    avg_employees = total_employees.mean()
+    output = {'type': 'text', 'value': f'The average number of employees is {avg_employees:.2f}.'}
+    return output
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 09:43:05 [WARNING] Error of executing code
+2023-09-06 09:43:05 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2023-09-06 09:43:05 [INFO] Failed with error: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'. Retrying
+2023-09-06 09:43:26 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0].copy()
+    total_employees = df['Total Employee Range'].str.split('-', expand=True)[1]
+    total_employees = total_employees.replace('', '0').astype(int)
+    avg_employees = total_employees.mean()
+    output = {'type': 'text', 'value': f'The average number of employees is {avg_employees:.2f}.'}
+    return output
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 09:43:26 [WARNING] Error of executing code
+2023-09-06 09:43:26 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2023-09-06 09:43:26 [INFO] Failed with error: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'. Retrying
+2023-09-06 09:43:44 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0].copy()
+    total_employees = df['Total Employee Range'].str.split('-', expand=True)[1]
+    total_employees = total_employees.replace('', '0').astype(int)
+    avg_employees = total_employees.mean()
+    output = {'type': 'text', 'value': f'The average number of employees is {avg_employees:.2f}.'}
+    return output
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 09:43:44 [WARNING] Error of executing code
+2023-09-06 09:45:10 [INFO] Question: 
+2023-09-06 09:45:10 [INFO] Running PandasAI with openai LLM...
+2023-09-06 09:45:10 [INFO] Prompt ID: 3c6ba821-39ce-4c6a-8c75-f22aaf054c9b
+2023-09-06 09:45:39 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Code goes here (do not add comments)
+    # Prepare: Preprocessing and cleaning data if necessary
+    df = dfs[0].copy()
+    df['Country'] = df['Country'].str.strip()
+    df['State'] = df['State'].str.strip()
+    df['City'] = df['City'].str.strip()
+
+    # Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    country_counts = df['Country'].value_counts().reset_index()
+    country_counts.columns = ['Country', 'Count']
+
+    # Analyze: Conducting the actual analysis
+    top_countries = country_counts.head(5)
+
+    # Output: return a dictionary
+    result = {
+        "type": "dataframe",
+        "value": top_countries
+    }
+    return result
+
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 09:45:39 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0].copy()
+    df['Country'] = df['Country'].str.strip()
+    df['State'] = df['State'].str.strip()
+    df['City'] = df['City'].str.strip()
+    country_counts = df['Country'].value_counts().reset_index()
+    country_counts.columns = ['Country', 'Count']
+    top_countries = country_counts.head(5)
+    result = {'type': 'dataframe', 'value': top_countries}
+    return result
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 09:45:39 [INFO] Answer: {'type': 'dataframe', 'value':           Country  Count
+0   United States    216
+1              US    210
+2  United Kingdom    118
+3              UK     58
+4     Switzerland     37}
+2023-09-06 09:45:39 [INFO] Executed in: 28.536895990371704s
+2023-09-06 09:46:05 [INFO] Question: 
+2023-09-06 09:46:05 [INFO] Running PandasAI with openai LLM...
+2023-09-06 09:46:05 [INFO] Prompt ID: cbeb0b03-2b9a-4390-9cdd-2b0c629fa005
+2023-09-06 09:46:25 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Code goes here (do not add comments)
+    # Prepare: Preprocessing and cleaning data if necessary
+    df = dfs[0]
+    
+    # Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    total_employees = df['Total Employee Range'].sum()
+    known_clients = df['Known Clients'].count()
+    known_partners = df['Know Partners'].count()
+    
+    # Analyze: Conducting the actual analysis
+    result = {
+        "type": "text",
+        "value": f"The total number of employees is {total_employees}. There are {known_clients} known clients and {known_partners} known partners."
+    }
+    
+    return result
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 09:46:25 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0]
+    total_employees = df['Total Employee Range'].sum()
+    known_clients = df['Known Clients'].count()
+    known_partners = df['Know Partners'].count()
+    result = {'type': 'text', 'value': f'The total number of employees is {total_employees}. There are {known_clients} known clients and {known_partners} known partners.'}
+    return result
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 09:46:25 [WARNING] Error of executing code
+2023-09-06 09:46:25 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2023-09-06 09:46:25 [INFO] Failed with error: can only concatenate str (not "int") to str. Retrying
+2023-09-06 09:46:45 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0]
+    total_employees = df['Total Employee Range'].sum()
+    known_clients = df['Known Clients'].count()
+    known_partners = df['Know Partners'].count()
+    result = {'type': 'text', 'value': f'The total number of employees is {total_employees}. There are {known_clients} known clients and {known_partners} known partners.'}
+    return result
+
+
+result = analyze_data(dfs)
+result['value'] = str(result['value'])
+result
+        ```
+2023-09-06 09:46:45 [WARNING] Error of executing code
+2023-09-06 09:46:45 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2023-09-06 09:46:45 [INFO] Failed with error: can only concatenate str (not "int") to str. Retrying
+2023-09-06 09:47:06 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0]
+    total_employees = df['Total Employee Range'].sum()
+    known_clients = df['Known Clients'].count()
+    known_partners = df['Know Partners'].count()
+    result = {'type': 'text', 'value': f'The total number of employees is {total_employees}. There are {known_clients} known clients and {known_partners} known partners.'}
+    return result
+
+
+result = analyze_data(dfs)
+result['value'] = str(result['value'])
+result
+        ```
+2023-09-06 09:47:06 [WARNING] Error of executing code
+2023-09-06 09:49:45 [INFO] Question: 
+2023-09-06 09:49:45 [INFO] Running PandasAI with openai LLM...
+2023-09-06 09:49:45 [INFO] Prompt ID: 6435125e-0eec-4d9a-9801-54f849cf6a04
+2023-09-06 09:50:07 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Code goes here (do not add comments)
+    # Prepare: Preprocessing and cleaning data if necessary
+    df = dfs[0]
+    
+    # Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    total_employees = df['Total Employee Range'].sum()
+    unique_clients = df['Known Clients'].nunique()
+    unique_partners = df['Know Partners'].nunique()
+    
+    # Analyze: Conducting the actual analysis
+    average_employees = total_employees / len(df)
+    
+    # Output: return a dictionary of results
+    result = {
+        "type": "text",
+        "value": f"The average number of employees per company is {average_employees:.2f}. There are {unique_clients} unique clients and {unique_partners} unique partners."
+    }
+    
+    return result
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 09:50:07 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0]
+    total_employees = df['Total Employee Range'].sum()
+    unique_clients = df['Known Clients'].nunique()
+    unique_partners = df['Know Partners'].nunique()
+    average_employees = total_employees / len(df)
+    result = {'type': 'text', 'value': f'The average number of employees per company is {average_employees:.2f}. There are {unique_clients} unique clients and {unique_partners} unique partners.'}
+    return result
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 09:50:07 [WARNING] Error of executing code
+2023-09-06 09:50:07 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2023-09-06 09:50:07 [INFO] Failed with error: can only concatenate str (not "int") to str. Retrying
+2023-09-06 09:50:51 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0]
+    total_employees = df['Total Employee Range'].sum()
+    unique_clients = df['Known Clients'].nunique()
+    unique_partners = df['Know Partners'].nunique()
+    average_employees = total_employees / len(df)
+    result = {'type': 'text', 'value': f'The average number of employees per company is {average_employees:.2f}. There are {unique_clients} unique clients and {unique_partners} unique partners.'}
+    return result
+
+
+result = analyze_data(dfs)
+result['value'] = str(result['value'])
+result_code = """
+# TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Code goes here (do not add comments)
+    # Prepare: Preprocessing and cleaning data if necessary
+    df = dfs[0]
+    
+    # Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    total_employees = df['Total Employee Range'].sum()
+    unique_clients = df['Known Clients'].nunique()
+    unique_partners = df['Know Partners'].nunique()
+    
+    # Analyze: Conducting the actual analysis
+    average_employees = total_employees / len(df)
+    
+    # Output: return a dictionary of results
+    result = {
+        "type": "text",
+        "value": f"The average number of employees per company is {average_employees:.2f}. There are {unique_clients} unique clients and {unique_partners} unique partners."
+    }
+    
+    return result
+
+# Declare a result variable
+result = analyze_data(dfs)
+
+# Convert the integer values to strings
+result['value'] = str(result['value'])
+
+# Return the updated code
+result
+"""
+result_code
+        ```
+2023-09-06 09:50:51 [WARNING] Error of executing code
+2023-09-06 09:50:51 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2023-09-06 09:50:51 [INFO] Failed with error: can only concatenate str (not "int") to str. Retrying
+2023-09-06 09:51:35 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0]
+    total_employees = df['Total Employee Range'].sum()
+    unique_clients = df['Known Clients'].nunique()
+    unique_partners = df['Know Partners'].nunique()
+    average_employees = total_employees / len(df)
+    result = {'type': 'text', 'value': f'The average number of employees per company is {average_employees:.2f}. There are {unique_clients} unique clients and {unique_partners} unique partners.'}
+    return result
+
+
+result = analyze_data(dfs)
+result['value'] = str(result['value'])
+result_code = """
+# TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Code goes here (do not add comments)
+    # Prepare: Preprocessing and cleaning data if necessary
+    df = dfs[0]
+    
+    # Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    total_employees = df['Total Employee Range'].sum()
+    unique_clients = df['Known Clients'].nunique()
+    unique_partners = df['Know Partners'].nunique()
+    
+    # Analyze: Conducting the actual analysis
+    average_employees = total_employees / len(df)
+    
+    # Output: return a dictionary of results
+    result = {
+        "type": "text",
+        "value": f"The average number of employees per company is {average_employees:.2f}. There are {unique_clients} unique clients and {unique_partners} unique partners."
+    }
+    
+    return result
+
+# Declare a result variable
+result = analyze_data(dfs)
+
+# Convert the integer values to strings
+result['value'] = str(result['value'])
+
+# Return the updated code
+result
+"""
+result_code
+        ```
+2023-09-06 09:51:35 [WARNING] Error of executing code
+2023-09-06 09:52:09 [INFO] Question: 
+2023-09-06 09:52:09 [INFO] Running PandasAI with openai LLM...
+2023-09-06 09:52:09 [INFO] Prompt ID: 79448c53-3af0-4a1b-a570-81ca3e235d4d
+2023-09-06 09:52:33 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Code goes here (do not add comments)
+    # Prepare: Preprocessing and cleaning data if necessary
+    df = dfs[0].copy()
+    df['Total Employee Range'] = df['Total Employee Range'].str.replace(',', '').str.replace('+', '').str.split('-')
+    df['Min Employees'] = df['Total Employee Range'].apply(lambda x: int(x[0]))
+    df['Max Employees'] = df['Total Employee Range'].apply(lambda x: int(x[1]) if len(x) > 1 else int(x[0]))
+    
+    # Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    df_filtered = df[(df['Country'] == 'US') & (df['State'] == 'CA')]
+    avg_employees = df_filtered['Max Employees'].mean()
+    
+    # Analyze: Conducting the actual analysis
+    output = {
+        "type": "text",
+        "value": f"The average number of employees in US (CA) companies is {avg_employees:.2f}."
+    }
+    
+    # Output: return a dictionary
+    return output
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 09:52:33 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0].copy()
+    df['Total Employee Range'] = df['Total Employee Range'].str.replace(',', '').str.replace('+', '').str.split('-')
+    df['Min Employees'] = df['Total Employee Range'].apply(lambda x: int(x[0]))
+    df['Max Employees'] = df['Total Employee Range'].apply(lambda x: int(x[1]) if len(x) > 1 else int(x[0]))
+    df_filtered = df[(df['Country'] == 'US') & (df['State'] == 'CA')]
+    avg_employees = df_filtered['Max Employees'].mean()
+    output = {'type': 'text', 'value': f'The average number of employees in US (CA) companies is {avg_employees:.2f}.'}
+    return output
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 09:52:33 [WARNING] Error of executing code
+2023-09-06 09:52:33 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2023-09-06 09:52:33 [INFO] Failed with error: 'float' object is not subscriptable. Retrying
+2023-09-06 09:52:58 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0].copy()
+    df['Total Employee Range'] = df['Total Employee Range'].str.replace(',', '').str.replace('+', '').str.split('-')
+    df['Min Employees'] = df['Total Employee Range'].apply(lambda x: int(x[0]))
+    df['Max Employees'] = df['Total Employee Range'].apply(lambda x: int(x[1]) if len(x) > 1 else int(x[0]))
+    df_filtered = df[(df['Country'] == 'US') & (df['State'] == 'CA')]
+    avg_employees = df_filtered['Max Employees'].mean()
+    output = {'type': 'text', 'value': f'The average number of employees in US (CA) companies is {avg_employees:.2f}.'}
+    return output
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 09:52:58 [WARNING] Error of executing code
+2023-09-06 09:52:58 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2023-09-06 09:52:58 [INFO] Failed with error: 'float' object is not subscriptable. Retrying
+2023-09-06 09:53:22 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0].copy()
+    df['Total Employee Range'] = df['Total Employee Range'].str.replace(',', '').str.replace('+', '').str.split('-')
+    df['Min Employees'] = df['Total Employee Range'].apply(lambda x: int(x[0]))
+    df['Max Employees'] = df['Total Employee Range'].apply(lambda x: int(x[1]) if len(x) > 1 else int(x[0]))
+    df_filtered = df[(df['Country'] == 'US') & (df['State'] == 'CA')]
+    avg_employees = df_filtered['Max Employees'].mean()
+    output = {'type': 'text', 'value': f'The average number of employees in US (CA) companies is {avg_employees:.2f}.'}
+    return output
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 09:53:22 [WARNING] Error of executing code
+2023-09-06 16:29:05 [INFO] Question: Which are the 5 happiest countries?
+2023-09-06 16:29:05 [INFO] Running PandasAI with openai LLM...
+2023-09-06 16:29:05 [INFO] Prompt ID: 115e0e80-793b-40db-900f-f21441fbcc14
+2023-09-06 16:29:05 [INFO] error_code=invalid_api_key error_message='Incorrect API key provided: YOUR_API**OKEN. You can find your API key at https://platform.openai.com/account/api-keys.' error_param=None error_type=invalid_request_error message='OpenAI API error received' stream_error=False
+2023-09-06 16:29:10 [INFO] Question: Which are the 5 happiest countries?
+2023-09-06 16:29:10 [INFO] Running PandasAI with openai LLM...
+2023-09-06 16:29:10 [INFO] Prompt ID: 3d8d041b-88cc-4a3c-ab4f-c10b6e818344
+2023-09-06 16:29:10 [INFO] error_code=invalid_api_key error_message='Incorrect API key provided: YOUR_API**OKEN. You can find your API key at https://platform.openai.com/account/api-keys.' error_param=None error_type=invalid_request_error message='OpenAI API error received' stream_error=False
+2023-09-06 16:29:35 [INFO] Question: Which are the 5 happiest countries?
+2023-09-06 16:29:35 [INFO] Running PandasAI with openai LLM...
+2023-09-06 16:29:35 [INFO] Prompt ID: 0d26abb1-439a-4bf7-b6fd-53ce2b849a97
+2023-09-06 16:30:02 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Code goes here (do not add comments)
+    # 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    # Filter the dataframe to include only the columns 'country' and 'happiness_index'
+    df = dfs[0][['country', 'happiness_index']]
+    
+    # Sort the dataframe by 'happiness_index' in descending order
+    df_sorted = df.sort_values(by='happiness_index', ascending=False)
+    
+    # Select the top 5 happiest countries
+    top_5_happiest_countries = df_sorted.head(5)
+    
+    # 4. Output: return a dictionary of:
+    # - type (possible values "text", "number", "dataframe", "plot")
+    # - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    return {"type": "dataframe", "value": top_5_happiest_countries}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 16:30:02 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0][['country', 'happiness_index']]
+    df_sorted = df.sort_values(by='happiness_index', ascending=False)
+    top_5_happiest_countries = df_sorted.head(5)
+    return {'type': 'dataframe', 'value': top_5_happiest_countries}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 16:30:02 [INFO] Answer: {'type': 'dataframe', 'value':           country  happiness_index
+6          Canada             7.23
+7       Australia             7.22
+1  United Kingdom             7.16
+3         Germany             7.07
+0   United States             6.94}
+2023-09-06 16:30:02 [INFO] Executed in: 27.783249855041504s
+2023-09-06 16:30:19 [INFO] Question: Which are the 5 happiest countries?
+2023-09-06 16:30:19 [INFO] Running PandasAI with openai LLM...
+2023-09-06 16:30:19 [INFO] Prompt ID: 39c9812e-7801-4138-9769-6e1a0d51283e
+2023-09-06 16:30:46 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Code goes here (do not add comments)
+    # 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    # Filter the dataframe to include only the columns 'country' and 'happiness_index'
+    df = dfs[0][['country', 'happiness_index']]
+    
+    # Sort the dataframe by 'happiness_index' in descending order
+    df_sorted = df.sort_values(by='happiness_index', ascending=False)
+    
+    # Select the top 5 happiest countries
+    top_5_happiest_countries = df_sorted.head(5)
+    
+    # 4. Output: return a dictionary of:
+    # - type (possible values "text", "number", "dataframe", "plot")
+    # - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    return {"type": "dataframe", "value": top_5_happiest_countries}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 16:30:46 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0][['country', 'happiness_index']]
+    df_sorted = df.sort_values(by='happiness_index', ascending=False)
+    top_5_happiest_countries = df_sorted.head(5)
+    return {'type': 'dataframe', 'value': top_5_happiest_countries}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 16:30:46 [INFO] Answer: {'type': 'dataframe', 'value':           country  happiness_index
+6          Canada             7.23
+7       Australia             7.22
+1  United Kingdom             7.16
+3         Germany             7.07
+0   United States             6.94}
+2023-09-06 16:30:46 [INFO] Executed in: 27.48725390434265s
+2023-09-06 19:08:23 [INFO] Question: Please list all the products
+2023-09-06 19:08:23 [INFO] Running PandasAI with openai LLM...
+2023-09-06 19:08:23 [INFO] Prompt ID: bb71a999-7de0-4932-bdc4-89a358370080
+2023-09-06 19:08:41 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Code goes here (do not add comments)
+    products = dfs[0]['Producs'].tolist()
+    return {"type": "text", "value": "\n".join(products)}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 19:08:41 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    products = dfs[0]['Producs'].tolist()
+    return {'type': 'text', 'value': '\n'.join(products)}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:08:41 [INFO] Answer: {'type': 'text', 'value': 'Bank TAM Sub-Segment\nAccounting and financial services\nAdvice and investment services\nagricultural and construction equipment finance\nAgricultural and industrial development financing\nAgricultural and rural banking\nAgricultural and rural development financing\nagricultural development banking\nAgricultural financial Bank\nagricultural financing\nAlternative payment solutions\nAsset and investment management\nAsset covered securities\nAsset management\nAsset management and corporate services\nasset management and estate planning\nAsset management and servicing\nAsset management, corporate banking\nasset management, corporate finance\nAsset management, equity brokerage\nAsset management, family office\nAsset management, investment banking\nAsset management, securities services\nAsset Servicing\nB2B Cross-border\nB2B Financing\nBank loans for innovative projects\nBanking for African community\nBanking for Bangladeshi community\nBanking for health-care\nBanking for Jewish community\nBanking for Moroccan and Tunisian community\nBanking for Moroccan community\nBanking for real estate owners and industry\nBanking Services\nBanking services for Colfax Corporation\nBanking services for Latin American community\nBanking services for startups and SMEs\nBanking solutions for military\nBanking solutions related to Africa\nBanking support services\nBPCE\nBridging Institution\nBrokerage services\nBusiness banking\nbusiness payment solutions\nCapital markets services\nCentral bank\nCentral Cooperative Banking\nclearing and financing services\ncoastal financing\ncommercial and correspondent banking\nCommercial Bank\nCommercial real estate financing\nCommercial real estate leasing\nCommercial vehicles financing\nConstruction Bonds\nConstruction financing\nConsumer and business loans\nConsumer and car loans\nConsumer and corporate lending\nConsumer and mortgage loans\nConsumer and SME financing\nConsumer Finance\nConsumer finance for IKEA customers\nConsumer finance for Telia customers\nConsumer lending platform\nCooperative Agricultural Bank\nCooperative Bank\nCoordinating banking activities\nCorporate advising\nCorporate and correspondent banking\nCorporate and Institutional Banking\nCorporate and Investement bank\nCorporate and Premier banking\nCorporate Bank\nCorporate banking and trade finance\nCorporate banking and treasury services\nCorporate banking for Cuban market\nCorporate banking related to Africa\nCorporate banking, asset management\nCorporate banking, capital markets\nCorporate banking, trust management\nCorporate banking, wealth management\nCorporate finance\nCorporate lending and leasing\ncorporate payment transactions\nCorrespondent banking\nCovered Bonds\nCredit and Debit Cards\nCredit Cards\nCredit Cards and Consumer Loans\nCredit Institution\nCredit Management for pharma industry\nCredits and financial services\nCryptocurrency payment solutions\nCryptocurrency wallet and exchange\ncustodian services\nCustomised Unestments, Personal and  institutional \nDebt consolidation\nDebt management\nDebt restructuring\nDeposit guarantee support\nDepositary services\nDeposits and loans\nDevelopment Bank\nDevelopment financing and banking\nDigital Bank\nDigital banking and financial services\nDigital banking and financial tech\nDigital banking and payment solutions\nDigital banking services\nDigital cash network\nDigital currency and payment solutions\nDigital healthcare payments\nDigital payment services\nDigital payments\nDigital Payments and Financing\nDigital wallet solutions\nDirect debit solutions for businesses\nDirect retail banking\nDirect retail banking, online brokerage\nE-commerce payment solutions\nE-commerce payments\nE-commerce solutions\nE-money and payment solutions\nE-wallet and payment solutions\nEmployee savings accounts\nEquipment financing\nEquity interests of BPCE abroad\nEthical and social banking\nEthical and sustainable banking\nEthical banking for charities\nExport and import financing\nExport financing\nExport financing and development\nFactoring\nFactoring and financial services\nFactoring and financing solutions for SMEs\nFactoring services\nFactoring solutions\nFamily Office\nFarmer Financing\nFinancial Advising\nFinancial B2B solutions\nFinancial engineering\nFinancial engineering for affiliate marketers\nFinancial engineering for metal companies\nFinancial guarantees\nFinancial leasing\nFinancial services and banking\nFinancial services and solutions\nFinancial services for businesses\nFinancial services for Enel Group\nFinancial services for SMEs\nfinancial services to Eni Group companies\nFinancial solutions for enterprises\nfinancial support for Southern countries\nFinancial technology and SME financing\nFinancial technology and solutions\nFinancial technology services\nFinancial technology solutions\nFinancing and Investment\nFinancing and leasing to the residents of Corsica\nFinancing Development Projects\nFinancing for Airbus\nFinancing for all IBM solutions\nFinancing for Dell customers\nFinancing for French Reunion\nFinancing for HP customers\nFinancing for John Deere customers\nFinancing for regional development projects\nFinancing for small businesses\nFinancing for TRUMPF customers\nFinancing of culture industry\nFinancing of film and TV industry\nFinancing of TV projects\nFinancing solutions\nFinancing solutions for AGCO brands\nFinancing solutions for Basque SMEs\nFinancing solutions for BMW brands\nFinancing solutions for CAT brands\nFinancing solutions for CLAAS brands\nfinancing solutions for CNH brands\nfinancing solutions for Daimler brands\nfinancing solutions for Dia customers\nfinancing solutions for El Corte Inglés customers\nfinancing solutions for farmers\nfinancing solutions for FCA brands\nfinancing solutions for JCB brands\nfinancing solutions for John Deere brands\nfinancing solutions for Komatsu brands\nfinancing solutions for MAN brands\nfinancing solutions for SCANIA brands\nfinancing solutions for SDF brands\nfinancing solutions for TRIGANO brands\nfinancing solutions for Volkswagen brands\nfinancing solutions for VOLVO brands\nfinancing solutions related to Antilles Guyane\nfinancing solutions to tobacco retailers\nfinancing to independent professionals\nFintech and small business banking\nForeign exchange services\nFund administration\nFund and investment management\nFunding for Société Générale Group\nFunding of local authorities\nFunding services for SMEs\nFX Trading\nGlobal custody and fund administration\nGlobal markets services\nGlobal transaction processing\nGold management services\nGovernment Banking Provider\nGovernment treasury management\nGreen banking\nGreen energy financing solutions\nguarantees for metal industry\nguarantees for PACA companies\nguarantees in asset management\nguarantees residential property loans\nHealth Professionals\nhedge fund management\nholding company\nHoldings\nHousing and construction financing\nhousing energy financing\nHousing finance\nImport, Export\nIndustrial and mining sector financing\nindustry financing\ninformation services\nInfrastructure and energy financing\ninfrastructure financing\ninsolvent companies financing\ninternational banking\ninternational factoring\ninternational insurance\nInternational money transfer services\nInternational Payments\ninternational trade\ninternational trade and payments\ninternational trade finance\ninventory financing\nInvestment and development banking\nInvestment and pension management\nInvestment and trading services\nInvestment Bank\nInvestment banking and asset management\nInvestment banking and corporate financial services\nInvestment banking and corporate financing\nInvestment banking and financial services\nInvestment banking and wealth management\ninvestment banking, brokerage services\nInvestment banking, capital management\ninvestment funds\nInvestment management\ninvestment products\ninvestment services\ninvestment solutions\nInvestment, Financing, Real Estate \ninvoice and cash management\ninvoice management to Carrefour suppliers\ninvoice management to public healthcare\nIslamic Bank\nIslamic banking and finance\nissuing covered bonds\nIT banking services\nIT financing for IBM customers\nIvestment Bank\nJoint Venture Bank\nleasing\nleasing and factoring\nLeasing and factoring services\nleasing for SMEs in Corsica\nleasing solutions\nleasing solutions for FCA brands\nLife Insurance\nloans and deposits\nloans for shipping companies\nloans to Gedex members\nLocal Government-controled Savings bank\nLocally Owned Bank\nmanaging residual assets\nmarine financing\nmarketing and non-transactional activities\nmerchant banking\nmicro-loans\nMicrofinance services\nMobile banking and payment solutions\nMobile payment and money transfer app\nMobile payment solutions\nmobile payments\nMobile point-of-sale solutions\nMoney transfer services\nMortgage\nMortgage and public sector financing\nmortgage covered bonds\nmortgage lending\nmortgage loans\nmortgage loans restructuring\nmortgage products\nMultinational Bank\nNationalized Commercial Bank\nNon-Life Insurance\nOff-shore Bank\nOffshore Bank\noffshore banking\noffshore banking, wealth management\nOnline Banking\nOnline banking and financial services\nOnline banking services for SMEs\nOnline Banking, Fintech\nonline brokerage\nOnline business banking and services\nOnline investment and trading\nonline investment and trading services\nOnline money transfer services\nOnline payment and e-wallet solutions\nOnline payment services\nOnline payments and direct debit solutions\nonline payments and trading\nonline savings and brokerage\nonline trading\nparticipation banking\nPayment and e-money solutions\npayment cards\npayment cards and consumer loans\npayment cards and related services\npayment cards PASS\nPayment gateway solutions\nPayment Processing\npayment processing for business clients\npayment processing for Orange\nPayment processing solutions\nPayment services\nPayment services and solutions\nPayment services for businesses\nPayment services for businesses and individuals\nPayment services for SMEs and individuals\npayment solutions\nPayment solutions for businesses\nPayment solutions for businesses and consumers\nPayment solutions for businesses and individuals\nPayment solutions for merchants and e-commerce\nPayments\npension solutions\nPersonal & corporate banking\nPersonal & Universal bank\nPersonal and Corporate Banking\npersonal and mortgage loans\npersonal and SME lending\nPersonal banking\npersonal loans\nPersonal, Business, Corporate\nportfolio management\npost-trade services\nPostal banking services\npremium banking\nprepaid payment products\nprivate and commercial banking\nprivate and corporate banking\nprivate and investment banking\nPrivate Bank\nPrivate banking and wealth management\nprivate equity and venture capital\nproblem loans management\nProfessional Financial Institution\nprofessional investors deposits\nprofessional real estate financing\nproject and export financing\nproject financing for French overseas territories\nproject financing for sustainable development\npublic construction financing\npublic development funding\npublic sector banking\npublic sector covered bonds\npublic sector finance\npublic sector financing\nReal estate financing\nreal estate leasing\nreal estate loans\nRegional Bank\nRegional Retail Bank\nRegional retail banking\nRegional Savings Bank\nregional SME funding\nregional SME lending\nRegional Universal Bank\nresidential home loans covered bonds\nRetail\nRetail & Commercial banking\nretail and business banking\nRetail and Commercial Bank\nRetail and consumer finance\nRetail and Corporate Bank\nretail and corporate banking, online brokerage\nretail and investment banking\nRetail and microfinance banking\nRetail and Private Bank\nretail and private banking\nretail and SME banking\nRetail Bank\nretail banking and leasing for medical prefessionals\nretail banking for artisans\nretail banking for charities\nretail banking for Christian community\nretail banking for church and charities\nretail banking for craft industry\nretail banking for expats\nretail banking for farmers\nretail banking for French Reunion residents\nretail banking for healthcare\nretail banking for healthcare professionals\nretail banking for pharmacists\nretail banking for professionals\nretail banking for public sector employees\nretail banking in Asturia\nRetail banking services\nretail banking via direct channels\nretail banking, asset management\nretail banking, brokerage services\nretail banking, corporate banking\nretail banking, insurance\nretail banking, investment management\nretail banking, online brokerage\nretail banking, online trading\nretail banking, real estate financing\nretail banking, securities trading\nretail banking, SME banking\nretail banking, wealth management\nCooperative banking\nretail refinancing solutions\nRetail, corporate and institutional banking\nRetail, Corporate and investment \nRetail, Private, and Corporate Banking \nRetail, Youth, Entrepreneurs, Housing and investment \nrevolving credits to Castorama customers\nSaving\nsavings accounts\nSavings and Loan Association\nsavings and loans\nSavings Bank\nsavings products\nsecurities and derivatives\nsecurities and trading services\nsecurities clearing services\nsecurities depositary services\nSecurities services\nsecurities settlement services\nsecurities trading\nsecuritization\nSharia investment banking\nSharia retail and corporate banking\nSharia retail banking\nshipping financing\nSmall and medium-sized enterprise banking\nSME banking\nSME banking and factoring\nSME factoring\nSME financing\nSME funding\nSME lending\nsocial housing financing\nsocial rental guarantees\nSociété Générale\nsolidarity finance\nsolutions for FinTech businesses\nspecial-purpose banking\nspecialized financing solutions\nStock and Private Bank\nStocks\nStocks, Private Banking \nstructured finance\nstructured property financing\nsustainable retail banking\nsyndicated loans\ntailored financing and leasing\ntrade finance\nTrade finance and corporate banking\nTrade finance and investment banking\nTrade finance and payment solutions\ntrade finance, asset management\nTrade Finance, Commerical Bnkig & Asset Management \ntrade finance, treasury services\ntrade finance, wealth management\ntrade-related credit insurance\ntransaction banking\ntransaction banking services\nTransport finance and corporate banking\ntransportation financing\ntrust and securities services\ntrust management\nUniversal Bank\nuniversal banking for Brazilian customers\nvehicle and consumer loans\nVehicle Finance\nvehicle financing for BMW brands\nvehicle financing for Daimler brands\nvehicle financing for Fiat and Chrysler brands\nvehicle financing for Ford brands\nvehicle financing for Opel brands\nvehicle financing for Renault brands\nvehicle financing for Toyota brands\nvehicle financing for Volvo brands\nvehicle financing for VW group brands\nvehicle leasing solutions\nventure capital services\nwealth and asset management\nwealth and investment management\nwealth management\nwealth management, corporate banking\nwealth management, family office\nwealth management, investment banking\nwealth management, securities services\nwealth management, securities trading\nWholesale Bank\nwholesale banking\nwholesale banking, risk management\nwinding down residual mortgage portfolio\nwinding down WestLB’s assets'}
+2023-09-06 19:08:41 [INFO] Executed in: 17.91588568687439s
+2023-09-06 19:09:00 [INFO] Question: Please list all the Segments
+2023-09-06 19:09:00 [INFO] Running PandasAI with openai LLM...
+2023-09-06 19:09:00 [INFO] Prompt ID: 6479e1d0-0416-4f20-9f42-f21dc15ae54a
+2023-09-06 19:09:18 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Code goes here (do not add comments)
+    segments = dfs[0]['Segment'].unique()
+    return {"type": "text", "value": "\n".join(segments)}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 19:09:18 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    segments = dfs[0]['Segment'].unique()
+    return {'type': 'text', 'value': '\n'.join(segments)}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:09:18 [INFO] Answer: {'type': 'text', 'value': 'Market Segments\nRetail Banks\nLenders\nFintechs & SMEs\nCorporate & Investment Banks\nCapital Markets\nWealth Mgmt & Private Banks\nEnterprise & Corporates\nInsurance\nCentral Banks\n'}
+2023-09-06 19:09:18 [INFO] Executed in: 18.837838888168335s
+2023-09-06 19:10:18 [INFO] Question: Please list all products in Central Banks Segments
+2023-09-06 19:10:18 [INFO] Running PandasAI with openai LLM...
+2023-09-06 19:10:18 [INFO] Prompt ID: 401dce89-403d-4887-b228-4ccb29f79ab5
+2023-09-06 19:10:41 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe based on the Segment "Central Banks"
+    central_banks_df = dfs[0][dfs[0]['Segment'] == 'Central Banks']
+    
+    # Get the list of products in Central Banks segment
+    products = central_banks_df['Producs'].tolist()
+    
+    # Return the list of products as output
+    return {"type": "text", "value": products}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 19:10:41 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    central_banks_df = dfs[0][dfs[0]['Segment'] == 'Central Banks']
+    products = central_banks_df['Producs'].tolist()
+    return {'type': 'text', 'value': products}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:10:41 [INFO] Answer: {'type': 'text', 'value': ['agricultural financing', 'Alternative payment solutions', 'Asset and investment management', 'Asset covered securities', 'Asset management', 'Asset management and corporate services', 'asset management and estate planning', 'Asset management and servicing', 'Asset management, corporate banking', 'asset management, corporate finance', 'Asset management, equity brokerage', 'Asset management, family office', 'Asset management, investment banking', 'Asset management, securities services', 'Asset Servicing', 'B2B Cross-border']}
+2023-09-06 19:10:41 [INFO] Executed in: 23.648523092269897s
+2023-09-06 19:14:27 [INFO] Question: List Small Products with Small Size in Central Banks with Value over 4
+2023-09-06 19:14:27 [INFO] Running PandasAI with openai LLM...
+2023-09-06 19:14:27 [INFO] Prompt ID: 50069035-d9a8-400b-bb5a-29f9f89859c2
+2023-09-06 19:14:58 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe based on the given conditions
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Industry'] == 'Central Banks') & (dfs[0]['Value'] > 4)]
+    
+    # Select the required columns
+    result_df = filtered_df[['Producs', 'Size']]
+    
+    # Convert the dataframe to a list of dictionaries
+    result_list = result_df.to_dict('records')
+    
+    # Declare the result dictionary
+    result = {
+        "type": "dataframe",
+        "value": result_list
+    }
+    
+    return result
+
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 19:14:58 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Industry'] == 'Central Banks') & (dfs[0]['Value'] > 4)]
+    result_df = filtered_df[['Producs', 'Size']]
+    result_list = result_df.to_dict('records')
+    result = {'type': 'dataframe', 'value': result_list}
+    return result
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:14:58 [WARNING] Error of executing code
+2023-09-06 19:14:58 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2023-09-06 19:14:58 [INFO] Failed with error: '>' not supported between instances of 'str' and 'int'. Retrying
+2023-09-06 19:15:23 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Industry'] == 'Central Banks') & (dfs[0]['Value'].astype(int) > 4)]
+    result_df = filtered_df[['Producs', 'Size']]
+    result_list = result_df.to_dict('records')
+    result = {'type': 'dataframe', 'value': result_list}
+    return result
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:15:23 [WARNING] Error of executing code
+2023-09-06 19:15:23 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2023-09-06 19:15:23 [INFO] Failed with error: invalid literal for int() with base 10: '11.5'. Retrying
+2023-09-06 19:15:48 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Industry'] == 'Central Banks') & (dfs[0]['Value'].astype(float) > 4)]
+    result_df = filtered_df[['Producs', 'Size']]
+    result_list = result_df.to_dict('records')
+    result = {'type': 'dataframe', 'value': result_list}
+    return result
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:15:48 [WARNING] Error of executing code
+2023-09-06 19:16:15 [INFO] Question: List Small Products with Small Size in Central Banks with Value over 4
+2023-09-06 19:16:15 [INFO] Running PandasAI with openai LLM...
+2023-09-06 19:16:15 [INFO] Prompt ID: 301b1ab7-d078-4f96-8077-4e0315cb2693
+2023-09-06 19:16:42 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe based on the given conditions
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Value'] > 4) & (dfs[0]['Segment'] == 'Central Banks')]
+    
+    # Select only the required columns
+    filtered_df = filtered_df[['Producs', 'Size']]
+    
+    # Convert the dataframe to a list of dictionaries
+    result = filtered_df.to_dict('records')
+    
+    # Return the result
+    return {"type": "dataframe", "value": result}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 19:16:42 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Value'] > 4) & (dfs[0]['Segment'] == 'Central Banks')]
+    filtered_df = filtered_df[['Producs', 'Size']]
+    result = filtered_df.to_dict('records')
+    return {'type': 'dataframe', 'value': result}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:16:42 [WARNING] Error of executing code
+2023-09-06 19:16:42 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2023-09-06 19:16:42 [INFO] Failed with error: '>' not supported between instances of 'str' and 'int'. Retrying
+2023-09-06 19:17:05 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Value'].astype(int) > 4) & (dfs[0]['Segment'] == 'Central Banks')]
+    filtered_df = filtered_df[['Producs', 'Size']]
+    result = filtered_df.to_dict('records')
+    return {'type': 'dataframe', 'value': result}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:17:05 [WARNING] Error of executing code
+2023-09-06 19:17:05 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2023-09-06 19:17:05 [INFO] Failed with error: invalid literal for int() with base 10: '11.5'. Retrying
+2023-09-06 19:17:28 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Value'].astype(float) > 4) & (dfs[0]['Segment'] == 'Central Banks')]
+    filtered_df = filtered_df[['Producs', 'Size']]
+    result = filtered_df.to_dict('records')
+    return {'type': 'dataframe', 'value': result}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:17:28 [WARNING] Error of executing code
+2023-09-06 19:18:23 [INFO] Question: List Small Products with Small Size in Central Banks with Value over 4
+2023-09-06 19:18:23 [INFO] Running PandasAI with openai LLM...
+2023-09-06 19:18:23 [INFO] Prompt ID: e3fe0ed1-6ff3-4f51-b20e-fa05bf3529aa
+2023-09-06 19:18:46 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe based on the given conditions
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Value'] > 4)]
+    
+    # Select the required columns
+    selected_df = filtered_df[['Producs', 'Size']]
+    
+    # Convert the dataframe to a list of dictionaries
+    result = selected_df.to_dict('records')
+    
+    # Return the result
+    return {"type": "dataframe", "value": result}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 19:18:46 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Value'] > 4)]
+    selected_df = filtered_df[['Producs', 'Size']]
+    result = selected_df.to_dict('records')
+    return {'type': 'dataframe', 'value': result}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:18:46 [WARNING] Error of executing code
+2023-09-06 19:18:46 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2023-09-06 19:18:46 [INFO] Failed with error: '>' not supported between instances of 'str' and 'int'. Retrying
+2023-09-06 19:19:08 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Value'].astype(float) > 4)]
+    selected_df = filtered_df[['Producs', 'Size']]
+    result = selected_df.to_dict('records')
+    return {'type': 'dataframe', 'value': result}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:19:08 [WARNING] Error of executing code
+2023-09-06 19:19:08 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2023-09-06 19:19:08 [INFO] Failed with error: could not convert string to float: ''. Retrying
+2023-09-06 19:19:31 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Value'].astype(float) > 4)]
+    selected_df = filtered_df[['Producs', 'Size']]
+    result = selected_df.to_dict('records')
+    return {'type': 'dataframe', 'value': result}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:19:31 [WARNING] Error of executing code
+2023-09-06 19:20:08 [INFO] Question: List Small Products in Central Banks with Value over 4
+2023-09-06 19:20:08 [INFO] Running PandasAI with openai LLM...
+2023-09-06 19:20:08 [INFO] Prompt ID: 2cd5f7aa-53fc-4d57-b746-8e3e11a996ef
+2023-09-06 19:20:31 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe based on the given conditions
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Value'] > 4)]
+    
+    # Get the list of small products in central banks with value over 4
+    products_list = filtered_df[filtered_df['Segment'] == 'Central Banks']['Producs'].tolist()
+    
+    # Return the result as a text
+    return {"type": "text", "value": f"The list of small products in Central Banks with value over 4 is: {', '.join(products_list)}."}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 19:20:31 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Value'] > 4)]
+    products_list = filtered_df[filtered_df['Segment'] == 'Central Banks']['Producs'].tolist()
+    return {'type': 'text', 'value': f"The list of small products in Central Banks with value over 4 is: {', '.join(products_list)}."}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:20:31 [WARNING] Error of executing code
+2023-09-06 19:20:31 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2023-09-06 19:20:31 [INFO] Failed with error: '>' not supported between instances of 'str' and 'int'. Retrying
+2023-09-06 19:20:56 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Value'].astype(int) > 4)]
+    products_list = filtered_df[filtered_df['Segment'] == 'Central Banks']['Producs'].tolist()
+    return {'type': 'text', 'value': f"The list of small products in Central Banks with value over 4 is: {', '.join(products_list)}."}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:20:56 [WARNING] Error of executing code
+2023-09-06 19:20:56 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2023-09-06 19:20:56 [INFO] Failed with error: invalid literal for int() with base 10: ''. Retrying
+2023-09-06 19:21:22 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Value'].astype(float) > 4)]
+    products_list = filtered_df[filtered_df['Segment'] == 'Central Banks']['Producs'].tolist()
+    return {'type': 'text', 'value': f"The list of small products in Central Banks with value over 4 is: {', '.join(products_list)}."}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:21:22 [WARNING] Error of executing code
+2023-09-06 19:25:42 [INFO] Question: List Small Products in Central Banks with Value over 4
+2023-09-06 19:25:42 [INFO] Running PandasAI with openai LLM...
+2023-09-06 19:25:42 [INFO] Prompt ID: af72229c-1c94-46a5-9f1a-9e1b0be72b73
+2023-09-06 19:26:09 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe based on the given conditions
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Value'] > 4)]
+    
+    # Get the list of small products in central banks with value over 4
+    small_products = filtered_df[filtered_df['Industry'] == 'Central Banks']['Producs'].tolist()
+    
+    # Return the result as a text
+    result = {
+        "type": "text",
+        "value": f"The list of small products in Central Banks with value over 4 is: {', '.join(small_products)}"
+    }
+    
+    return result
+
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 19:26:09 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Value'] > 4)]
+    small_products = filtered_df[filtered_df['Industry'] == 'Central Banks']['Producs'].tolist()
+    result = {'type': 'text', 'value': f"The list of small products in Central Banks with value over 4 is: {', '.join(small_products)}"}
+    return result
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:26:09 [INFO] Answer: {'type': 'text', 'value': 'The list of small products in Central Banks with value over 4 is: '}
+2023-09-06 19:26:09 [INFO] Executed in: 26.417250156402588s
+2023-09-06 19:27:20 [INFO] Question: List Small Products in Central Banks
+2023-09-06 19:27:20 [INFO] Running PandasAI with openai LLM...
+2023-09-06 19:27:20 [INFO] Prompt ID: c3660c9e-7d36-4f7d-b9ac-0a04ce9c1cf0
+2023-09-06 19:27:45 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to get only the rows with "Central Banks" in the Segment column and "Small" in the Size column
+    filtered_df = dfs[0][(dfs[0]['Segment'] == 'Central Banks') & (dfs[0]['Size'] == 'Small')]
+    
+    # Get the products from the filtered dataframe
+    products = filtered_df['Producs']
+    
+    # Convert the products to a list
+    product_list = products.tolist()
+    
+    # Return the list of small products in Central Banks
+    return {"type": "text", "value": product_list}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 19:27:45 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Segment'] == 'Central Banks') & (dfs[0]['Size'] == 'Small')]
+    products = filtered_df['Producs']
+    product_list = products.tolist()
+    return {'type': 'text', 'value': product_list}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:27:45 [INFO] Answer: {'type': 'text', 'value': ['Alternative payment solutions', 'Asset management', 'Asset management and servicing', 'Asset management, equity brokerage', 'Asset management, securities services']}
+2023-09-06 19:27:45 [INFO] Executed in: 25.126978874206543s
+2023-09-06 19:28:29 [INFO] Question: List Small Products in Central Banks with value >4
+2023-09-06 19:28:29 [INFO] Running PandasAI with openai LLM...
+2023-09-06 19:28:29 [INFO] Prompt ID: d85b615a-114e-4e19-bb53-8044058260a1
+2023-09-06 19:28:59 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe based on the given conditions
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Value'] > 4) & (dfs[0]['Segment'] == 'Central Banks')]
+    
+    # Select only the required columns
+    filtered_df = filtered_df[['Producs', 'Value']]
+    
+    # Rename the columns
+    filtered_df.columns = ['Product', 'Value']
+    
+    # Reset the index
+    filtered_df.reset_index(drop=True, inplace=True)
+    
+    # Check if there are any matching records
+    if len(filtered_df) > 0:
+        # Return the filtered dataframe
+        return {"type": "dataframe", "value": filtered_df}
+    else:
+        # Return a message if no matching records found
+        return {"type": "text", "value": "No small products found in Central Banks with value > 4."}
+
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 19:28:59 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Value'] > 4) & (dfs[0]['Segment'] == 'Central Banks')]
+    filtered_df = filtered_df[['Producs', 'Value']]
+    filtered_df.columns = ['Product', 'Value']
+    filtered_df.reset_index(drop=True, inplace=True)
+    if len(filtered_df) > 0:
+        return {'type': 'dataframe', 'value': filtered_df}
+    else:
+        return {'type': 'text', 'value': 'No small products found in Central Banks with value > 4.'}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:28:59 [INFO] Answer: {'type': 'dataframe', 'value':                                  Product  Value
+0          Alternative payment solutions   23.0
+1                       Asset management  232.0
+2         Asset management and servicing  355.0
+3  Asset management, securities services   33.0}
+2023-09-06 19:28:59 [INFO] Executed in: 30.01830506324768s
+2023-09-06 19:29:53 [INFO] Question: List Small Products in Central Banks with value >4 in FS Industry
+2023-09-06 19:29:53 [INFO] Running PandasAI with openai LLM...
+2023-09-06 19:29:53 [INFO] Prompt ID: 5b41b97b-0b28-4b0f-8b2c-5d80f94c6015
+2023-09-06 19:30:19 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe based on the given conditions
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Industry'] == 'FS') & (dfs[0]['Value'] > 4)]
+    
+    # Select the required columns
+    result_df = filtered_df[['Producs', 'Value']]
+    
+    # Rename the columns
+    result_df.columns = ['Product', 'Value']
+    
+    # Convert the dataframe to a dictionary
+    result_dict = result_df.to_dict(orient='records')
+    
+    # Return the result as a dataframe
+    return {"type": "dataframe", "value": result_dict}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 19:30:19 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Industry'] == 'FS') & (dfs[0]['Value'] > 4)]
+    result_df = filtered_df[['Producs', 'Value']]
+    result_df.columns = ['Product', 'Value']
+    result_dict = result_df.to_dict(orient='records')
+    return {'type': 'dataframe', 'value': result_dict}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:30:19 [INFO] Answer: {'type': 'dataframe', 'value': [{'Product': 'Agricultural and industrial development financing', 'Value': 33.0}, {'Product': 'Alternative payment solutions', 'Value': 23.0}, {'Product': 'Asset management and servicing', 'Value': 355.0}, {'Product': 'Asset management, securities services', 'Value': 33.0}, {'Product': 'Banking for Bangladeshi community', 'Value': 23.0}, {'Product': 'Banking Services', 'Value': 355.0}, {'Product': 'Banking support services', 'Value': 5.0}]}
+2023-09-06 19:30:19 [INFO] Executed in: 25.721596002578735s
+2023-09-06 19:31:15 [INFO] Question: List Small Products in Central Banks with value >4
+2023-09-06 19:31:15 [INFO] Running PandasAI with openai LLM...
+2023-09-06 19:31:15 [INFO] Prompt ID: 031c1b04-5cea-4494-8ab5-11685c5a33be
+2023-09-06 19:31:44 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe based on the given conditions
+    filtered_df = dfs[0][(dfs[0]['Segment'] == 'Central Banks') & (dfs[0]['Value'] > 4) & (dfs[0]['Size'] == 'Small')]
+    
+    # Select only the required columns
+    filtered_df = filtered_df[['Producs', 'Value']]
+    
+    # Rename the columns
+    filtered_df.columns = ['Product', 'Value']
+    
+    # Reset the index
+    filtered_df.reset_index(drop=True, inplace=True)
+    
+    # Check if there are any matching records
+    if len(filtered_df) == 0:
+        return {"type": "text", "value": "No small products found in Central Banks with value > 4."}
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": filtered_df}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 19:31:44 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Segment'] == 'Central Banks') & (dfs[0]['Value'] > 4) & (dfs[0]['Size'] == 'Small')]
+    filtered_df = filtered_df[['Producs', 'Value']]
+    filtered_df.columns = ['Product', 'Value']
+    filtered_df.reset_index(drop=True, inplace=True)
+    if len(filtered_df) == 0:
+        return {'type': 'text', 'value': 'No small products found in Central Banks with value > 4.'}
+    return {'type': 'dataframe', 'value': filtered_df}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:31:44 [INFO] Answer: {'type': 'dataframe', 'value':                                  Product  Value
+0          Alternative payment solutions   23.0
+1                       Asset management  232.0
+2         Asset management and servicing  355.0
+3  Asset management, securities services   33.0}
+2023-09-06 19:31:44 [INFO] Executed in: 29.413369178771973s
+2023-09-06 19:32:26 [INFO] Question: In FS Industry List Small Products in Central Banks with value >4
+2023-09-06 19:32:26 [INFO] Running PandasAI with openai LLM...
+2023-09-06 19:32:26 [INFO] Prompt ID: 36b95ebf-2c2e-495c-a87d-dc842bcba228
+2023-09-06 19:32:51 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the data based on the given conditions
+    filtered_data = dfs[0][(dfs[0]['Industry'] == 'FS') & (dfs[0]['Size'] == 'Small') & (dfs[0]['Value'] > 4)]
+    
+    # Get the list of small products in Central Banks with value > 4
+    products_list = filtered_data['Producs'].tolist()
+    
+    # Prepare the output dictionary
+    output = {
+        "type": "text",
+        "value": f"The list of small products in Central Banks with value > 4 is: {', '.join(products_list)}"
+    }
+    
+    return output
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 19:32:51 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_data = dfs[0][(dfs[0]['Industry'] == 'FS') & (dfs[0]['Size'] == 'Small') & (dfs[0]['Value'] > 4)]
+    products_list = filtered_data['Producs'].tolist()
+    output = {'type': 'text', 'value': f"The list of small products in Central Banks with value > 4 is: {', '.join(products_list)}"}
+    return output
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:32:51 [INFO] Answer: {'type': 'text', 'value': 'The list of small products in Central Banks with value > 4 is: Agricultural and industrial development financing, Alternative payment solutions, Asset management and servicing, Asset management, securities services, Banking for Bangladeshi community, Banking Services, Banking support services'}
+2023-09-06 19:32:51 [INFO] Executed in: 24.705338954925537s
+2023-09-06 19:33:13 [INFO] Question: In FS Industry List Small Products in Central Banks with value >4
+2023-09-06 19:33:13 [INFO] Running PandasAI with openai LLM...
+2023-09-06 19:33:13 [INFO] Prompt ID: 92700789-85aa-4535-af8e-ee7eef8b2268
+2023-09-06 19:33:38 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the data based on the given conditions
+    filtered_data = dfs[0][(dfs[0]['Industry'] == 'FS') & (dfs[0]['Size'] == 'Small') & (dfs[0]['Value'] > 4)]
+    
+    # Check if there are any matching records
+    if filtered_data.empty:
+        return {"type": "text", "value": "No small products in Central Banks with value > 4 found."}
+    
+    # Return the filtered data
+    return {"type": "dataframe", "value": filtered_data}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 19:33:38 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_data = dfs[0][(dfs[0]['Industry'] == 'FS') & (dfs[0]['Size'] == 'Small') & (dfs[0]['Value'] > 4)]
+    if filtered_data.empty:
+        return {'type': 'text', 'value': 'No small products in Central Banks with value > 4 found.'}
+    return {'type': 'dataframe', 'value': filtered_data}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:33:38 [INFO] Answer: {'type': 'dataframe', 'value':    Industry                       Segment                                            Producs  Value   Size
+4        FS  Corporate & Investment Banks  Agricultural and industrial development financing   33.0  Small
+10       FS                 Central Banks                      Alternative payment solutions   23.0  Small
+16       FS                 Central Banks                     Asset management and servicing  355.0  Small
+22       FS                 Central Banks              Asset management, securities services   33.0  Small
+28       FS       Enterprise & Corporates                  Banking for Bangladeshi community   23.0  Small
+34       FS       Enterprise & Corporates                                   Banking Services  355.0  Small
+40       FS       Enterprise & Corporates                           Banking support services    5.0  Small}
+2023-09-06 19:33:38 [INFO] Executed in: 25.060662984848022s
+2023-09-06 19:35:23 [INFO] Question: List Small Products in Central Banks with value >4 in FS Industry
+2023-09-06 19:35:23 [INFO] Running PandasAI with openai LLM...
+2023-09-06 19:35:23 [INFO] Prompt ID: 2c87a024-66bc-4dac-8a7f-4dc8b8f42e34
+2023-09-06 19:35:50 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe based on the given conditions
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Value'] > 4) & (dfs[0]['Industry'] == 'FS') & (dfs[0]['Segment'] == 'Central Banks')]
+    
+    # Select the required columns
+    result_df = filtered_df[['Producs', 'Value']]
+    
+    # Rename the columns
+    result_df.columns = ['Product', 'Value']
+    
+    # Convert the dataframe to a dictionary
+    result_dict = result_df.to_dict(orient='records')
+    
+    # Return the result as a dataframe
+    return {"type": "dataframe", "value": result_dict}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 19:35:50 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Size'] == 'Small') & (dfs[0]['Value'] > 4) & (dfs[0]['Industry'] == 'FS') & (dfs[0]['Segment'] == 'Central Banks')]
+    result_df = filtered_df[['Producs', 'Value']]
+    result_df.columns = ['Product', 'Value']
+    result_dict = result_df.to_dict(orient='records')
+    return {'type': 'dataframe', 'value': result_dict}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:35:50 [INFO] Answer: {'type': 'dataframe', 'value': [{'Product': 'Alternative payment solutions', 'Value': 23.0}, {'Product': 'Asset management and servicing', 'Value': 355.0}, {'Product': 'Asset management, securities services', 'Value': 33.0}]}
+2023-09-06 19:35:50 [INFO] Executed in: 26.360270738601685s
+2023-09-06 19:39:36 [INFO] Question: Provide Products from FS Industry
+2023-09-06 19:39:36 [INFO] Running PandasAI with openai LLM...
+2023-09-06 19:39:36 [INFO] Prompt ID: 029cf3a4-482c-4ff3-b491-1eb95a3f2177
+2023-09-06 19:39:57 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe based on the condition
+    filtered_df = dfs[0][dfs[0]['Industry'] == 'FS']
+    
+    # Get the products from the filtered dataframe
+    products = filtered_df['Producs'].tolist()
+    
+    # Return the result as a list of products
+    return {"type": "text", "value": products}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 19:39:57 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][dfs[0]['Industry'] == 'FS']
+    products = filtered_df['Producs'].tolist()
+    return {'type': 'text', 'value': products}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:39:57 [INFO] Answer: {'type': 'text', 'value': ['Bank TAM Sub-Segment', 'Advice and investment services', 'Agricultural and industrial development financing', 'Agricultural and rural development financing', 'Agricultural financial Bank', 'Alternative payment solutions', 'Asset covered securities', 'Asset management and corporate services', 'Asset management and servicing', 'asset management, corporate finance', 'Asset management, family office', 'Asset management, securities services', 'B2B Cross-border', 'Bank loans for innovative projects', 'Banking for Bangladeshi community', 'Banking for Jewish community', 'Banking for Moroccan community', 'Banking Services', 'Banking services for Latin American community', 'Banking solutions for military', 'Banking support services', 'Bridging Institution', 'Business banking', 'Capital markets services', 'Central Cooperative Banking', 'coastal financing', 'Commercial Bank', 'Commercial real estate leasing', 'Construction Bonds', 'Consumer and business loans', 'Consumer and corporate lending', 'Consumer and SME financing', 'Consumer finance for IKEA customers', 'Consumer lending platform', 'Cooperative Bank', 'Corporate advising', 'Corporate and Institutional Banking', 'Corporate and Premier banking', 'Corporate banking and trade finance', 'Corporate banking for Cuban market', 'Corporate banking, asset management', 'Corporate banking, trust management', 'Corporate finance', 'corporate payment transactions', 'Covered Bonds', 'Credit Cards', 'Credit Institution', 'Credits and financial services', 'Cryptocurrency wallet and exchange', 'Customised Unestments, Personal and  institutional ', 'Debt management']}
+2023-09-06 19:39:57 [INFO] Executed in: 20.93622612953186s
+2023-09-06 19:41:07 [INFO] Question: Provide products from Central Banks
+2023-09-06 19:41:07 [INFO] Running PandasAI with openai LLM...
+2023-09-06 19:41:07 [INFO] Prompt ID: e5780a56-5fb3-4b4f-93c5-21937d462d22
+2023-09-06 19:41:29 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to get products from Central Banks
+    central_banks_products = dfs[0][dfs[0]['Industry'] == 'Central Banks']['Producs']
+    
+    # Convert the filtered products to a list
+    products_list = central_banks_products.tolist()
+    
+    # Prepare the output dictionary
+    output = {
+        "type": "text",
+        "value": products_list
+    }
+    
+    return output
+
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 19:41:29 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    central_banks_products = dfs[0][dfs[0]['Industry'] == 'Central Banks']['Producs']
+    products_list = central_banks_products.tolist()
+    output = {'type': 'text', 'value': products_list}
+    return output
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:41:29 [INFO] Answer: {'type': 'text', 'value': []}
+2023-09-06 19:41:29 [INFO] Executed in: 22.170294046401978s
+2023-09-06 19:41:45 [INFO] Question: Provide products from Central Banks
+2023-09-06 19:41:45 [INFO] Running PandasAI with openai LLM...
+2023-09-06 19:41:45 [INFO] Prompt ID: 4c410472-de87-46cb-abff-0a2f82903d37
+2023-09-06 19:42:07 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to get products from Central Banks
+    central_banks_products = dfs[0][dfs[0]['Segment'] == 'Central Banks']['Producs']
+    
+    # Convert the filtered products to a list
+    products_list = central_banks_products.tolist()
+    
+    # Prepare the output dictionary
+    output = {
+        "type": "text",
+        "value": products_list
+    }
+    
+    return output
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 19:42:07 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    central_banks_products = dfs[0][dfs[0]['Segment'] == 'Central Banks']['Producs']
+    products_list = central_banks_products.tolist()
+    output = {'type': 'text', 'value': products_list}
+    return output
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:42:07 [INFO] Answer: {'type': 'text', 'value': ['agricultural financing', 'Alternative payment solutions', 'Asset and investment management', 'Asset covered securities', 'Asset management', 'Asset management and corporate services', 'asset management and estate planning', 'Asset management and servicing', 'Asset management, corporate banking', 'asset management, corporate finance', 'Asset management, equity brokerage', 'Asset management, family office', 'Asset management, investment banking', 'Asset management, securities services', 'Asset Servicing', 'B2B Cross-border']}
+2023-09-06 19:42:07 [INFO] Executed in: 21.52239203453064s
+2023-09-06 19:42:19 [INFO] Question: Provide products from Central Banks with value >4
+2023-09-06 19:42:19 [INFO] Running PandasAI with openai LLM...
+2023-09-06 19:42:19 [INFO] Prompt ID: 2e4429a5-fcf8-4f8e-853d-5456fce0fa95
+2023-09-06 19:42:40 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to get products from Central Banks with value > 4
+    filtered_df = dfs[0][(dfs[0]['Segment'] == 'Central Banks') & (dfs[0]['Value'] > 4)]
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": filtered_df}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-06 19:42:40 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Segment'] == 'Central Banks') & (dfs[0]['Value'] > 4)]
+    return {'type': 'dataframe', 'value': filtered_df}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-06 19:42:40 [INFO] Answer: {'type': 'dataframe', 'value':       Industry        Segment                                  Producs  Value    Size
+9   Enterprise  Central Banks                   agricultural financing    9.0  Medium
+10          FS  Central Banks            Alternative payment solutions   23.0   Small
+11  Enterprise  Central Banks          Asset and investment management   11.0   Large
+12          FS  Central Banks                 Asset covered securities   12.0  Medium
+13  Enterprise  Central Banks                         Asset management  232.0   Small
+14          FS  Central Banks  Asset management and corporate services   21.0   Large
+15  Enterprise  Central Banks     asset management and estate planning  222.0  Medium
+16          FS  Central Banks           Asset management and servicing  355.0   Small
+17  Enterprise  Central Banks      Asset management, corporate banking    6.0   Large
+20          FS  Central Banks          Asset management, family office    5.0   Large
+21  Enterprise  Central Banks     Asset management, investment banking   22.0  Medium
+22          FS  Central Banks    Asset management, securities services   33.0   Small
+23  Enterprise  Central Banks                          Asset Servicing   10.0   Large
+24          FS  Central Banks                         B2B Cross-border    6.0  Medium}
+2023-09-06 19:42:40 [INFO] Executed in: 21.047120094299316s
+2023-09-07 08:52:22 [INFO] Question: list companies in Chicago
+2023-09-07 08:52:22 [INFO] Running PandasAI with openai LLM...
+2023-09-07 08:52:22 [INFO] Prompt ID: 699512ef-a789-40ee-ac5d-dc6ec1acade2
+2023-09-07 08:52:35 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to include only companies in Chicago
+    chicago_companies = dfs[0][dfs[0]['City'] == 'Chicago']
+    
+    # Get the list of company names
+    company_names = chicago_companies['Name'].tolist()
+    
+    # Return the list of company names as output
+    return {"type": "text", "value": ", ".join(company_names)}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 08:52:35 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    chicago_companies = dfs[0][dfs[0]['City'] == 'Chicago']
+    company_names = chicago_companies['Name'].tolist()
+    return {'type': 'text', 'value': ', '.join(company_names)}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 08:52:35 [INFO] Answer: {'type': 'text', 'value': 'BloXroute Labs, Zero Hash, Halo Investing, Arturo, Snapsheet, Omna Search, Kin Insurance, Avant, Ascent, Amount, PractiFI, Ycharts'}
+2023-09-07 08:52:35 [INFO] Executed in: 12.983708143234253s
+2023-09-07 08:54:10 [INFO] Question: provide companies in US with employee > 50
+2023-09-07 08:54:10 [INFO] Running PandasAI with openai LLM...
+2023-09-07 08:54:10 [INFO] Prompt ID: bc4b4c69-ae63-4cf5-a79e-db4c9e8df39d
+2023-09-07 08:54:22 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies in US with employee > 50
+    filtered_df = dfs[0][(dfs[0]['Country'] == 'US') & (dfs[0]['Total Employee Range'] > '50')]
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": filtered_df}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 08:54:22 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Country'] == 'US') & (dfs[0]['Total Employee Range'] > '50')]
+    return {'type': 'dataframe', 'value': filtered_df}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 08:54:22 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier             Name  ... Total Employee Range                                Company Description
+0          FTTT000307  Diligence Vault  ...               51-200  DiligenceVault is the first two-sided and glob...
+13         FTTT000141            Axoni  ...             501-1000  Chainalysis offers cryptocurrency investigatio...
+14         FTTT000785           Sunbit  ...             501-1000  Circle is a global financial technology firm t...
+15         FTTT000151    Baton Systems  ...               51-200  Cloud9 Technologies, now part of Symphony, is ...
+18         FTTT000231           Circle  ...               51-200  Digital Asset is building the platform and dev...
+..                ...              ...  ...                  ...                                                ...
+718        FTTT000225            Check  ...               51-200  Ranked a WealthTech100 Company and Great Canad...
+729        FTTT000546          Marqeta  ...               51-200  Founded in 1999 and headquartered in Boston, F...
+734        FTTT000779          Strands  ...               51-200  YCharts is an investment research platform tha...
+745        FTTT000319           Earnix  ...               51-200  EV is one of the UK’s market-leading digital f...
+748        FTTT000386           Fiserv  ...               51-200  deliver real-time answers to the most pressing...
+
+[91 rows x 12 columns]}
+2023-09-07 08:54:22 [INFO] Executed in: 11.918823003768921s
+2023-09-07 08:54:59 [INFO] Question: provide companies in US om Capital Markets Segment with employee > 50
+2023-09-07 08:54:59 [INFO] Running PandasAI with openai LLM...
+2023-09-07 08:54:59 [INFO] Prompt ID: 94f14248-182a-4452-b127-60b51a94a07b
+2023-09-07 08:55:16 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to get companies in US with Capital Markets Segment and employee > 50
+    filtered_df = dfs[0][(dfs[0]['Country'] == 'US') & (dfs[0]['Market Segment'] == 'Capital Markets') & (dfs[0]['Total Employee Range'] > '50')]
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": filtered_df}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-07 08:55:16 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Country'] == 'US') & (dfs[0]['Market Segment'] == 'Capital Markets') & (dfs[0]['Total Employee Range'] > '50')]
+    return {'type': 'dataframe', 'value': filtered_df}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-07 08:55:16 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier  ...                                Company Description
+13         FTTT000141  ...  Chainalysis offers cryptocurrency investigatio...
+15         FTTT000151  ...  Cloud9 Technologies, now part of Symphony, is ...
+18         FTTT000231  ...  Digital Asset is building the platform and dev...
+21         FTTT000241  ...  Elliptic powers the intelligence that helps fi...
+36         FTTT000623  ...  TRM Labs is a blockchain intelligence company ...
+43         FTTT000851  ...  Alchemy is a developer platform that empowers ...
+52         FTTT000107  ...  PeerNova’s mission is to empower firms to make...
+248        FTTT000487  ...  QRails is an Earned Wage Access, Pay Card prov...
+352        FTTT000750  ...  CAPE Analytics uses deep learning and geospati...
+
+[9 rows x 12 columns]}
+2023-09-07 08:55:16 [INFO] Executed in: 16.562641143798828s
