@@ -8,37 +8,32 @@ app = Flask(__name__)
 
 def perform_operations(user_input):
     try:
+        # Authenticate with Google Sheets using the JSON key file
         gc = gspread.service_account(filename="/Users/marcinchmielnicki/panda/Proximagoogle.json")
         sheet_title = "THE FS TAM"
         
+        # Open the Google Sheet by title
         sheet = gc.open(sheet_title)
         worksheet = sheet.get_worksheet(0)
         values = worksheet.get_all_values()
 
+        # Create a DataFrame from the values
         df = pd.DataFrame(values[1:], columns=values[0])
         df = SmartDataframe(df, config={"llm": OpenAI(api_token="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")})
         
+        # Ask a question
         answer = df.chat(user_input)
         print("Type of answer:", type(answer))
         print("Content of answer:", answer)
-        
-        answer_list = []
-
+            
         if isinstance(answer, SmartDataframe):
-            answer_list = answer['Company'].tolist()
-        elif isinstance(answer, str):
-            answer_list = [item.strip() for item in answer.split(',')]
-        else:
-            answer_list = [answer]
+            answer = answer.to_dataframe()  # This is the hypothesized change
+        
+        # Other parts of the code
+        ...
 
-        return answer_list
-
-    except gspread.exceptions.APIError as e:
-        print(f"Google Sheets API error: {e}")
-        return [f"Google Sheets API error: {e}"]
     except Exception as e:
-        print(f"An error occurred: {str(e)}")
-        return [f"An error occurred: {str(e)}"]
+        return f"An error occurred: {str(e)}"
 
 @app.route('/')
 def index():
@@ -48,7 +43,11 @@ def index():
 def result():
     if request.method == 'POST':
         user_input = request.form['user_input']
-        answer_list = perform_operations(user_input)
-        return render_template('result.html', answer_list=answer_list)
-    return render_template('index.html')
+        answer = perform_operations(user_input)
 
+        # Render the result
+        ...
+
+    return render_template('index.html', result=None)
+
+if __name

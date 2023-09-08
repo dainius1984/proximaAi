@@ -2,9 +2,45 @@
 <html>
 <head>
     <title>Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #E8EEF1, #50667F);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #2A475A;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #3A587A;
+        }
+
+        ul {
+            background-color: #E8EEF1;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #7799A9;
+            max-width: 60%; /* Or any other preferred width */
+            list-style-type: none;
+        }
+
+        li {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+    </style>
 </head>
 <body>
     <h1>Result</h1>
-    <p>Answer: {{ answer }}</p>
+    <ul>
+        {% for item in answer_list %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

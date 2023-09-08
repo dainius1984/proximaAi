@@ -2,14 +2,63 @@
 <html>
 <head>
     <title>Google Sheets and OpenAI Integration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #E8EEF1, #50667F);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        header {
+            margin-bottom: 20px;
+        }
+
+        #user_input {
+            width: 250px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #7799A9;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        #user_input:focus {
+            border-color: #3A587A;
+        }
+
+        button {
+            background-color: #3A587A;
+            color: #E8EEF1;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #2A475A;
+        }
+
+        form {
+            display: flex;
+            align-items: center;
+        }
+
+    </style>
 </head>
 <body>
     <header>
-
         <h1>Google Sheets and OpenAI Integration</h1>
     </header>
     <form action="/result" method="POST">
-        <label for="user_input">Enter your question:</label>
+        <label for="user_input">Enter your question:  </label>
         <input type="text" name="user_input" id="user_input" required>
         <button type="submit">Ask Question</button>
     </form>
