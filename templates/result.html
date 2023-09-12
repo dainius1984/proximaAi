@@ -24,8 +24,9 @@
             padding: 20px;
             border-radius: 5px;
             border: 1px solid #7799A9;
-            max-width: 60%; /* Or any other preferred width */
+            max-width: 60%;
             list-style-type: none;
+            margin-top: 100px; /* Add this line to lower the list by 100px */
         }
 
         li {
@@ -36,11 +37,12 @@
     </style>
 </head>
 <body>
-    <h1>Result</h1>
-    <ul>
-        {% for item in answer_list %}
-            <li>{{ item }}</li>
+    <h1>Results:</h1>
+    <ul style="margin-top: -100px;">
+        {% for company in answer_list %}
+            <li style="border: 1px solid #7799A9; padding: 10px; border-radius: 5px;">{{ company }}</li>
         {% endfor %}
-    </ul>
+    </ul>    
+    <a href="/">Go Back</a>
 </body>
 </html>

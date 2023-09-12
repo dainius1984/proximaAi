@@ -16,7 +16,7 @@ def perform_operations(user_input):
         values = worksheet.get_all_values()
 
         df = pd.DataFrame(values[1:], columns=values[0])
-        df = SmartDataframe(df, config={"llm": OpenAI(api_token="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")})
+        df = SmartDataframe(df, config={"llm": OpenAI(api_token="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")})
         
         answer = df.chat(user_input)
         print("Type of answer:", type(answer))
@@ -52,3 +52,5 @@ def result():
         return render_template('result.html', answer_list=answer_list)
     return render_template('index.html')
 
+if __name__ == '__main__':
+    app.run(debug=True)

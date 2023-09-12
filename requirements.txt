@@ -95,7 +95,7 @@ trove-classifiers==2023.8.7
 typing_extensions==4.7.1
 urllib3==1.26.16
 virtualenv==20.24.4
-wcwidth==0.2.6
+wcwidth==0.2.6  
 Werkzeug==2.3.7
 xattr==0.10.1
 yarl==1.9.2

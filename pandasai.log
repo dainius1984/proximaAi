@@ -7283,3 +7283,1388 @@ result = analyze_data(dfs)
 2023-09-08 11:03:18 [INFO] Executed in: 12.602397918701172s
 2023-09-08 11:03:18 [INFO] 127.0.0.1 - - [08/Sep/2023 11:03:18] "POST /result HTTP/1.1" 200 -
 2023-09-08 11:03:37 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-11 06:26:38 [INFO] Question: Provide list of companies with employees > 100
+2023-09-11 06:26:38 [INFO] Running PandasAI with openai LLM...
+2023-09-11 06:26:38 [INFO] Prompt ID: 35b2b5f5-a564-4e55-a753-f7be5f8af266
+2023-09-11 06:26:46 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies with employees > 100
+    filtered_df = dfs[0][dfs[0]['Total Employee Range'] == '10001+']
+    
+    # Get the list of companies
+    companies = filtered_df['Company'].tolist()
+    
+    # Return the list of companies
+    return {"type": "text", "value": companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-11 06:26:46 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][dfs[0]['Total Employee Range'] == '10001+']
+    companies = filtered_df['Company'].tolist()
+    return {'type': 'text', 'value': companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-11 06:26:46 [INFO] Answer: {'type': 'text', 'value': ['Zero Hash', 'Trovata', 'ClickSWITCH (acquired by Q2)']}
+2023-09-11 06:26:46 [INFO] Executed in: 8.433425188064575s
+2023-09-11 06:26:46 [INFO] 127.0.0.1 - - [11/Sep/2023 06:26:46] "POST /result HTTP/1.1" 200 -
+2023-09-11 06:27:41 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-11 06:27:53 [INFO] Question: Provide companies in Chicago with employees > 50
+2023-09-11 06:27:53 [INFO] Running PandasAI with openai LLM...
+2023-09-11 06:27:53 [INFO] Prompt ID: 3ab7f5b5-222d-4af4-b1a2-149a75439512
+2023-09-11 06:28:03 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to get companies in Chicago with employees > 50
+    filtered_df = dfs[0][(dfs[0]['City'] == 'Chicago') & (dfs[0]['Total Employee Range'] > '50')]
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": filtered_df}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-11 06:28:03 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['City'] == 'Chicago') & (dfs[0]['Total Employee Range'] > '50')]
+    return {'type': 'dataframe', 'value': filtered_df}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-11 06:28:03 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier         Company  ... Total Employee Range                                Company Description
+76         FTTT000179  BloXroute Labs  ...               51-200  With over 120 clients worldwide, Flyer Financi...
+458        FTTT000125          Arturo  ...               51-200  Our mission at Pay.com is to create an all-inc...
+508        FTTT000486   Kin Insurance  ...               51-200  Credit where it's due. Built for financial ins...
+659        FTTT000138           Avant  ...               51-200  Founded in 1987, Croesus is a leading WealthTe...
+714        FTTT000126          Ascent  ...               51-200  Do you have 360-degree visibility of your clie...
+
+[5 rows x 12 columns]}
+2023-09-11 06:28:03 [INFO] Executed in: 9.22903823852539s
+2023-09-11 06:28:03 [INFO] 127.0.0.1 - - [11/Sep/2023 06:28:03] "POST /result HTTP/1.1" 200 -
+2023-09-11 06:28:17 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-11 06:28:22 [INFO] Question: Provide companies in Chicago with employees > 50
+2023-09-11 06:28:22 [INFO] Running PandasAI with openai LLM...
+2023-09-11 06:28:22 [INFO] Prompt ID: 71f861bc-002f-446d-b751-ef5213e197d7
+2023-09-11 06:28:31 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to get companies in Chicago with employees > 50
+    filtered_df = dfs[0][(dfs[0]['City'] == 'Chicago') & (dfs[0]['Total Employee Range'] > '50')]
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": filtered_df}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-11 06:28:31 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['City'] == 'Chicago') & (dfs[0]['Total Employee Range'] > '50')]
+    return {'type': 'dataframe', 'value': filtered_df}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-11 06:28:31 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier         Company  ... Total Employee Range                                Company Description
+76         FTTT000179  BloXroute Labs  ...               51-200  With over 120 clients worldwide, Flyer Financi...
+458        FTTT000125          Arturo  ...               51-200  Our mission at Pay.com is to create an all-inc...
+508        FTTT000486   Kin Insurance  ...               51-200  Credit where it's due. Built for financial ins...
+659        FTTT000138           Avant  ...               51-200  Founded in 1987, Croesus is a leading WealthTe...
+714        FTTT000126          Ascent  ...               51-200  Do you have 360-degree visibility of your clie...
+
+[5 rows x 12 columns]}
+2023-09-11 06:28:31 [INFO] Executed in: 8.369242668151855s
+2023-09-11 06:28:31 [INFO] 127.0.0.1 - - [11/Sep/2023 06:28:31] "POST /result HTTP/1.1" 200 -
+2023-09-11 06:28:58 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-11 06:29:06 [INFO] Question: Provide companies in Chicago with employees > 50
+2023-09-11 06:29:06 [INFO] Running PandasAI with openai LLM...
+2023-09-11 06:29:06 [INFO] Prompt ID: e1ac5d96-eff9-432a-9197-6b41de147614
+2023-09-11 06:29:15 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies in Chicago with employees > 50
+    df = dfs[0]
+    filtered_df = df[(df['City'] == 'Chicago') & (df['Total Employee Range'] > '50')]
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": filtered_df}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-11 06:29:15 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0]
+    filtered_df = df[(df['City'] == 'Chicago') & (df['Total Employee Range'] > '50')]
+    return {'type': 'dataframe', 'value': filtered_df}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-11 06:29:15 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier         Company  ... Total Employee Range                                Company Description
+76         FTTT000179  BloXroute Labs  ...               51-200  With over 120 clients worldwide, Flyer Financi...
+458        FTTT000125          Arturo  ...               51-200  Our mission at Pay.com is to create an all-inc...
+508        FTTT000486   Kin Insurance  ...               51-200  Credit where it's due. Built for financial ins...
+659        FTTT000138           Avant  ...               51-200  Founded in 1987, Croesus is a leading WealthTe...
+714        FTTT000126          Ascent  ...               51-200  Do you have 360-degree visibility of your clie...
+
+[5 rows x 12 columns]}
+2023-09-11 06:29:15 [INFO] Executed in: 8.566159009933472s
+2023-09-11 06:29:15 [INFO] 127.0.0.1 - - [11/Sep/2023 06:29:15] "POST /result HTTP/1.1" 200 -
+2023-09-11 06:29:37 [INFO] Question: Provide companies in Chicago with employees > 50
+2023-09-11 06:29:37 [INFO] Running PandasAI with openai LLM...
+2023-09-11 06:29:37 [INFO] Prompt ID: 5e9a1e23-777c-4664-87f0-94fdee280460
+2023-09-11 06:29:45 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies in Chicago with employees > 50
+    df = dfs[0]
+    filtered_df = df[(df['City'] == 'Chicago') & (df['Total Employee Range'] > '50')]
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": filtered_df}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-11 06:29:45 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0]
+    filtered_df = df[(df['City'] == 'Chicago') & (df['Total Employee Range'] > '50')]
+    return {'type': 'dataframe', 'value': filtered_df}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-11 06:29:45 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier         Company  ... Total Employee Range                                Company Description
+76         FTTT000179  BloXroute Labs  ...               51-200  With over 120 clients worldwide, Flyer Financi...
+458        FTTT000125          Arturo  ...               51-200  Our mission at Pay.com is to create an all-inc...
+508        FTTT000486   Kin Insurance  ...               51-200  Credit where it's due. Built for financial ins...
+659        FTTT000138           Avant  ...               51-200  Founded in 1987, Croesus is a leading WealthTe...
+714        FTTT000126          Ascent  ...               51-200  Do you have 360-degree visibility of your clie...
+
+[5 rows x 12 columns]}
+2023-09-11 06:29:45 [INFO] Executed in: 8.328311681747437s
+2023-09-11 06:29:45 [INFO] 127.0.0.1 - - [11/Sep/2023 06:29:45] "POST /result HTTP/1.1" 200 -
+2023-09-11 06:30:18 [INFO] Question: Provide Companies in Capital Markets
+2023-09-11 06:30:18 [INFO] Running PandasAI with openai LLM...
+2023-09-11 06:30:18 [INFO] Prompt ID: 643f49ea-dbda-495e-bfc0-a335b8bf855a
+2023-09-11 06:30:28 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to get companies in Capital Markets
+    capital_markets_companies = dfs[0][dfs[0]['Industry'] == 'Capital Markets']['Company']
+    
+    # Return the result as a dataframe
+    return {"type": "dataframe", "value": capital_markets_companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-11 06:30:28 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    capital_markets_companies = dfs[0][dfs[0]['Industry'] == 'Capital Markets']['Company']
+    return {'type': 'dataframe', 'value': capital_markets_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-11 06:30:28 [INFO] Answer: {'type': 'dataframe', 'value': Series([], Name: Company, dtype: object)}
+2023-09-11 06:30:28 [INFO] Executed in: 9.591140270233154s
+2023-09-11 06:30:28 [INFO] 127.0.0.1 - - [11/Sep/2023 06:30:28] "POST /result HTTP/1.1" 200 -
+2023-09-11 06:31:26 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-11 06:31:38 [INFO] Question: Provide Companies in Capital Markets
+2023-09-11 06:31:38 [INFO] Running PandasAI with openai LLM...
+2023-09-11 06:31:38 [INFO] Prompt ID: 8723fdb7-f577-4aae-89ea-c06986cf45b3
+2023-09-11 06:31:47 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to get companies in Capital Markets
+    capital_markets_companies = dfs[0][dfs[0]['Industry'] == 'Capital Markets']['Company']
+    
+    # Return the result as a dataframe
+    return {"type": "dataframe", "value": capital_markets_companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-11 06:31:47 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    capital_markets_companies = dfs[0][dfs[0]['Industry'] == 'Capital Markets']['Company']
+    return {'type': 'dataframe', 'value': capital_markets_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-11 06:31:47 [INFO] Answer: {'type': 'dataframe', 'value': Series([], Name: Company, dtype: object)}
+2023-09-11 06:31:47 [INFO] Executed in: 9.317525148391724s
+2023-09-11 06:31:47 [INFO] 127.0.0.1 - - [11/Sep/2023 06:31:47] "POST /result HTTP/1.1" 200 -
+2023-09-11 06:31:53 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-11 06:31:58 [INFO] Question: Provide Companies in Capital Markets
+2023-09-11 06:31:58 [INFO] Running PandasAI with openai LLM...
+2023-09-11 06:31:58 [INFO] Prompt ID: 3f3fe81d-daf4-48f3-8a98-5e4d1a71d405
+2023-09-11 06:32:07 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to get companies in Capital Markets
+    capital_markets_companies = dfs[0][dfs[0]['Industry'] == 'Capital Markets']['Company']
+    
+    # Return the result as a dataframe
+    return {"type": "dataframe", "value": capital_markets_companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-11 06:32:07 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    capital_markets_companies = dfs[0][dfs[0]['Industry'] == 'Capital Markets']['Company']
+    return {'type': 'dataframe', 'value': capital_markets_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-11 06:32:07 [INFO] Answer: {'type': 'dataframe', 'value': Series([], Name: Company, dtype: object)}
+2023-09-11 06:32:07 [INFO] Executed in: 9.221508026123047s
+2023-09-11 06:32:07 [INFO] 127.0.0.1 - - [11/Sep/2023 06:32:07] "POST /result HTTP/1.1" 200 -
+2023-09-11 06:33:14 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-11 06:33:27 [INFO] Question: Provide Companies in New York
+2023-09-11 06:33:27 [INFO] Running PandasAI with openai LLM...
+2023-09-11 06:33:27 [INFO] Prompt ID: ac61d439-b6a6-416d-8bd1-e49fa3639839
+2023-09-11 06:33:38 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the companies in New York
+    df = dfs[0]
+    companies_in_ny = df[df['State'] == 'NY']['Company']
+    
+    # Return the result as a dataframe
+    return {"type": "dataframe", "value": companies_in_ny}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-11 06:33:38 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0]
+    companies_in_ny = df[df['State'] == 'NY']['Company']
+    return {'type': 'dataframe', 'value': companies_in_ny}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-11 06:33:38 [INFO] Answer: {'type': 'dataframe', 'value': 0      Diligence Vault
+2                 IMTC
+11          AlphaPoint
+13               Axoni
+16           Capitolis
+            ...       
+919               CAIS
+932            Masttro
+940               Vise
+955            Covercy
+973       Forward Lane
+Name: Company, Length: 103, dtype: object}
+2023-09-11 06:33:38 [INFO] Executed in: 10.708148002624512s
+2023-09-11 06:33:38 [INFO] 127.0.0.1 - - [11/Sep/2023 06:33:38] "POST /result HTTP/1.1" 200 -
+2023-09-11 06:34:01 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-11 06:34:07 [INFO] Question: Provide Companies in New York
+2023-09-11 06:34:07 [INFO] Running PandasAI with openai LLM...
+2023-09-11 06:34:07 [INFO] Prompt ID: 5368b86b-5f96-4d6a-a36d-750a45494e4e
+2023-09-11 06:34:16 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the companies in New York
+    companies_in_ny = dfs[0][dfs[0]['State'] == 'New York']['Company']
+    
+    # Return the result as a dataframe
+    return {"type": "dataframe", "value": companies_in_ny}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-11 06:34:16 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    companies_in_ny = dfs[0][dfs[0]['State'] == 'New York']['Company']
+    return {'type': 'dataframe', 'value': companies_in_ny}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-11 06:34:16 [INFO] Answer: {'type': 'dataframe', 'value': 431    Orum.io
+684      Array
+Name: Company, dtype: object}
+2023-09-11 06:34:16 [INFO] Executed in: 9.000861883163452s
+2023-09-11 06:34:16 [INFO] 127.0.0.1 - - [11/Sep/2023 06:34:16] "POST /result HTTP/1.1" 200 -
+2023-09-11 06:34:57 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-11 06:35:05 [INFO] Question: Provide Companies in New York
+2023-09-11 06:35:05 [INFO] Running PandasAI with openai LLM...
+2023-09-11 06:35:05 [INFO] Prompt ID: 47682540-101f-4f91-acea-53c9215e65d1
+2023-09-11 06:35:15 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the companies in New York
+    companies_in_ny = dfs[0][dfs[0]['State'] == 'NY']['Company']
+    
+    # Return the result as a dataframe
+    return {"type": "dataframe", "value": companies_in_ny}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-11 06:35:15 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    companies_in_ny = dfs[0][dfs[0]['State'] == 'NY']['Company']
+    return {'type': 'dataframe', 'value': companies_in_ny}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-11 06:35:15 [INFO] Answer: {'type': 'dataframe', 'value': 0      Diligence Vault
+2                 IMTC
+11          AlphaPoint
+13               Axoni
+16           Capitolis
+            ...       
+919               CAIS
+932            Masttro
+940               Vise
+955            Covercy
+973       Forward Lane
+Name: Company, Length: 103, dtype: object}
+2023-09-11 06:35:15 [INFO] Executed in: 9.954050064086914s
+2023-09-11 06:35:15 [INFO] 127.0.0.1 - - [11/Sep/2023 06:35:15] "POST /result HTTP/1.1" 200 -
+2023-09-11 06:35:20 [INFO] Question: Provide Companies in New York
+2023-09-11 06:35:20 [INFO] Running PandasAI with openai LLM...
+2023-09-11 06:35:20 [INFO] Prompt ID: 64226e59-14c6-4675-aa80-639f94e4936d
+2023-09-11 06:35:29 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the companies in New York
+    companies_in_ny = dfs[0][dfs[0]['State'] == 'New York']['Company']
+    
+    # Return the result as a dataframe
+    return {"type": "dataframe", "value": companies_in_ny}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-11 06:35:29 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    companies_in_ny = dfs[0][dfs[0]['State'] == 'New York']['Company']
+    return {'type': 'dataframe', 'value': companies_in_ny}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-11 06:35:29 [INFO] Answer: {'type': 'dataframe', 'value': 431    Orum.io
+684      Array
+Name: Company, dtype: object}
+2023-09-11 06:35:29 [INFO] Executed in: 8.874865055084229s
+2023-09-11 06:35:29 [INFO] 127.0.0.1 - - [11/Sep/2023 06:35:29] "POST /result HTTP/1.1" 200 -
+2023-09-11 06:36:30 [INFO] Question: Provide Companies in New York
+2023-09-11 06:36:30 [INFO] Running PandasAI with openai LLM...
+2023-09-11 06:36:30 [INFO] Prompt ID: 45d39cca-858d-42a7-8d2c-595a009a483d
+2023-09-11 06:36:39 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies in New York
+    companies_in_ny = dfs[0][dfs[0]['State'] == 'New York']['Company']
+    
+    # Return the result as a dataframe
+    return {"type": "dataframe", "value": companies_in_ny}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-11 06:36:39 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    companies_in_ny = dfs[0][dfs[0]['State'] == 'New York']['Company']
+    return {'type': 'dataframe', 'value': companies_in_ny}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-11 06:36:39 [INFO] Answer: {'type': 'dataframe', 'value': 431    Orum.io
+684      Array
+Name: Company, dtype: object}
+2023-09-11 06:36:39 [INFO] Executed in: 9.101513862609863s
+2023-09-11 06:36:39 [INFO] 127.0.0.1 - - [11/Sep/2023 06:36:39] "POST /result HTTP/1.1" 200 -
+2023-09-11 06:37:26 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-12 08:30:00 [INFO] Question: Provide list of companies with employees > 100
+2023-09-12 08:30:00 [INFO] Running PandasAI with openai LLM...
+2023-09-12 08:30:00 [INFO] Prompt ID: 2abb6819-149f-48e6-b58d-9393e536f432
+2023-09-12 08:30:13 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies with employees > 100
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    
+    # Get the list of company names
+    company_list = filtered_companies['Company'].tolist()
+    
+    # Return the result as a text
+    result = {
+        "type": "text",
+        "value": company_list
+    }
+    
+    return result
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 08:30:13 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    company_list = filtered_companies['Company'].tolist()
+    result = {'type': 'text', 'value': company_list}
+    return result
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 08:30:13 [INFO] Answer: {'type': 'text', 'value': ['Diligence Vault', 'Credora', 'IMTC', 'AgenaTrader', 'FundSense', 'Amaka', 'Aiviq', 'AirFund (One Wealth Place)', 'FloQast', 'Tipalti', 'Algomi', 'AlphaPoint', 'Assure Hedge', 'Axoni', 'Sunbit', 'Baton Systems', 'Capitolis', 'Chainalysis', 'Circle', 'Debitum Network', 'Finomial', 'Cloud9 (part of Symphony)', 'Copper', 'Curv (acquired by PayPal)', 'Digital Asset', 'dv01', 'Ebury', 'Elliptic', 'Fireblocks', 'Genesis Global', 'Genuine Impact', 'iCapital Network', 'Kooltra', 'Metaco SA', 'Numerix', 'OpenGamma', 'Options Technology', 'R3', 'Securrency', 'T-REX', 'Talos', 'TransFICC', 'TRM Labs', 'Trumid', 'Brassica', 'Shannon.AI', 'martini.ai', 'Wavenure', 'Wequity', 'Archblock', 'Alchemy', 'Algodynamix', 'Anchorage Digital', 'Arcesium', 'Atomic', 'Forge', 'Canalyst', 'ConsenSys', 'interop.io', 'Delio', 'Finalis', 'Genesis Global Technology', 'PeerNova Inc', 'AAAccell', 'Alkymi', 'Gresham Tech', 'DuCo', 'Atominvest', 'Behavox', 'Kontist', 'Monese', 'FundApps', 'SymphonyAI (AyasdiAI)', 'Open Fin', 'BitGo', 'Blockdaemon', 'BloXroute Labs', 'Zero Hash', 'Chime', 'Baanx', 'Accrete', 'Coinfirm', 'Zodia Custody', 'Halo Investing', 'Beacon Platform', 'BITA', 'bondIT', 'Etops AG', 'FalconX', 'Flyer Finance Technologies', 'Refinitiv', 'AlphaSense', 'SteelEye', 'Symphony', 'CipherTrace', 'CloudMargin', 'Alt 5 Sigma', 'GIEOM', 'Marco Polo Network (TradeIX)', 'Silent Eight', 'Fnality International', 'Rimes Technologies', 'Sharegain', 'Adhara', 'Blockchain.com', 'Kraken', 'NeoXam', 'Arachnys (Acquired AML Right Source)', 'Bolero International', 'Arch', 'Canoe', 'elyps', 'KuCoin', 'Smart Communications', 'Spendflo', 'Navos Technologies', 'DailyPay', 'Enable', 'Enkash', 'EverC', 'Extend', 'Ezetap by Razorpay', 'Fenbeitong', 'Fidel API', 'Finagraph', 'Lulalend', 'Finix', 'Forter', 'Harbr', 'Cyberhaven', 'Moxo', 'Anaplan', 'Avidxchange', 'Balance', 'Dataminr', 'Flywire', 'HyperProof', 'Hyperscience', 'Kyriba', 'Level', 'Melio', 'Mesh', 'PayStand', 'Privitar', 'Pushpay', 'Signifyd', 'SpotOn', 'Tipalti', 'Aid:Tech', 'Alt Thirty Six', 'Trantor', 'Beyond Identity', 'Billtrust', 'Bricknode', 'Cacheflow', 'Cashfree', 'Citcon', 'Coda Payments', 'Finaro (nee Credorax)', 'Darwinbox', 'Datameer', 'DataRobot', 'Decentriq', 'Dext (Receipt Bank)', 'TIS', 'Eigen Technologies', 'Mollie', 'Nsure.AI', 'PAAY', 'Payrix', 'Persona', 'Pleo', 'Square', 'Volt', 'Wagestream', 'Silverfin', 'BharatPe', 'BKN301', 'Clip', 'Checkout', 'Cross River Bank', 'Dwolla', 'Modulr', 'NIUM', 'Stripe', 'EBANX', 'Payhawk', 'Spreedly', 'SumUp', 'TerraPay', 'Zoop', 'ZTL Payment Solution', 'Vonage (Nexmo)', 'Kong Inc.', 'MessageBird', 'Blackline (Rimilia)', 'Clickatell', 'Thematic', 'Gemini', 'Bango', 'Kash', 'Bucket Technologies', 'CoinDCX', 'Incognia', 'BetterCloud', 'Quantexa', 'ChargeBee Technologies', 'Anyfin', 'Airwallex', 'Spendesk', 'Belong Home', 'Cambridge Mobile Telematics', 'Cedar', 'Celero Commerce', 'Centrifuge', 'Clearsight Solutions', 'Cowbell Cyber', 'CRED', 'EASYCRÉDITO', 'Ergon Infomatik', 'Eudata', 'EValue', 'Faraday', 'GLMX - Access, Automate, Analyze', 'Hibob', 'HighRadius', 'HubX', 'Hydrogen', 'HYPR', 'Ignition Advice', 'Immuta', 'InAuth', 'InfoTrie', 'Innovest Systems', 'Innoviti Payment Solutions', 'Verimatrix (nee Inside Secure)', 'Integral Development Corp.', 'Integration Alpha', 'Intelligent Systems Corp', 'Jifiti', 'JKL Web Technologies', 'Juni', 'Justt', 'Khatabook', 'LendInvest', 'Kidbrooke', 'Kingfield Corporation', 'Koho Financial', 'Kompliant', 'Koosmik', 'Kueski', 'LCF Global Partners (acquied by TeamApt)', 'Binance', 'Ledger', 'Ledgex', 'C6 Bank', 'Banco Agibank', 'Ledgy', 'Lendflow', 'LendingCrowd', 'Leveris', 'Apply Financial (Acquired LexisNexis)', 'LightPoint Financial Technology', 'Tonik Bank', 'Bitfinex', 'Limonetik (Acquired Thunes)', 'Liquefy', 'Lithic', 'Scalable Capital', 'LOQR', 'Lukka Inc', 'Lumiant', 'M2P Fintech', 'MarketFactory', 'Monzo', 'Marketwolfe (FnO)', 'MFS Africa', 'Miro', 'Mission Lane', 'Modulus Global', 'Mondu', 'Monetha', 'MoneyOnMobile', 'MOS', 'Mosaic Smart Data', 'Movius', 'MyVest (Acquired TIAA)', 'Nansen', 'Narmi, Inc', 'Affirm', 'Nayya', 'Wayflyer', 'Nova Credit', 'Numerated', 'OakNorth Analytical Intelligence', 'ODX', 'Velocity Global', 'Onegini (acquired Thales)', 'Opay', 'OpenInvest (Acquired JP Morgan)', 'Ophelos', 'Owlin', 'Panaseer', 'Parafin', 'PayKey', 'Paymentez', 'Payrails', 'PayRange', 'Capdesk', 'Paytweak', 'Pendo Systems', 'Performline', 'Perspectium', 'Petal', 'Jeeves', 'Plenitude', 'Point Digital Finance', 'Pollinate', 'Prepaid2Cash', 'Prime Trust', 'Propelld', 'Pyze', 'Current', 'QRails', 'QuintoAndar', 'Raise Partner', 'Ramp', 'Rapyd', 'Razorpay', 'Regtech Associates', 'Republic', 'Rev Worldwide', 'RightIndem', "RiskFirst (Acquired Moody's)", 'Riskified', 'Newline (nee Rize) (Acquired Fifth Third)', 'Scanovate', 'Secureframe', 'SecurityScorecard', 'Sensibill (Acquired Q2)', 'Sentifi', 'Settle (Auka)', 'Shaype', 'Shift Technology', 'Silverflow', 'Simetrik, Inc', 'Simon Data', 'SirionLabs', 'Built Technologies', 'Smarsh', 'PensionBee', 'Socure', 'Spark Systems', 'SparkCognition', 'Spycloud', 'StarkWare', 'Streak', 'SuiteBox', 'Sumsub', 'Super Payments', 'Tactive', 'Tala', 'TenX', 'DirectID (nee The ID Co)', 'Theta Lake', 'Tier1 Financial Solutions (Acquired SS&C)', 'Tilled', 'Tokeny', 'Total Expert', 'Tractable', 'Tracxn', 'Tradesocio', 'Clearco', 'Transcard', 'Traxpay', 'Tribal Credit', 'AlphaSwap', 'Trovata', 'Trove', 'Truework', 'Two Sigma', 'Uala', 'Unico', 'Uplift', 'Ushur Inc', 'Utrust', 'Utrust (xMoney)', 'Valon', 'Venminder', 'Veriday', 'Verrency', 'Verse Technologies Inc', 'Vizolution', 'Voxsmart', 'Voyager Innovations', 'WeLab', 'WireBarley', 'Wyden (AlgoTrader)', 'Elevate', 'xbAV', 'Yokoy', 'YouPass', 'Billie', 'YoYo Wallet', 'Yubi', 'Moneymour (acquired by Klarna)', 'Zaam', 'Zepto Payments', 'Zest AI', 'Green Dot', 'banyan', 'BVNK', 'Carta', 'Deliverect', 'GoCardless', 'Symmetrical.ai', 'Lemon Way', 'Novopayment', 'Starling Bank', 'Paytrix', 'YouTrip', 'Pilot.com', 'Zilch', 'Upgrade', 'Pine Labs', 'Teya', 'Sila', 'Trezeo (Acquired Monese)', 'Orum.io', 'Xendit', 'Qonto', 'Matchmove Pay', 'Konfio', 'Datavisor', 'Bits Technology', 'Zopa', 'Iwoca', 'Alpaca', 'Apex Fintech Solutions', 'Tradier', 'Velexa', 'DriveWealth', 'Lemon.markets', 'Seccl', 'Upvest', 'Transfermate', 'Broker Buddha', 'Cape Analytics', 'Easysend', 'Friss', '360f', 'Worksmart', 'At-Bay', 'AKUR8', 'Arturo', 'Papaya Global', 'bolttech', 'Guideline', 'Guidewire', 'Pipe', 'LIQUiDITY Group', 'Kasko', 'Zipari', 'Omna Search', 'Creditas', 'FA Solutions', 'Fluidly (Acquired OakNorth)', 'Fundbox', 'Caribou', 'Funding Circle', 'Kreditech', 'CreditEnable', 'Behalf', 'Kala', 'Kabbage', 'Nano (nee Verteva)', 'Trust Science', 'Trade Ledger', 'Divido', 'Payable', 'Neuro-ID', 'eOriginal (Acquired Wolters Kluwer)', 'Curve', 'Ocrolus', 'Appriza Pay', 'Branch', 'PolicyGenius', 'Chargeback Gurus', 'Zego', 'The Zebra', 'CloudWalk', 'Embroker', 'ManyPets', 'CoverWallet', 'Kin Insurance', 'Cybertonica', 'Enigma Technologies', 'Digit Insurance', 'Getsafe', 'Next Insurance', 'Luko (Coya)', 'Hummingbird', 'Zivver', 'Conpend', 'Belleron', 'Icon Solutions', 'Volante Technologies', 'Squirro', 'Trade Republic', 'Digital Reasoning (Smarsh)', 'Augmentum Fintech', 'ClauseMatch', 'FinzlyOS', 'Anodot', 'CDLK', 'Constella Intelligence', 'FISPAN', 'BlueCode', 'CredoLab', 'JUMO', 'Trifacta (Acquired Alteryx)', 'Daon', 'OpenLegacy', 'OakNorth Bank', 'Alma', 'Lendable', 'Atome', 'Ladder', 'Ethos', 'Antelop Solutions (Acquired Entrust)', 'Apto Payments', 'ClickSWITCH (acquired by Q2)', 'Snapdocs', 'Happy Money', 'Mambu', 'Codat', 'Crowdz', 'Entersekt', 'Mantl', 'Minna Technologies', 'Ohpen', 'Pinwheel', 'Sonect', 'Tookitaki', 'Zafin', 'Callsign Inc', 'Uniken', 'Avoka (Acquired Temenos)', 'Kyckr Limited', 'Alviere', 'Moov', 'PPRO', 'Sardine', 'Pagaya', 'Unit', 'Bond', 'CardAssets', 'Cardless', 'Cardworks', 'Cascade Fintech', 'Revolut', 'N26', 'CoreCard', 'Varo Bank', 'Klar', 'Corserv', 'FIS', 'Galileo', 'GPS (Global Processing Services)', 'HUBUC', 'i2c', 'Increase', 'MasterCard Processing', 'Pay.com', 'Payfare', 'Billpocket', 'Q2/Helix', 'Qolo', 'Chillr', 'Railsbank', 'Satispay', 'Rise', 'Shazam', 'SynapseFi', 'Synctera', 'Tallied', 'TCI', 'TCM', 'TreasuryPrime', 'Stocard', 'TSYS', 'Visa DPS', 'XTMinc.', 'Apto', 'Tabby', 'Plum Fintech', 'Highnote', 'Chipper Cash', 'Paga', 'Wise (TransferWise)', 'Toss', 'OFX', 'FiVerity', 'BioCatch', 'Payveris (Acquired Paymentus)', 'Solid', 'Swap', 'Aware, Inc', 'Kore.ai', 'Envizage', 'Arkose Labs', 'Flux (Closed)', 'IDnow', 'IDnow (AriadNEXT)', 'Buckzy Payments', 'Earnix', 'Spitch', 'Active.ai', 'Glia', 'EFS Technology (acquired Formpipe)', 'Avant', 'Blend', 'Roostify', 'Turnkey Lender', 'ZEPZ', 'NewBanking', 'CreditVidya', 'Klarna', 'LoanPro', 'Facephi', 'CognitiveScale', 'AU10TIX', 'Deserve', 'Cerebreon', 'Lydia', 'Cloudcase Software Solutions', 'Eltropy', 'Pagaya Technologies', 'Numeral', 'Pulse (Aire)', 'Finova (DPR Limited)', 'LenddoEFL', 'PrecisionLender (Acquired Q2)', 'Abrigo', 'Clerkie', 'Array', 'Heron Data', 'FinGoal', 'Ntropy Network', 'Deel', 'Yeahka', 'Spade', 'MX', 'Yodlee', 'Teller', 'Pave', 'Trustly', 'iDENTIFY', 'QFPay', 'Meld', 'Agreement Express', 'IDology', 'Ekata', 'Instnt', 'Deeplabs', 'Unit21', 'NuDetect', 'Resistant AI', 'MinervaAI', 'Cognito', 'Cable', 'Sandbar', 'Taktile', 'nCino, Inc.', 'Ascent', 'Mambu', 'Backbase', 'Euronovate', 'Check', 'PayFit', 'Gusto', 'Pismo', 'Qualco', 'Flinks', 'Recordsure', 'BPC Technologies', 'Kevin', 'Zeta', 'Wealthfront', 'Marqeta', 'Oscilar', 'Fintech Automation', 'DreamQuark', 'Meniga', 'Strands', 'UnBlu', 'Paxos', 'BUSINESSNEXT', 'AppZen', 'BitSight', 'Doxim', 'Alkami Technology', 'Amount', 'Harvest Savings & Wealth Technologies', 'Raisin', 'Earnix', 'ERI Bancaire', 'Profile Software', 'Fiserv', 'Previse', 'Ripple', 'NorthRow', 'Very Good Security', 'Moonfare', 'Know Your Customer', 'Prove']}
+2023-09-12 08:30:13 [INFO] Executed in: 13.580863952636719s
+2023-09-12 08:30:13 [INFO] 127.0.0.1 - - [12/Sep/2023 08:30:13] "POST /result HTTP/1.1" 200 -
+2023-09-12 08:33:05 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-12 08:35:13 [INFO] Question: Provide list of companies with employees > 100
+2023-09-12 08:35:13 [INFO] Running PandasAI with openai LLM...
+2023-09-12 08:35:13 [INFO] Prompt ID: 680d6dd2-469a-40c2-a967-80c9239c5514
+2023-09-12 08:35:26 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies with employees > 100
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    
+    # Get the list of company names
+    company_names = filtered_companies['Company'].tolist()
+    
+    # Return the list of companies as output
+    return {"type": "text", "value": company_names}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 08:35:26 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    company_names = filtered_companies['Company'].tolist()
+    return {'type': 'text', 'value': company_names}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 08:35:26 [INFO] Answer: {'type': 'text', 'value': ['Diligence Vault', 'Credora', 'IMTC', 'AgenaTrader', 'FundSense', 'Amaka', 'Aiviq', 'AirFund (One Wealth Place)', 'FloQast', 'Tipalti', 'Algomi', 'AlphaPoint', 'Assure Hedge', 'Axoni', 'Sunbit', 'Baton Systems', 'Capitolis', 'Chainalysis', 'Circle', 'Debitum Network', 'Finomial', 'Cloud9 (part of Symphony)', 'Copper', 'Curv (acquired by PayPal)', 'Digital Asset', 'dv01', 'Ebury', 'Elliptic', 'Fireblocks', 'Genesis Global', 'Genuine Impact', 'iCapital Network', 'Kooltra', 'Metaco SA', 'Numerix', 'OpenGamma', 'Options Technology', 'R3', 'Securrency', 'T-REX', 'Talos', 'TransFICC', 'TRM Labs', 'Trumid', 'Brassica', 'Shannon.AI', 'martini.ai', 'Wavenure', 'Wequity', 'Archblock', 'Alchemy', 'Algodynamix', 'Anchorage Digital', 'Arcesium', 'Atomic', 'Forge', 'Canalyst', 'ConsenSys', 'interop.io', 'Delio', 'Finalis', 'Genesis Global Technology', 'PeerNova Inc', 'AAAccell', 'Alkymi', 'Gresham Tech', 'DuCo', 'Atominvest', 'Behavox', 'Kontist', 'Monese', 'FundApps', 'SymphonyAI (AyasdiAI)', 'Open Fin', 'BitGo', 'Blockdaemon', 'BloXroute Labs', 'Zero Hash', 'Chime', 'Baanx', 'Accrete', 'Coinfirm', 'Zodia Custody', 'Halo Investing', 'Beacon Platform', 'BITA', 'bondIT', 'Etops AG', 'FalconX', 'Flyer Finance Technologies', 'Refinitiv', 'AlphaSense', 'SteelEye', 'Symphony', 'CipherTrace', 'CloudMargin', 'Alt 5 Sigma', 'GIEOM', 'Marco Polo Network (TradeIX)', 'Silent Eight', 'Fnality International', 'Rimes Technologies', 'Sharegain', 'Adhara', 'Blockchain.com', 'Kraken', 'NeoXam', 'Arachnys (Acquired AML Right Source)', 'Bolero International', 'Arch', 'Canoe', 'elyps', 'KuCoin', 'Smart Communications', 'Spendflo', 'Navos Technologies', 'DailyPay', 'Enable', 'Enkash', 'EverC', 'Extend', 'Ezetap by Razorpay', 'Fenbeitong', 'Fidel API', 'Finagraph', 'Lulalend', 'Finix', 'Forter', 'Harbr', 'Cyberhaven', 'Moxo', 'Anaplan', 'Avidxchange', 'Balance', 'Dataminr', 'Flywire', 'HyperProof', 'Hyperscience', 'Kyriba', 'Level', 'Melio', 'Mesh', 'PayStand', 'Privitar', 'Pushpay', 'Signifyd', 'SpotOn', 'Tipalti', 'Aid:Tech', 'Alt Thirty Six', 'Trantor', 'Beyond Identity', 'Billtrust', 'Bricknode', 'Cacheflow', 'Cashfree', 'Citcon', 'Coda Payments', 'Finaro (nee Credorax)', 'Darwinbox', 'Datameer', 'DataRobot', 'Decentriq', 'Dext (Receipt Bank)', 'TIS', 'Eigen Technologies', 'Mollie', 'Nsure.AI', 'PAAY', 'Payrix', 'Persona', 'Pleo', 'Square', 'Volt', 'Wagestream', 'Silverfin', 'BharatPe', 'BKN301', 'Clip', 'Checkout', 'Cross River Bank', 'Dwolla', 'Modulr', 'NIUM', 'Stripe', 'EBANX', 'Payhawk', 'Spreedly', 'SumUp', 'TerraPay', 'Zoop', 'ZTL Payment Solution', 'Vonage (Nexmo)', 'Kong Inc.', 'MessageBird', 'Blackline (Rimilia)', 'Clickatell', 'Thematic', 'Gemini', 'Bango', 'Kash', 'Bucket Technologies', 'CoinDCX', 'Incognia', 'BetterCloud', 'Quantexa', 'ChargeBee Technologies', 'Anyfin', 'Airwallex', 'Spendesk', 'Belong Home', 'Cambridge Mobile Telematics', 'Cedar', 'Celero Commerce', 'Centrifuge', 'Clearsight Solutions', 'Cowbell Cyber', 'CRED', 'EASYCRÉDITO', 'Ergon Infomatik', 'Eudata', 'EValue', 'Faraday', 'GLMX - Access, Automate, Analyze', 'Hibob', 'HighRadius', 'HubX', 'Hydrogen', 'HYPR', 'Ignition Advice', 'Immuta', 'InAuth', 'InfoTrie', 'Innovest Systems', 'Innoviti Payment Solutions', 'Verimatrix (nee Inside Secure)', 'Integral Development Corp.', 'Integration Alpha', 'Intelligent Systems Corp', 'Jifiti', 'JKL Web Technologies', 'Juni', 'Justt', 'Khatabook', 'LendInvest', 'Kidbrooke', 'Kingfield Corporation', 'Koho Financial', 'Kompliant', 'Koosmik', 'Kueski', 'LCF Global Partners (acquied by TeamApt)', 'Binance', 'Ledger', 'Ledgex', 'C6 Bank', 'Banco Agibank', 'Ledgy', 'Lendflow', 'LendingCrowd', 'Leveris', 'Apply Financial (Acquired LexisNexis)', 'LightPoint Financial Technology', 'Tonik Bank', 'Bitfinex', 'Limonetik (Acquired Thunes)', 'Liquefy', 'Lithic', 'Scalable Capital', 'LOQR', 'Lukka Inc', 'Lumiant', 'M2P Fintech', 'MarketFactory', 'Monzo', 'Marketwolfe (FnO)', 'MFS Africa', 'Miro', 'Mission Lane', 'Modulus Global', 'Mondu', 'Monetha', 'MoneyOnMobile', 'MOS', 'Mosaic Smart Data', 'Movius', 'MyVest (Acquired TIAA)', 'Nansen', 'Narmi, Inc', 'Affirm', 'Nayya', 'Wayflyer', 'Nova Credit', 'Numerated', 'OakNorth Analytical Intelligence', 'ODX', 'Velocity Global', 'Onegini (acquired Thales)', 'Opay', 'OpenInvest (Acquired JP Morgan)', 'Ophelos', 'Owlin', 'Panaseer', 'Parafin', 'PayKey', 'Paymentez', 'Payrails', 'PayRange', 'Capdesk', 'Paytweak', 'Pendo Systems', 'Performline', 'Perspectium', 'Petal', 'Jeeves', 'Plenitude', 'Point Digital Finance', 'Pollinate', 'Prepaid2Cash', 'Prime Trust', 'Propelld', 'Pyze', 'Current', 'QRails', 'QuintoAndar', 'Raise Partner', 'Ramp', 'Rapyd', 'Razorpay', 'Regtech Associates', 'Republic', 'Rev Worldwide', 'RightIndem', "RiskFirst (Acquired Moody's)", 'Riskified', 'Newline (nee Rize) (Acquired Fifth Third)', 'Scanovate', 'Secureframe', 'SecurityScorecard', 'Sensibill (Acquired Q2)', 'Sentifi', 'Settle (Auka)', 'Shaype', 'Shift Technology', 'Silverflow', 'Simetrik, Inc', 'Simon Data', 'SirionLabs', 'Built Technologies', 'Smarsh', 'PensionBee', 'Socure', 'Spark Systems', 'SparkCognition', 'Spycloud', 'StarkWare', 'Streak', 'SuiteBox', 'Sumsub', 'Super Payments', 'Tactive', 'Tala', 'TenX', 'DirectID (nee The ID Co)', 'Theta Lake', 'Tier1 Financial Solutions (Acquired SS&C)', 'Tilled', 'Tokeny', 'Total Expert', 'Tractable', 'Tracxn', 'Tradesocio', 'Clearco', 'Transcard', 'Traxpay', 'Tribal Credit', 'AlphaSwap', 'Trovata', 'Trove', 'Truework', 'Two Sigma', 'Uala', 'Unico', 'Uplift', 'Ushur Inc', 'Utrust', 'Utrust (xMoney)', 'Valon', 'Venminder', 'Veriday', 'Verrency', 'Verse Technologies Inc', 'Vizolution', 'Voxsmart', 'Voyager Innovations', 'WeLab', 'WireBarley', 'Wyden (AlgoTrader)', 'Elevate', 'xbAV', 'Yokoy', 'YouPass', 'Billie', 'YoYo Wallet', 'Yubi', 'Moneymour (acquired by Klarna)', 'Zaam', 'Zepto Payments', 'Zest AI', 'Green Dot', 'banyan', 'BVNK', 'Carta', 'Deliverect', 'GoCardless', 'Symmetrical.ai', 'Lemon Way', 'Novopayment', 'Starling Bank', 'Paytrix', 'YouTrip', 'Pilot.com', 'Zilch', 'Upgrade', 'Pine Labs', 'Teya', 'Sila', 'Trezeo (Acquired Monese)', 'Orum.io', 'Xendit', 'Qonto', 'Matchmove Pay', 'Konfio', 'Datavisor', 'Bits Technology', 'Zopa', 'Iwoca', 'Alpaca', 'Apex Fintech Solutions', 'Tradier', 'Velexa', 'DriveWealth', 'Lemon.markets', 'Seccl', 'Upvest', 'Transfermate', 'Broker Buddha', 'Cape Analytics', 'Easysend', 'Friss', '360f', 'Worksmart', 'At-Bay', 'AKUR8', 'Arturo', 'Papaya Global', 'bolttech', 'Guideline', 'Guidewire', 'Pipe', 'LIQUiDITY Group', 'Kasko', 'Zipari', 'Omna Search', 'Creditas', 'FA Solutions', 'Fluidly (Acquired OakNorth)', 'Fundbox', 'Caribou', 'Funding Circle', 'Kreditech', 'CreditEnable', 'Behalf', 'Kala', 'Kabbage', 'Nano (nee Verteva)', 'Trust Science', 'Trade Ledger', 'Divido', 'Payable', 'Neuro-ID', 'eOriginal (Acquired Wolters Kluwer)', 'Curve', 'Ocrolus', 'Appriza Pay', 'Branch', 'PolicyGenius', 'Chargeback Gurus', 'Zego', 'The Zebra', 'CloudWalk', 'Embroker', 'ManyPets', 'CoverWallet', 'Kin Insurance', 'Cybertonica', 'Enigma Technologies', 'Digit Insurance', 'Getsafe', 'Next Insurance', 'Luko (Coya)', 'Hummingbird', 'Zivver', 'Conpend', 'Belleron', 'Icon Solutions', 'Volante Technologies', 'Squirro', 'Trade Republic', 'Digital Reasoning (Smarsh)', 'Augmentum Fintech', 'ClauseMatch', 'FinzlyOS', 'Anodot', 'CDLK', 'Constella Intelligence', 'FISPAN', 'BlueCode', 'CredoLab', 'JUMO', 'Trifacta (Acquired Alteryx)', 'Daon', 'OpenLegacy', 'OakNorth Bank', 'Alma', 'Lendable', 'Atome', 'Ladder', 'Ethos', 'Antelop Solutions (Acquired Entrust)', 'Apto Payments', 'ClickSWITCH (acquired by Q2)', 'Snapdocs', 'Happy Money', 'Mambu', 'Codat', 'Crowdz', 'Entersekt', 'Mantl', 'Minna Technologies', 'Ohpen', 'Pinwheel', 'Sonect', 'Tookitaki', 'Zafin', 'Callsign Inc', 'Uniken', 'Avoka (Acquired Temenos)', 'Kyckr Limited', 'Alviere', 'Moov', 'PPRO', 'Sardine', 'Pagaya', 'Unit', 'Bond', 'CardAssets', 'Cardless', 'Cardworks', 'Cascade Fintech', 'Revolut', 'N26', 'CoreCard', 'Varo Bank', 'Klar', 'Corserv', 'FIS', 'Galileo', 'GPS (Global Processing Services)', 'HUBUC', 'i2c', 'Increase', 'MasterCard Processing', 'Pay.com', 'Payfare', 'Billpocket', 'Q2/Helix', 'Qolo', 'Chillr', 'Railsbank', 'Satispay', 'Rise', 'Shazam', 'SynapseFi', 'Synctera', 'Tallied', 'TCI', 'TCM', 'TreasuryPrime', 'Stocard', 'TSYS', 'Visa DPS', 'XTMinc.', 'Apto', 'Tabby', 'Plum Fintech', 'Highnote', 'Chipper Cash', 'Paga', 'Wise (TransferWise)', 'Toss', 'OFX', 'FiVerity', 'BioCatch', 'Payveris (Acquired Paymentus)', 'Solid', 'Swap', 'Aware, Inc', 'Kore.ai', 'Envizage', 'Arkose Labs', 'Flux (Closed)', 'IDnow', 'IDnow (AriadNEXT)', 'Buckzy Payments', 'Earnix', 'Spitch', 'Active.ai', 'Glia', 'EFS Technology (acquired Formpipe)', 'Avant', 'Blend', 'Roostify', 'Turnkey Lender', 'ZEPZ', 'NewBanking', 'CreditVidya', 'Klarna', 'LoanPro', 'Facephi', 'CognitiveScale', 'AU10TIX', 'Deserve', 'Cerebreon', 'Lydia', 'Cloudcase Software Solutions', 'Eltropy', 'Pagaya Technologies', 'Numeral', 'Pulse (Aire)', 'Finova (DPR Limited)', 'LenddoEFL', 'PrecisionLender (Acquired Q2)', 'Abrigo', 'Clerkie', 'Array', 'Heron Data', 'FinGoal', 'Ntropy Network', 'Deel', 'Yeahka', 'Spade', 'MX', 'Yodlee', 'Teller', 'Pave', 'Trustly', 'iDENTIFY', 'QFPay', 'Meld', 'Agreement Express', 'IDology', 'Ekata', 'Instnt', 'Deeplabs', 'Unit21', 'NuDetect', 'Resistant AI', 'MinervaAI', 'Cognito', 'Cable', 'Sandbar', 'Taktile', 'nCino, Inc.', 'Ascent', 'Mambu', 'Backbase', 'Euronovate', 'Check', 'PayFit', 'Gusto', 'Pismo', 'Qualco', 'Flinks', 'Recordsure', 'BPC Technologies', 'Kevin', 'Zeta', 'Wealthfront', 'Marqeta', 'Oscilar', 'Fintech Automation', 'DreamQuark', 'Meniga', 'Strands', 'UnBlu', 'Paxos', 'BUSINESSNEXT', 'AppZen', 'BitSight', 'Doxim', 'Alkami Technology', 'Amount', 'Harvest Savings & Wealth Technologies', 'Raisin', 'Earnix', 'ERI Bancaire', 'Profile Software', 'Fiserv', 'Previse', 'Ripple', 'NorthRow', 'Very Good Security', 'Moonfare', 'Know Your Customer', 'Prove']}
+2023-09-12 08:35:26 [INFO] Executed in: 13.174759864807129s
+2023-09-12 08:35:27 [INFO] 127.0.0.1 - - [12/Sep/2023 08:35:27] "[35m[1mPOST /result HTTP/1.1[0m" 500 -
+2023-09-12 08:35:27 [INFO] 127.0.0.1 - - [12/Sep/2023 08:35:27] "GET /result?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2023-09-12 08:35:27 [INFO] 127.0.0.1 - - [12/Sep/2023 08:35:27] "GET /result?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2023-09-12 08:35:27 [INFO] 127.0.0.1 - - [12/Sep/2023 08:35:27] "GET /result?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2023-09-12 08:35:27 [INFO] 127.0.0.1 - - [12/Sep/2023 08:35:27] "[36mGET /result?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2023-09-12 08:36:17 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-12 08:36:25 [INFO] Question: Provide list of companies with employees > 100
+2023-09-12 08:36:25 [INFO] Running PandasAI with openai LLM...
+2023-09-12 08:36:25 [INFO] Prompt ID: 7db26398-e1d5-4419-96b3-41368a5cc540
+2023-09-12 08:36:38 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies with employees > 100
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    
+    # Get the list of company names
+    company_names = filtered_companies['Company'].tolist()
+    
+    # Return the list of companies as output
+    return {"type": "text", "value": company_names}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 08:36:38 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    company_names = filtered_companies['Company'].tolist()
+    return {'type': 'text', 'value': company_names}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 08:36:38 [INFO] Answer: {'type': 'text', 'value': ['Diligence Vault', 'Credora', 'IMTC', 'AgenaTrader', 'FundSense', 'Amaka', 'Aiviq', 'AirFund (One Wealth Place)', 'FloQast', 'Tipalti', 'Algomi', 'AlphaPoint', 'Assure Hedge', 'Axoni', 'Sunbit', 'Baton Systems', 'Capitolis', 'Chainalysis', 'Circle', 'Debitum Network', 'Finomial', 'Cloud9 (part of Symphony)', 'Copper', 'Curv (acquired by PayPal)', 'Digital Asset', 'dv01', 'Ebury', 'Elliptic', 'Fireblocks', 'Genesis Global', 'Genuine Impact', 'iCapital Network', 'Kooltra', 'Metaco SA', 'Numerix', 'OpenGamma', 'Options Technology', 'R3', 'Securrency', 'T-REX', 'Talos', 'TransFICC', 'TRM Labs', 'Trumid', 'Brassica', 'Shannon.AI', 'martini.ai', 'Wavenure', 'Wequity', 'Archblock', 'Alchemy', 'Algodynamix', 'Anchorage Digital', 'Arcesium', 'Atomic', 'Forge', 'Canalyst', 'ConsenSys', 'interop.io', 'Delio', 'Finalis', 'Genesis Global Technology', 'PeerNova Inc', 'AAAccell', 'Alkymi', 'Gresham Tech', 'DuCo', 'Atominvest', 'Behavox', 'Kontist', 'Monese', 'FundApps', 'SymphonyAI (AyasdiAI)', 'Open Fin', 'BitGo', 'Blockdaemon', 'BloXroute Labs', 'Zero Hash', 'Chime', 'Baanx', 'Accrete', 'Coinfirm', 'Zodia Custody', 'Halo Investing', 'Beacon Platform', 'BITA', 'bondIT', 'Etops AG', 'FalconX', 'Flyer Finance Technologies', 'Refinitiv', 'AlphaSense', 'SteelEye', 'Symphony', 'CipherTrace', 'CloudMargin', 'Alt 5 Sigma', 'GIEOM', 'Marco Polo Network (TradeIX)', 'Silent Eight', 'Fnality International', 'Rimes Technologies', 'Sharegain', 'Adhara', 'Blockchain.com', 'Kraken', 'NeoXam', 'Arachnys (Acquired AML Right Source)', 'Bolero International', 'Arch', 'Canoe', 'elyps', 'KuCoin', 'Smart Communications', 'Spendflo', 'Navos Technologies', 'DailyPay', 'Enable', 'Enkash', 'EverC', 'Extend', 'Ezetap by Razorpay', 'Fenbeitong', 'Fidel API', 'Finagraph', 'Lulalend', 'Finix', 'Forter', 'Harbr', 'Cyberhaven', 'Moxo', 'Anaplan', 'Avidxchange', 'Balance', 'Dataminr', 'Flywire', 'HyperProof', 'Hyperscience', 'Kyriba', 'Level', 'Melio', 'Mesh', 'PayStand', 'Privitar', 'Pushpay', 'Signifyd', 'SpotOn', 'Tipalti', 'Aid:Tech', 'Alt Thirty Six', 'Trantor', 'Beyond Identity', 'Billtrust', 'Bricknode', 'Cacheflow', 'Cashfree', 'Citcon', 'Coda Payments', 'Finaro (nee Credorax)', 'Darwinbox', 'Datameer', 'DataRobot', 'Decentriq', 'Dext (Receipt Bank)', 'TIS', 'Eigen Technologies', 'Mollie', 'Nsure.AI', 'PAAY', 'Payrix', 'Persona', 'Pleo', 'Square', 'Volt', 'Wagestream', 'Silverfin', 'BharatPe', 'BKN301', 'Clip', 'Checkout', 'Cross River Bank', 'Dwolla', 'Modulr', 'NIUM', 'Stripe', 'EBANX', 'Payhawk', 'Spreedly', 'SumUp', 'TerraPay', 'Zoop', 'ZTL Payment Solution', 'Vonage (Nexmo)', 'Kong Inc.', 'MessageBird', 'Blackline (Rimilia)', 'Clickatell', 'Thematic', 'Gemini', 'Bango', 'Kash', 'Bucket Technologies', 'CoinDCX', 'Incognia', 'BetterCloud', 'Quantexa', 'ChargeBee Technologies', 'Anyfin', 'Airwallex', 'Spendesk', 'Belong Home', 'Cambridge Mobile Telematics', 'Cedar', 'Celero Commerce', 'Centrifuge', 'Clearsight Solutions', 'Cowbell Cyber', 'CRED', 'EASYCRÉDITO', 'Ergon Infomatik', 'Eudata', 'EValue', 'Faraday', 'GLMX - Access, Automate, Analyze', 'Hibob', 'HighRadius', 'HubX', 'Hydrogen', 'HYPR', 'Ignition Advice', 'Immuta', 'InAuth', 'InfoTrie', 'Innovest Systems', 'Innoviti Payment Solutions', 'Verimatrix (nee Inside Secure)', 'Integral Development Corp.', 'Integration Alpha', 'Intelligent Systems Corp', 'Jifiti', 'JKL Web Technologies', 'Juni', 'Justt', 'Khatabook', 'LendInvest', 'Kidbrooke', 'Kingfield Corporation', 'Koho Financial', 'Kompliant', 'Koosmik', 'Kueski', 'LCF Global Partners (acquied by TeamApt)', 'Binance', 'Ledger', 'Ledgex', 'C6 Bank', 'Banco Agibank', 'Ledgy', 'Lendflow', 'LendingCrowd', 'Leveris', 'Apply Financial (Acquired LexisNexis)', 'LightPoint Financial Technology', 'Tonik Bank', 'Bitfinex', 'Limonetik (Acquired Thunes)', 'Liquefy', 'Lithic', 'Scalable Capital', 'LOQR', 'Lukka Inc', 'Lumiant', 'M2P Fintech', 'MarketFactory', 'Monzo', 'Marketwolfe (FnO)', 'MFS Africa', 'Miro', 'Mission Lane', 'Modulus Global', 'Mondu', 'Monetha', 'MoneyOnMobile', 'MOS', 'Mosaic Smart Data', 'Movius', 'MyVest (Acquired TIAA)', 'Nansen', 'Narmi, Inc', 'Affirm', 'Nayya', 'Wayflyer', 'Nova Credit', 'Numerated', 'OakNorth Analytical Intelligence', 'ODX', 'Velocity Global', 'Onegini (acquired Thales)', 'Opay', 'OpenInvest (Acquired JP Morgan)', 'Ophelos', 'Owlin', 'Panaseer', 'Parafin', 'PayKey', 'Paymentez', 'Payrails', 'PayRange', 'Capdesk', 'Paytweak', 'Pendo Systems', 'Performline', 'Perspectium', 'Petal', 'Jeeves', 'Plenitude', 'Point Digital Finance', 'Pollinate', 'Prepaid2Cash', 'Prime Trust', 'Propelld', 'Pyze', 'Current', 'QRails', 'QuintoAndar', 'Raise Partner', 'Ramp', 'Rapyd', 'Razorpay', 'Regtech Associates', 'Republic', 'Rev Worldwide', 'RightIndem', "RiskFirst (Acquired Moody's)", 'Riskified', 'Newline (nee Rize) (Acquired Fifth Third)', 'Scanovate', 'Secureframe', 'SecurityScorecard', 'Sensibill (Acquired Q2)', 'Sentifi', 'Settle (Auka)', 'Shaype', 'Shift Technology', 'Silverflow', 'Simetrik, Inc', 'Simon Data', 'SirionLabs', 'Built Technologies', 'Smarsh', 'PensionBee', 'Socure', 'Spark Systems', 'SparkCognition', 'Spycloud', 'StarkWare', 'Streak', 'SuiteBox', 'Sumsub', 'Super Payments', 'Tactive', 'Tala', 'TenX', 'DirectID (nee The ID Co)', 'Theta Lake', 'Tier1 Financial Solutions (Acquired SS&C)', 'Tilled', 'Tokeny', 'Total Expert', 'Tractable', 'Tracxn', 'Tradesocio', 'Clearco', 'Transcard', 'Traxpay', 'Tribal Credit', 'AlphaSwap', 'Trovata', 'Trove', 'Truework', 'Two Sigma', 'Uala', 'Unico', 'Uplift', 'Ushur Inc', 'Utrust', 'Utrust (xMoney)', 'Valon', 'Venminder', 'Veriday', 'Verrency', 'Verse Technologies Inc', 'Vizolution', 'Voxsmart', 'Voyager Innovations', 'WeLab', 'WireBarley', 'Wyden (AlgoTrader)', 'Elevate', 'xbAV', 'Yokoy', 'YouPass', 'Billie', 'YoYo Wallet', 'Yubi', 'Moneymour (acquired by Klarna)', 'Zaam', 'Zepto Payments', 'Zest AI', 'Green Dot', 'banyan', 'BVNK', 'Carta', 'Deliverect', 'GoCardless', 'Symmetrical.ai', 'Lemon Way', 'Novopayment', 'Starling Bank', 'Paytrix', 'YouTrip', 'Pilot.com', 'Zilch', 'Upgrade', 'Pine Labs', 'Teya', 'Sila', 'Trezeo (Acquired Monese)', 'Orum.io', 'Xendit', 'Qonto', 'Matchmove Pay', 'Konfio', 'Datavisor', 'Bits Technology', 'Zopa', 'Iwoca', 'Alpaca', 'Apex Fintech Solutions', 'Tradier', 'Velexa', 'DriveWealth', 'Lemon.markets', 'Seccl', 'Upvest', 'Transfermate', 'Broker Buddha', 'Cape Analytics', 'Easysend', 'Friss', '360f', 'Worksmart', 'At-Bay', 'AKUR8', 'Arturo', 'Papaya Global', 'bolttech', 'Guideline', 'Guidewire', 'Pipe', 'LIQUiDITY Group', 'Kasko', 'Zipari', 'Omna Search', 'Creditas', 'FA Solutions', 'Fluidly (Acquired OakNorth)', 'Fundbox', 'Caribou', 'Funding Circle', 'Kreditech', 'CreditEnable', 'Behalf', 'Kala', 'Kabbage', 'Nano (nee Verteva)', 'Trust Science', 'Trade Ledger', 'Divido', 'Payable', 'Neuro-ID', 'eOriginal (Acquired Wolters Kluwer)', 'Curve', 'Ocrolus', 'Appriza Pay', 'Branch', 'PolicyGenius', 'Chargeback Gurus', 'Zego', 'The Zebra', 'CloudWalk', 'Embroker', 'ManyPets', 'CoverWallet', 'Kin Insurance', 'Cybertonica', 'Enigma Technologies', 'Digit Insurance', 'Getsafe', 'Next Insurance', 'Luko (Coya)', 'Hummingbird', 'Zivver', 'Conpend', 'Belleron', 'Icon Solutions', 'Volante Technologies', 'Squirro', 'Trade Republic', 'Digital Reasoning (Smarsh)', 'Augmentum Fintech', 'ClauseMatch', 'FinzlyOS', 'Anodot', 'CDLK', 'Constella Intelligence', 'FISPAN', 'BlueCode', 'CredoLab', 'JUMO', 'Trifacta (Acquired Alteryx)', 'Daon', 'OpenLegacy', 'OakNorth Bank', 'Alma', 'Lendable', 'Atome', 'Ladder', 'Ethos', 'Antelop Solutions (Acquired Entrust)', 'Apto Payments', 'ClickSWITCH (acquired by Q2)', 'Snapdocs', 'Happy Money', 'Mambu', 'Codat', 'Crowdz', 'Entersekt', 'Mantl', 'Minna Technologies', 'Ohpen', 'Pinwheel', 'Sonect', 'Tookitaki', 'Zafin', 'Callsign Inc', 'Uniken', 'Avoka (Acquired Temenos)', 'Kyckr Limited', 'Alviere', 'Moov', 'PPRO', 'Sardine', 'Pagaya', 'Unit', 'Bond', 'CardAssets', 'Cardless', 'Cardworks', 'Cascade Fintech', 'Revolut', 'N26', 'CoreCard', 'Varo Bank', 'Klar', 'Corserv', 'FIS', 'Galileo', 'GPS (Global Processing Services)', 'HUBUC', 'i2c', 'Increase', 'MasterCard Processing', 'Pay.com', 'Payfare', 'Billpocket', 'Q2/Helix', 'Qolo', 'Chillr', 'Railsbank', 'Satispay', 'Rise', 'Shazam', 'SynapseFi', 'Synctera', 'Tallied', 'TCI', 'TCM', 'TreasuryPrime', 'Stocard', 'TSYS', 'Visa DPS', 'XTMinc.', 'Apto', 'Tabby', 'Plum Fintech', 'Highnote', 'Chipper Cash', 'Paga', 'Wise (TransferWise)', 'Toss', 'OFX', 'FiVerity', 'BioCatch', 'Payveris (Acquired Paymentus)', 'Solid', 'Swap', 'Aware, Inc', 'Kore.ai', 'Envizage', 'Arkose Labs', 'Flux (Closed)', 'IDnow', 'IDnow (AriadNEXT)', 'Buckzy Payments', 'Earnix', 'Spitch', 'Active.ai', 'Glia', 'EFS Technology (acquired Formpipe)', 'Avant', 'Blend', 'Roostify', 'Turnkey Lender', 'ZEPZ', 'NewBanking', 'CreditVidya', 'Klarna', 'LoanPro', 'Facephi', 'CognitiveScale', 'AU10TIX', 'Deserve', 'Cerebreon', 'Lydia', 'Cloudcase Software Solutions', 'Eltropy', 'Pagaya Technologies', 'Numeral', 'Pulse (Aire)', 'Finova (DPR Limited)', 'LenddoEFL', 'PrecisionLender (Acquired Q2)', 'Abrigo', 'Clerkie', 'Array', 'Heron Data', 'FinGoal', 'Ntropy Network', 'Deel', 'Yeahka', 'Spade', 'MX', 'Yodlee', 'Teller', 'Pave', 'Trustly', 'iDENTIFY', 'QFPay', 'Meld', 'Agreement Express', 'IDology', 'Ekata', 'Instnt', 'Deeplabs', 'Unit21', 'NuDetect', 'Resistant AI', 'MinervaAI', 'Cognito', 'Cable', 'Sandbar', 'Taktile', 'nCino, Inc.', 'Ascent', 'Mambu', 'Backbase', 'Euronovate', 'Check', 'PayFit', 'Gusto', 'Pismo', 'Qualco', 'Flinks', 'Recordsure', 'BPC Technologies', 'Kevin', 'Zeta', 'Wealthfront', 'Marqeta', 'Oscilar', 'Fintech Automation', 'DreamQuark', 'Meniga', 'Strands', 'UnBlu', 'Paxos', 'BUSINESSNEXT', 'AppZen', 'BitSight', 'Doxim', 'Alkami Technology', 'Amount', 'Harvest Savings & Wealth Technologies', 'Raisin', 'Earnix', 'ERI Bancaire', 'Profile Software', 'Fiserv', 'Previse', 'Ripple', 'NorthRow', 'Very Good Security', 'Moonfare', 'Know Your Customer', 'Prove']}
+2023-09-12 08:36:38 [INFO] Executed in: 13.354023218154907s
+2023-09-12 08:36:38 [INFO] 127.0.0.1 - - [12/Sep/2023 08:36:38] "POST /result HTTP/1.1" 200 -
+2023-09-12 08:37:34 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-12 08:37:47 [INFO] Question: Provide list of companies with employees > 100
+2023-09-12 08:37:47 [INFO] Running PandasAI with openai LLM...
+2023-09-12 08:37:47 [INFO] Prompt ID: 97825053-8009-4222-ae8a-7a35d397fc9b
+2023-09-12 08:38:02 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies with employees > 100
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    
+    # Get the list of company names
+    company_names = filtered_companies['Company'].tolist()
+    
+    # Return the list of companies as output
+    return {"type": "text", "value": company_names}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 08:38:02 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    company_names = filtered_companies['Company'].tolist()
+    return {'type': 'text', 'value': company_names}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 08:38:02 [INFO] Answer: {'type': 'text', 'value': ['Diligence Vault', 'Credora', 'IMTC', 'AgenaTrader', 'FundSense', 'Amaka', 'Aiviq', 'AirFund (One Wealth Place)', 'FloQast', 'Tipalti', 'Algomi', 'AlphaPoint', 'Assure Hedge', 'Axoni', 'Sunbit', 'Baton Systems', 'Capitolis', 'Chainalysis', 'Circle', 'Debitum Network', 'Finomial', 'Cloud9 (part of Symphony)', 'Copper', 'Curv (acquired by PayPal)', 'Digital Asset', 'dv01', 'Ebury', 'Elliptic', 'Fireblocks', 'Genesis Global', 'Genuine Impact', 'iCapital Network', 'Kooltra', 'Metaco SA', 'Numerix', 'OpenGamma', 'Options Technology', 'R3', 'Securrency', 'T-REX', 'Talos', 'TransFICC', 'TRM Labs', 'Trumid', 'Brassica', 'Shannon.AI', 'martini.ai', 'Wavenure', 'Wequity', 'Archblock', 'Alchemy', 'Algodynamix', 'Anchorage Digital', 'Arcesium', 'Atomic', 'Forge', 'Canalyst', 'ConsenSys', 'interop.io', 'Delio', 'Finalis', 'Genesis Global Technology', 'PeerNova Inc', 'AAAccell', 'Alkymi', 'Gresham Tech', 'DuCo', 'Atominvest', 'Behavox', 'Kontist', 'Monese', 'FundApps', 'SymphonyAI (AyasdiAI)', 'Open Fin', 'BitGo', 'Blockdaemon', 'BloXroute Labs', 'Zero Hash', 'Chime', 'Baanx', 'Accrete', 'Coinfirm', 'Zodia Custody', 'Halo Investing', 'Beacon Platform', 'BITA', 'bondIT', 'Etops AG', 'FalconX', 'Flyer Finance Technologies', 'Refinitiv', 'AlphaSense', 'SteelEye', 'Symphony', 'CipherTrace', 'CloudMargin', 'Alt 5 Sigma', 'GIEOM', 'Marco Polo Network (TradeIX)', 'Silent Eight', 'Fnality International', 'Rimes Technologies', 'Sharegain', 'Adhara', 'Blockchain.com', 'Kraken', 'NeoXam', 'Arachnys (Acquired AML Right Source)', 'Bolero International', 'Arch', 'Canoe', 'elyps', 'KuCoin', 'Smart Communications', 'Spendflo', 'Navos Technologies', 'DailyPay', 'Enable', 'Enkash', 'EverC', 'Extend', 'Ezetap by Razorpay', 'Fenbeitong', 'Fidel API', 'Finagraph', 'Lulalend', 'Finix', 'Forter', 'Harbr', 'Cyberhaven', 'Moxo', 'Anaplan', 'Avidxchange', 'Balance', 'Dataminr', 'Flywire', 'HyperProof', 'Hyperscience', 'Kyriba', 'Level', 'Melio', 'Mesh', 'PayStand', 'Privitar', 'Pushpay', 'Signifyd', 'SpotOn', 'Tipalti', 'Aid:Tech', 'Alt Thirty Six', 'Trantor', 'Beyond Identity', 'Billtrust', 'Bricknode', 'Cacheflow', 'Cashfree', 'Citcon', 'Coda Payments', 'Finaro (nee Credorax)', 'Darwinbox', 'Datameer', 'DataRobot', 'Decentriq', 'Dext (Receipt Bank)', 'TIS', 'Eigen Technologies', 'Mollie', 'Nsure.AI', 'PAAY', 'Payrix', 'Persona', 'Pleo', 'Square', 'Volt', 'Wagestream', 'Silverfin', 'BharatPe', 'BKN301', 'Clip', 'Checkout', 'Cross River Bank', 'Dwolla', 'Modulr', 'NIUM', 'Stripe', 'EBANX', 'Payhawk', 'Spreedly', 'SumUp', 'TerraPay', 'Zoop', 'ZTL Payment Solution', 'Vonage (Nexmo)', 'Kong Inc.', 'MessageBird', 'Blackline (Rimilia)', 'Clickatell', 'Thematic', 'Gemini', 'Bango', 'Kash', 'Bucket Technologies', 'CoinDCX', 'Incognia', 'BetterCloud', 'Quantexa', 'ChargeBee Technologies', 'Anyfin', 'Airwallex', 'Spendesk', 'Belong Home', 'Cambridge Mobile Telematics', 'Cedar', 'Celero Commerce', 'Centrifuge', 'Clearsight Solutions', 'Cowbell Cyber', 'CRED', 'EASYCRÉDITO', 'Ergon Infomatik', 'Eudata', 'EValue', 'Faraday', 'GLMX - Access, Automate, Analyze', 'Hibob', 'HighRadius', 'HubX', 'Hydrogen', 'HYPR', 'Ignition Advice', 'Immuta', 'InAuth', 'InfoTrie', 'Innovest Systems', 'Innoviti Payment Solutions', 'Verimatrix (nee Inside Secure)', 'Integral Development Corp.', 'Integration Alpha', 'Intelligent Systems Corp', 'Jifiti', 'JKL Web Technologies', 'Juni', 'Justt', 'Khatabook', 'LendInvest', 'Kidbrooke', 'Kingfield Corporation', 'Koho Financial', 'Kompliant', 'Koosmik', 'Kueski', 'LCF Global Partners (acquied by TeamApt)', 'Binance', 'Ledger', 'Ledgex', 'C6 Bank', 'Banco Agibank', 'Ledgy', 'Lendflow', 'LendingCrowd', 'Leveris', 'Apply Financial (Acquired LexisNexis)', 'LightPoint Financial Technology', 'Tonik Bank', 'Bitfinex', 'Limonetik (Acquired Thunes)', 'Liquefy', 'Lithic', 'Scalable Capital', 'LOQR', 'Lukka Inc', 'Lumiant', 'M2P Fintech', 'MarketFactory', 'Monzo', 'Marketwolfe (FnO)', 'MFS Africa', 'Miro', 'Mission Lane', 'Modulus Global', 'Mondu', 'Monetha', 'MoneyOnMobile', 'MOS', 'Mosaic Smart Data', 'Movius', 'MyVest (Acquired TIAA)', 'Nansen', 'Narmi, Inc', 'Affirm', 'Nayya', 'Wayflyer', 'Nova Credit', 'Numerated', 'OakNorth Analytical Intelligence', 'ODX', 'Velocity Global', 'Onegini (acquired Thales)', 'Opay', 'OpenInvest (Acquired JP Morgan)', 'Ophelos', 'Owlin', 'Panaseer', 'Parafin', 'PayKey', 'Paymentez', 'Payrails', 'PayRange', 'Capdesk', 'Paytweak', 'Pendo Systems', 'Performline', 'Perspectium', 'Petal', 'Jeeves', 'Plenitude', 'Point Digital Finance', 'Pollinate', 'Prepaid2Cash', 'Prime Trust', 'Propelld', 'Pyze', 'Current', 'QRails', 'QuintoAndar', 'Raise Partner', 'Ramp', 'Rapyd', 'Razorpay', 'Regtech Associates', 'Republic', 'Rev Worldwide', 'RightIndem', "RiskFirst (Acquired Moody's)", 'Riskified', 'Newline (nee Rize) (Acquired Fifth Third)', 'Scanovate', 'Secureframe', 'SecurityScorecard', 'Sensibill (Acquired Q2)', 'Sentifi', 'Settle (Auka)', 'Shaype', 'Shift Technology', 'Silverflow', 'Simetrik, Inc', 'Simon Data', 'SirionLabs', 'Built Technologies', 'Smarsh', 'PensionBee', 'Socure', 'Spark Systems', 'SparkCognition', 'Spycloud', 'StarkWare', 'Streak', 'SuiteBox', 'Sumsub', 'Super Payments', 'Tactive', 'Tala', 'TenX', 'DirectID (nee The ID Co)', 'Theta Lake', 'Tier1 Financial Solutions (Acquired SS&C)', 'Tilled', 'Tokeny', 'Total Expert', 'Tractable', 'Tracxn', 'Tradesocio', 'Clearco', 'Transcard', 'Traxpay', 'Tribal Credit', 'AlphaSwap', 'Trovata', 'Trove', 'Truework', 'Two Sigma', 'Uala', 'Unico', 'Uplift', 'Ushur Inc', 'Utrust', 'Utrust (xMoney)', 'Valon', 'Venminder', 'Veriday', 'Verrency', 'Verse Technologies Inc', 'Vizolution', 'Voxsmart', 'Voyager Innovations', 'WeLab', 'WireBarley', 'Wyden (AlgoTrader)', 'Elevate', 'xbAV', 'Yokoy', 'YouPass', 'Billie', 'YoYo Wallet', 'Yubi', 'Moneymour (acquired by Klarna)', 'Zaam', 'Zepto Payments', 'Zest AI', 'Green Dot', 'banyan', 'BVNK', 'Carta', 'Deliverect', 'GoCardless', 'Symmetrical.ai', 'Lemon Way', 'Novopayment', 'Starling Bank', 'Paytrix', 'YouTrip', 'Pilot.com', 'Zilch', 'Upgrade', 'Pine Labs', 'Teya', 'Sila', 'Trezeo (Acquired Monese)', 'Orum.io', 'Xendit', 'Qonto', 'Matchmove Pay', 'Konfio', 'Datavisor', 'Bits Technology', 'Zopa', 'Iwoca', 'Alpaca', 'Apex Fintech Solutions', 'Tradier', 'Velexa', 'DriveWealth', 'Lemon.markets', 'Seccl', 'Upvest', 'Transfermate', 'Broker Buddha', 'Cape Analytics', 'Easysend', 'Friss', '360f', 'Worksmart', 'At-Bay', 'AKUR8', 'Arturo', 'Papaya Global', 'bolttech', 'Guideline', 'Guidewire', 'Pipe', 'LIQUiDITY Group', 'Kasko', 'Zipari', 'Omna Search', 'Creditas', 'FA Solutions', 'Fluidly (Acquired OakNorth)', 'Fundbox', 'Caribou', 'Funding Circle', 'Kreditech', 'CreditEnable', 'Behalf', 'Kala', 'Kabbage', 'Nano (nee Verteva)', 'Trust Science', 'Trade Ledger', 'Divido', 'Payable', 'Neuro-ID', 'eOriginal (Acquired Wolters Kluwer)', 'Curve', 'Ocrolus', 'Appriza Pay', 'Branch', 'PolicyGenius', 'Chargeback Gurus', 'Zego', 'The Zebra', 'CloudWalk', 'Embroker', 'ManyPets', 'CoverWallet', 'Kin Insurance', 'Cybertonica', 'Enigma Technologies', 'Digit Insurance', 'Getsafe', 'Next Insurance', 'Luko (Coya)', 'Hummingbird', 'Zivver', 'Conpend', 'Belleron', 'Icon Solutions', 'Volante Technologies', 'Squirro', 'Trade Republic', 'Digital Reasoning (Smarsh)', 'Augmentum Fintech', 'ClauseMatch', 'FinzlyOS', 'Anodot', 'CDLK', 'Constella Intelligence', 'FISPAN', 'BlueCode', 'CredoLab', 'JUMO', 'Trifacta (Acquired Alteryx)', 'Daon', 'OpenLegacy', 'OakNorth Bank', 'Alma', 'Lendable', 'Atome', 'Ladder', 'Ethos', 'Antelop Solutions (Acquired Entrust)', 'Apto Payments', 'ClickSWITCH (acquired by Q2)', 'Snapdocs', 'Happy Money', 'Mambu', 'Codat', 'Crowdz', 'Entersekt', 'Mantl', 'Minna Technologies', 'Ohpen', 'Pinwheel', 'Sonect', 'Tookitaki', 'Zafin', 'Callsign Inc', 'Uniken', 'Avoka (Acquired Temenos)', 'Kyckr Limited', 'Alviere', 'Moov', 'PPRO', 'Sardine', 'Pagaya', 'Unit', 'Bond', 'CardAssets', 'Cardless', 'Cardworks', 'Cascade Fintech', 'Revolut', 'N26', 'CoreCard', 'Varo Bank', 'Klar', 'Corserv', 'FIS', 'Galileo', 'GPS (Global Processing Services)', 'HUBUC', 'i2c', 'Increase', 'MasterCard Processing', 'Pay.com', 'Payfare', 'Billpocket', 'Q2/Helix', 'Qolo', 'Chillr', 'Railsbank', 'Satispay', 'Rise', 'Shazam', 'SynapseFi', 'Synctera', 'Tallied', 'TCI', 'TCM', 'TreasuryPrime', 'Stocard', 'TSYS', 'Visa DPS', 'XTMinc.', 'Apto', 'Tabby', 'Plum Fintech', 'Highnote', 'Chipper Cash', 'Paga', 'Wise (TransferWise)', 'Toss', 'OFX', 'FiVerity', 'BioCatch', 'Payveris (Acquired Paymentus)', 'Solid', 'Swap', 'Aware, Inc', 'Kore.ai', 'Envizage', 'Arkose Labs', 'Flux (Closed)', 'IDnow', 'IDnow (AriadNEXT)', 'Buckzy Payments', 'Earnix', 'Spitch', 'Active.ai', 'Glia', 'EFS Technology (acquired Formpipe)', 'Avant', 'Blend', 'Roostify', 'Turnkey Lender', 'ZEPZ', 'NewBanking', 'CreditVidya', 'Klarna', 'LoanPro', 'Facephi', 'CognitiveScale', 'AU10TIX', 'Deserve', 'Cerebreon', 'Lydia', 'Cloudcase Software Solutions', 'Eltropy', 'Pagaya Technologies', 'Numeral', 'Pulse (Aire)', 'Finova (DPR Limited)', 'LenddoEFL', 'PrecisionLender (Acquired Q2)', 'Abrigo', 'Clerkie', 'Array', 'Heron Data', 'FinGoal', 'Ntropy Network', 'Deel', 'Yeahka', 'Spade', 'MX', 'Yodlee', 'Teller', 'Pave', 'Trustly', 'iDENTIFY', 'QFPay', 'Meld', 'Agreement Express', 'IDology', 'Ekata', 'Instnt', 'Deeplabs', 'Unit21', 'NuDetect', 'Resistant AI', 'MinervaAI', 'Cognito', 'Cable', 'Sandbar', 'Taktile', 'nCino, Inc.', 'Ascent', 'Mambu', 'Backbase', 'Euronovate', 'Check', 'PayFit', 'Gusto', 'Pismo', 'Qualco', 'Flinks', 'Recordsure', 'BPC Technologies', 'Kevin', 'Zeta', 'Wealthfront', 'Marqeta', 'Oscilar', 'Fintech Automation', 'DreamQuark', 'Meniga', 'Strands', 'UnBlu', 'Paxos', 'BUSINESSNEXT', 'AppZen', 'BitSight', 'Doxim', 'Alkami Technology', 'Amount', 'Harvest Savings & Wealth Technologies', 'Raisin', 'Earnix', 'ERI Bancaire', 'Profile Software', 'Fiserv', 'Previse', 'Ripple', 'NorthRow', 'Very Good Security', 'Moonfare', 'Know Your Customer', 'Prove']}
+2023-09-12 08:38:02 [INFO] Executed in: 14.75658392906189s
+2023-09-12 08:38:02 [INFO] 127.0.0.1 - - [12/Sep/2023 08:38:02] "[35m[1mPOST /result HTTP/1.1[0m" 500 -
+2023-09-12 08:38:02 [INFO] 127.0.0.1 - - [12/Sep/2023 08:38:02] "[36mGET /result?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2023-09-12 08:38:02 [INFO] 127.0.0.1 - - [12/Sep/2023 08:38:02] "[36mGET /result?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2023-09-12 08:38:02 [INFO] 127.0.0.1 - - [12/Sep/2023 08:38:02] "[36mGET /result?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2023-09-12 08:38:02 [INFO] 127.0.0.1 - - [12/Sep/2023 08:38:02] "[36mGET /result?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2023-09-12 08:38:44 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-12 08:38:59 [INFO] Question: companies in Capital Markets
+2023-09-12 08:38:59 [INFO] Running PandasAI with openai LLM...
+2023-09-12 08:38:59 [INFO] Prompt ID: b3f15d57-fbd1-48f3-b8da-a855ce2a3449
+2023-09-12 08:39:13 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to include only companies in Capital Markets
+    capital_markets_df = dfs[0][dfs[0]['Industry'] == 'Capital Markets']
+    
+    # Get the number of companies in Capital Markets
+    num_companies = capital_markets_df.shape[0]
+    
+    # Return the result as a text
+    result = {
+        "type": "text",
+        "value": f"There are {num_companies} companies in Capital Markets."
+    }
+    
+    return result
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 08:39:13 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    capital_markets_df = dfs[0][dfs[0]['Industry'] == 'Capital Markets']
+    num_companies = capital_markets_df.shape[0]
+    result = {'type': 'text', 'value': f'There are {num_companies} companies in Capital Markets.'}
+    return result
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 08:39:13 [INFO] Answer: {'type': 'text', 'value': 'There are 0 companies in Capital Markets.'}
+2023-09-12 08:39:13 [INFO] Executed in: 14.575245141983032s
+2023-09-12 08:39:13 [INFO] 127.0.0.1 - - [12/Sep/2023 08:39:13] "POST /result HTTP/1.1" 200 -
+2023-09-12 08:39:31 [INFO] 127.0.0.1 - - [12/Sep/2023 08:39:31] "GET / HTTP/1.1" 200 -
+2023-09-12 08:39:42 [INFO] Question: Companies in New York
+2023-09-12 08:39:42 [INFO] Running PandasAI with openai LLM...
+2023-09-12 08:39:42 [INFO] Prompt ID: 790bc850-5d6a-4325-aa8b-9e6a5aa2a1da
+2023-09-12 08:39:43 [INFO] Question: Companies in New York
+2023-09-12 08:39:43 [INFO] Running PandasAI with openai LLM...
+2023-09-12 08:39:43 [INFO] Prompt ID: 4fb84bf7-802b-4ab3-be4d-49016382068d
+2023-09-12 08:39:56 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to include only companies in New York
+    df = dfs[0]
+    df_ny = df[df['State'] == 'NY']
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": df_ny}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 08:39:56 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0]
+    df_ny = df[df['State'] == 'NY']
+    return {'type': 'dataframe', 'value': df_ny}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 08:39:56 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier          Company  ... Total Employee Range                                Company Description
+0          FTTT000307  Diligence Vault  ...               51-200  DiligenceVault is the first two-sided and glob...
+2          FTTT000065             IMTC  ...                11-50  IMTC is the only cloud-native dedicated fixed ...
+11         FTTT000097       AlphaPoint  ...               51-200  Redefining post-trade processing from trade-ma...
+13         FTTT000141            Axoni  ...             501-1000  Chainalysis offers cryptocurrency investigatio...
+16         FTTT000209        Capitolis  ...               51-200  If relationships are the lifeblood of your bus...
+..                ...              ...  ...                  ...                                                ...
+919        FTTT000201             CAIS  ...                                                                        
+932        FTTT000547          Masttro  ...                                                                        
+940        FTTT000876             Vise  ...                                                                        
+955        FTTT000265          Covercy  ...                                                                        
+973        FTTT000402     Forward Lane  ...                                                                        
+
+[103 rows x 12 columns]}
+2023-09-12 08:39:56 [INFO] Executed in: 13.690789222717285s
+2023-09-12 08:39:56 [INFO] 127.0.0.1 - - [12/Sep/2023 08:39:56] "POST /result HTTP/1.1" 200 -
+2023-09-12 08:39:59 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to include only companies in New York
+    df = dfs[0]
+    df_ny = df[df['State'] == 'NY']
+    
+    # Get the number of companies in New York
+    num_companies = len(df_ny)
+    
+    # Prepare the output dictionary
+    output = {
+        "type": "text",
+        "value": f"There are {num_companies} companies in New York."
+    }
+    
+    return output
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 08:39:59 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0]
+    df_ny = df[df['State'] == 'NY']
+    num_companies = len(df_ny)
+    output = {'type': 'text', 'value': f'There are {num_companies} companies in New York.'}
+    return output
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 08:39:59 [INFO] Answer: {'type': 'text', 'value': 'There are 103 companies in New York.'}
+2023-09-12 08:39:59 [INFO] Executed in: 15.245182991027832s
+2023-09-12 08:39:59 [INFO] 127.0.0.1 - - [12/Sep/2023 08:39:59] "POST /result HTTP/1.1" 200 -
+2023-09-12 08:44:22 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-12 08:44:31 [INFO] Question: Companies in New York
+2023-09-12 08:44:31 [INFO] Running PandasAI with openai LLM...
+2023-09-12 08:44:31 [INFO] Prompt ID: 42f2cb1b-3f8b-427f-b86c-87f88b8806bd
+2023-09-12 08:44:31 [INFO] Using cached response
+2023-09-12 08:44:31 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to include only companies in New York
+    df = dfs[0]
+    df_ny = df[df['State'] == 'NY']
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": df_ny}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 08:44:31 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0]
+    df_ny = df[df['State'] == 'NY']
+    return {'type': 'dataframe', 'value': df_ny}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 08:44:31 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier          Company  ... Total Employee Range                                Company Description
+0          FTTT000307  Diligence Vault  ...               51-200  DiligenceVault is the first two-sided and glob...
+2          FTTT000065             IMTC  ...                11-50  IMTC is the only cloud-native dedicated fixed ...
+11         FTTT000097       AlphaPoint  ...               51-200  Redefining post-trade processing from trade-ma...
+13         FTTT000141            Axoni  ...             501-1000  Chainalysis offers cryptocurrency investigatio...
+16         FTTT000209        Capitolis  ...               51-200  If relationships are the lifeblood of your bus...
+..                ...              ...  ...                  ...                                                ...
+919        FTTT000201             CAIS  ...                                                                        
+932        FTTT000547          Masttro  ...                                                                        
+940        FTTT000876             Vise  ...                                                                        
+955        FTTT000265          Covercy  ...                                                                        
+973        FTTT000402     Forward Lane  ...                                                                        
+
+[103 rows x 12 columns]}
+2023-09-12 08:44:31 [INFO] Executed in: 0.012202024459838867s
+2023-09-12 08:44:31 [INFO] 127.0.0.1 - - [12/Sep/2023 08:44:31] "POST /result HTTP/1.1" 200 -
+2023-09-12 08:44:40 [INFO] 127.0.0.1 - - [12/Sep/2023 08:44:40] "GET / HTTP/1.1" 200 -
+2023-09-12 08:45:00 [INFO] Question: Companies in New York with employees > 100
+2023-09-12 08:45:00 [INFO] Running PandasAI with openai LLM...
+2023-09-12 08:45:00 [INFO] Prompt ID: f3da17aa-be77-4f93-ad6a-b58e50797c07
+2023-09-12 08:45:01 [INFO] error_code=invalid_api_key error_message='Incorrect API key provided: sk-cS8Ig***************************************nW2b. You can find your API key at https://platform.openai.com/account/api-keys.' error_param=None error_type=invalid_request_error message='OpenAI API error received' stream_error=False
+2023-09-12 08:45:01 [INFO] 127.0.0.1 - - [12/Sep/2023 08:45:01] "POST /result HTTP/1.1" 200 -
+2023-09-12 08:45:46 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-12 08:45:53 [INFO] Question: Companies in New York with employees > 100
+2023-09-12 08:45:53 [INFO] Running PandasAI with openai LLM...
+2023-09-12 08:45:53 [INFO] Prompt ID: 0deecf0c-7ce5-48a7-b209-c7d53c4c86f6
+2023-09-12 08:46:07 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to include only companies in New York with employees > 100
+    filtered_df = dfs[0][(dfs[0]['State'] == 'New York') & (dfs[0]['Total Employee Range'] > '100')]
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": filtered_df}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 08:46:07 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['State'] == 'New York') & (dfs[0]['Total Employee Range'] > '100')]
+    return {'type': 'dataframe', 'value': filtered_df}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 08:46:07 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier  Company  ... Total Employee Range                                Company Description
+431        FTTT000624  Orum.io  ...               51-200  Pinwheel provides income data engineered for f...
+684        FTTT000124    Array  ...               51-200  Its award-winning software is trusted by 10 of...
+
+[2 rows x 12 columns]}
+2023-09-12 08:46:07 [INFO] Executed in: 13.155393838882446s
+2023-09-12 08:46:07 [INFO] 127.0.0.1 - - [12/Sep/2023 08:46:07] "POST /result HTTP/1.1" 200 -
+2023-09-12 08:46:37 [INFO] 127.0.0.1 - - [12/Sep/2023 08:46:37] "GET / HTTP/1.1" 200 -
+2023-09-12 08:46:57 [INFO] Question: Companies in London with Employees > 100
+2023-09-12 08:46:57 [INFO] Running PandasAI with openai LLM...
+2023-09-12 08:46:57 [INFO] Prompt ID: 21f5d165-9b92-4cc2-bb17-72313d0952ab
+2023-09-12 08:47:10 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to include only companies in London with employees > 100
+    filtered_df = dfs[0][(dfs[0]['City'] == 'London') & (dfs[0]['Total Employee Range'] > '100')]
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": filtered_df}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 08:47:10 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['City'] == 'London') & (dfs[0]['Total Employee Range'] > '100')]
+    return {'type': 'dataframe', 'value': filtered_df}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 08:47:10 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier       Company            Industry  ...    City Total Employee Range                                Company Description
+4          FTTT000071     FundSense  Financial Services  ...  London                 2-10  The FundSense platform enables asset managers ...
+6          FTTT000077         Aiviq  Financial Services  ...  London                11-50  AirFund simplifies the distribution of private...
+10         FTTT000091        Algomi  Financial Services  ...  London               51-200  Axoni is a New York-based technology firm that...
+12         FTTT000128  Assure Hedge  Financial Services  ...  London               51-200  Our vision is to reimagine how capital markets...
+26         FTTT000325         Ebury  Financial Services  ...  London                11-50  Our mission at Kooltra is to provide bank & no...
+..                ...           ...                 ...  ...     ...                  ...                                                ...
+713        FTTT000587   nCino, Inc.  Financial Services  ...  London                11-50  VRGL provides institutional-grade analytics an...
+719        FTTT000638        PayFit  Financial Services  ...  London               51-200  Empaxis Data Management, Inc. is a leading pro...
+724        FTTT000706    Recordsure  Financial Services  ...  London            1001-5000  SimCorp offers industry-leading, integrated in...
+733        FTTT000551        Meniga  Financial Services  ...  London               51-200  swissQuant is one of the worlds leading provid...
+749        FTTT000679       Previse  Financial Services  ...  London               51-200  Founded in 2000, eWise was created with a sing...
+
+[103 rows x 12 columns]}
+2023-09-12 08:47:10 [INFO] Executed in: 12.608790159225464s
+2023-09-12 08:47:10 [INFO] 127.0.0.1 - - [12/Sep/2023 08:47:10] "POST /result HTTP/1.1" 200 -
+2023-09-12 08:48:30 [INFO] Question: Companies in London with Employees > 100
+2023-09-12 08:48:30 [INFO] Running PandasAI with openai LLM...
+2023-09-12 08:48:30 [INFO] Prompt ID: 9de62ff6-f14f-4777-94d3-f8f236c98a8f
+2023-09-12 08:48:44 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to include only companies in London with employees > 100
+    filtered_df = dfs[0][(dfs[0]['City'] == 'London') & (dfs[0]['Total Employee Range'] > '100')]
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": filtered_df}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 08:48:44 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['City'] == 'London') & (dfs[0]['Total Employee Range'] > '100')]
+    return {'type': 'dataframe', 'value': filtered_df}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 08:48:44 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier       Company            Industry  ...    City Total Employee Range                                Company Description
+4          FTTT000071     FundSense  Financial Services  ...  London                 2-10  The FundSense platform enables asset managers ...
+6          FTTT000077         Aiviq  Financial Services  ...  London                11-50  AirFund simplifies the distribution of private...
+10         FTTT000091        Algomi  Financial Services  ...  London               51-200  Axoni is a New York-based technology firm that...
+12         FTTT000128  Assure Hedge  Financial Services  ...  London               51-200  Our vision is to reimagine how capital markets...
+26         FTTT000325         Ebury  Financial Services  ...  London                11-50  Our mission at Kooltra is to provide bank & no...
+..                ...           ...                 ...  ...     ...                  ...                                                ...
+713        FTTT000587   nCino, Inc.  Financial Services  ...  London                11-50  VRGL provides institutional-grade analytics an...
+719        FTTT000638        PayFit  Financial Services  ...  London               51-200  Empaxis Data Management, Inc. is a leading pro...
+724        FTTT000706    Recordsure  Financial Services  ...  London            1001-5000  SimCorp offers industry-leading, integrated in...
+733        FTTT000551        Meniga  Financial Services  ...  London               51-200  swissQuant is one of the worlds leading provid...
+749        FTTT000679       Previse  Financial Services  ...  London               51-200  Founded in 2000, eWise was created with a sing...
+
+[103 rows x 12 columns]}
+2023-09-12 08:48:44 [INFO] Executed in: 14.126139163970947s
+2023-09-12 08:48:44 [INFO] 127.0.0.1 - - [12/Sep/2023 08:48:44] "POST /result HTTP/1.1" 200 -
+2023-09-12 08:50:20 [INFO] Question: Companies in London with Employees > 100
+2023-09-12 08:50:20 [INFO] Running PandasAI with openai LLM...
+2023-09-12 08:50:20 [INFO] Prompt ID: db6d1645-0a00-4a8b-af36-a9e480f780e6
+2023-09-12 08:50:33 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to include only companies in London with employees > 100
+    filtered_df = dfs[0][(dfs[0]['City'] == 'London') & (dfs[0]['Total Employee Range'] > '100')]
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": filtered_df}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 08:50:33 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['City'] == 'London') & (dfs[0]['Total Employee Range'] > '100')]
+    return {'type': 'dataframe', 'value': filtered_df}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 08:50:33 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier       Company            Industry  ...    City Total Employee Range                                Company Description
+4          FTTT000071     FundSense  Financial Services  ...  London                 2-10  The FundSense platform enables asset managers ...
+6          FTTT000077         Aiviq  Financial Services  ...  London                11-50  AirFund simplifies the distribution of private...
+10         FTTT000091        Algomi  Financial Services  ...  London               51-200  Axoni is a New York-based technology firm that...
+12         FTTT000128  Assure Hedge  Financial Services  ...  London               51-200  Our vision is to reimagine how capital markets...
+26         FTTT000325         Ebury  Financial Services  ...  London                11-50  Our mission at Kooltra is to provide bank & no...
+..                ...           ...                 ...  ...     ...                  ...                                                ...
+713        FTTT000587   nCino, Inc.  Financial Services  ...  London                11-50  VRGL provides institutional-grade analytics an...
+719        FTTT000638        PayFit  Financial Services  ...  London               51-200  Empaxis Data Management, Inc. is a leading pro...
+724        FTTT000706    Recordsure  Financial Services  ...  London            1001-5000  SimCorp offers industry-leading, integrated in...
+733        FTTT000551        Meniga  Financial Services  ...  London               51-200  swissQuant is one of the worlds leading provid...
+749        FTTT000679       Previse  Financial Services  ...  London               51-200  Founded in 2000, eWise was created with a sing...
+
+[103 rows x 12 columns]}
+2023-09-12 08:50:33 [INFO] Executed in: 12.943971872329712s
+2023-09-12 08:50:33 [INFO] 127.0.0.1 - - [12/Sep/2023 08:50:33] "POST /result HTTP/1.1" 200 -
+2023-09-12 08:50:51 [INFO] Question: Companies in Poland
+2023-09-12 08:50:51 [INFO] Running PandasAI with openai LLM...
+2023-09-12 08:50:51 [INFO] Prompt ID: 3bef502a-a233-46ac-ab5f-1c7a52d084f8
+2023-09-12 08:51:03 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies in Poland
+    poland_companies = dfs[0][dfs[0]['Country'] == 'Poland']
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": poland_companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 08:51:03 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    poland_companies = dfs[0][dfs[0]['Country'] == 'Poland']
+    return {'type': 'dataframe', 'value': poland_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 08:51:03 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier                Company  ... Total Employee Range                                Company Description
+611        FTTT000942  MasterCard Processing  ...            5501-1000  Finicity, a Mastercard company, helps individu...
+
+[1 rows x 12 columns]}
+2023-09-12 08:51:03 [INFO] Executed in: 12.085143804550171s
+2023-09-12 08:51:03 [INFO] 127.0.0.1 - - [12/Sep/2023 08:51:03] "POST /result HTTP/1.1" 200 -
+2023-09-12 08:51:09 [INFO] 127.0.0.1 - - [12/Sep/2023 08:51:09] "GET / HTTP/1.1" 200 -
+2023-09-12 08:51:16 [INFO] Question: Provide Companies in New York
+2023-09-12 08:51:16 [INFO] Running PandasAI with openai LLM...
+2023-09-12 08:51:16 [INFO] Prompt ID: 9d4c3866-9683-4c57-bf1b-84968fa9e365
+2023-09-12 08:51:16 [INFO] Using cached response
+2023-09-12 08:51:16 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the companies in New York
+    companies_in_ny = dfs[0][dfs[0]['State'] == 'New York']['Company']
+    
+    # Return the result as a dataframe
+    return {"type": "dataframe", "value": companies_in_ny}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 08:51:16 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    companies_in_ny = dfs[0][dfs[0]['State'] == 'New York']['Company']
+    return {'type': 'dataframe', 'value': companies_in_ny}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 08:51:16 [INFO] Answer: {'type': 'dataframe', 'value': 431    Orum.io
+684      Array
+Name: Company, dtype: object}
+2023-09-12 08:51:16 [INFO] Executed in: 0.010859966278076172s
+2023-09-12 08:51:16 [INFO] 127.0.0.1 - - [12/Sep/2023 08:51:16] "POST /result HTTP/1.1" 200 -
+2023-09-12 08:51:22 [INFO] 127.0.0.1 - - [12/Sep/2023 08:51:22] "GET / HTTP/1.1" 200 -
+2023-09-12 08:51:32 [INFO] Question: Provide companies in Chicago
+2023-09-12 08:51:32 [INFO] Running PandasAI with openai LLM...
+2023-09-12 08:51:32 [INFO] Prompt ID: 21431bb8-1e5e-420f-acdc-9ba99767e070
+2023-09-12 08:51:44 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the companies in Chicago
+    chicago_companies = dfs[0][dfs[0]['City'] == 'Chicago']
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": chicago_companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 08:51:44 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    chicago_companies = dfs[0][dfs[0]['City'] == 'Chicago']
+    return {'type': 'dataframe', 'value': chicago_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 08:51:44 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier         Company  ... Total Employee Range                                Company Description
+76         FTTT000179  BloXroute Labs  ...               51-200  With over 120 clients worldwide, Flyer Financi...
+77         FTTT000920       Zero Hash  ...               10001+  Refinitiv, an LSEG (London Stock Exchange Grou...
+83         FTTT000433  Halo Investing  ...                 2-10  ALT 5 Sigma, Inc. is a leading institutional s...
+458        FTTT000125          Arturo  ...               51-200  Our mission at Pay.com is to create an all-inc...
+468        FTTT000752       Snapsheet  ...                                                                        
+477        FTTT000614     Omna Search  ...              201-500  BioCatch is the leader in Behavioral Biometric...
+508        FTTT000486   Kin Insurance  ...               51-200  Credit where it's due. Built for financial ins...
+659        FTTT000138           Avant  ...               51-200  Founded in 1987, Croesus is a leading WealthTe...
+714        FTTT000126          Ascent  ...               51-200  Do you have 360-degree visibility of your clie...
+742        FTTT000105          Amount  ...                 2-10  InterGen Data is an AI/ML-based Life Event Pre...
+936        FTTT000676        PractiFI  ...                                                                        
+963        FTTT000906         Ycharts  ...                                                                        
+
+[12 rows x 12 columns]}
+2023-09-12 08:51:44 [INFO] Executed in: 11.686724185943604s
+2023-09-12 08:51:44 [INFO] 127.0.0.1 - - [12/Sep/2023 08:51:44] "POST /result HTTP/1.1" 200 -
