@@ -3,14 +3,22 @@ import gspread
 import pandas as pd
 from pandasai import SmartDataframe
 from pandasai.llm import OpenAI
+import os
+import json
 
 app = Flask(__name__)
 
 def perform_operations(user_input):
     try:
-        gc = gspread.service_account(filename="/Users/marcinchmielnicki/panda/Proximagoogle.json")
+        # Get the Google service account key from the environment variable
+        google_service_account_key = os.environ.get('GOOGLE_SERVICE_ACCOUNT_KEY')
+
+        # Parse the JSON data
+        service_account_info = json.loads(google_service_account_key)
+
+        # Use the service_account_info in your gspread initialization
+        gc = gspread.service_account(info=service_account_info)
         sheet_title = "THE FS TAM"
-        
         sheet = gc.open(sheet_title)
         worksheet = sheet.get_worksheet(0)
         values = worksheet.get_all_values()
