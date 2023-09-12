@@ -1,30 +1,29 @@
+import os
 from flask import Flask, render_template, request
 import gspread
 import pandas as pd
 from pandasai import SmartDataframe
 from pandasai.llm import OpenAI
-import os
 import json
 
 app = Flask(__name__)
 
 def perform_operations(user_input):
     try:
-        # Get the Google service account key from the environment variable
-        google_service_account_key = os.environ.get('GOOGLE_SERVICE_ACCOUNT_KEY')
+        # Retrieve API token and Google Sheets credentials from Heroku config vars
+        api_token = os.environ.get("OPENAI_API_TOKEN")
+        google_credentials = os.environ.get("GOOGLE_SERVICE_ACCOUNT_KEY")
+        print("Google Credentials:", google_credentials)
 
-        # Parse the JSON data
-        service_account_info = json.loads(google_service_account_key)
-
-        # Use the service_account_info in your gspread initialization
-        gc = gspread.service_account(info=service_account_info)
+        gc = gspread.service_account_from_dict(json.loads(google_credentials))
         sheet_title = "THE FS TAM"
+        
         sheet = gc.open(sheet_title)
         worksheet = sheet.get_worksheet(0)
         values = worksheet.get_all_values()
 
         df = pd.DataFrame(values[1:], columns=values[0])
-        df = SmartDataframe(df, config={"llm": OpenAI(api_token="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")})
+        df = SmartDataframe(df, config={"llm": OpenAI(api_token=api_token)})
         
         answer = df.chat(user_input)
         print("Type of answer:", type(answer))

@@ -8668,3 +8668,761 @@ result = analyze_data(dfs)
 [12 rows x 12 columns]}
 2023-09-12 08:51:44 [INFO] Executed in: 11.686724185943604s
 2023-09-12 08:51:44 [INFO] 127.0.0.1 - - [12/Sep/2023 08:51:44] "POST /result HTTP/1.1" 200 -
+2023-09-12 10:16:20 [INFO] Question: provide companies from Chicago
+2023-09-12 10:16:20 [INFO] Running PandasAI with openai LLM...
+2023-09-12 10:16:20 [INFO] Prompt ID: 1435ad1f-c3e7-4c42-a0eb-e129ba74a34c
+2023-09-12 10:16:33 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies from Chicago
+    chicago_companies = dfs[0][dfs[0]['City'] == 'Chicago']
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": chicago_companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 10:16:33 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    chicago_companies = dfs[0][dfs[0]['City'] == 'Chicago']
+    return {'type': 'dataframe', 'value': chicago_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 10:16:33 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier         Company  ... Total Employee Range                                Company Description
+76         FTTT000179  BloXroute Labs  ...               51-200  With over 120 clients worldwide, Flyer Financi...
+77         FTTT000920       Zero Hash  ...               10001+  Refinitiv, an LSEG (London Stock Exchange Grou...
+83         FTTT000433  Halo Investing  ...                 2-10  ALT 5 Sigma, Inc. is a leading institutional s...
+458        FTTT000125          Arturo  ...               51-200  Our mission at Pay.com is to create an all-inc...
+468        FTTT000752       Snapsheet  ...                                                                        
+477        FTTT000614     Omna Search  ...              201-500  BioCatch is the leader in Behavioral Biometric...
+508        FTTT000486   Kin Insurance  ...               51-200  Credit where it's due. Built for financial ins...
+659        FTTT000138           Avant  ...               51-200  Founded in 1987, Croesus is a leading WealthTe...
+714        FTTT000126          Ascent  ...               51-200  Do you have 360-degree visibility of your clie...
+742        FTTT000105          Amount  ...                 2-10  InterGen Data is an AI/ML-based Life Event Pre...
+936        FTTT000676        PractiFI  ...                                                                        
+963        FTTT000906         Ycharts  ...                                                                        
+
+[12 rows x 12 columns]}
+2023-09-12 10:16:33 [INFO] Executed in: 12.959143161773682s
+2023-09-12 10:16:33 [INFO] 127.0.0.1 - - [12/Sep/2023 10:16:33] "POST /result HTTP/1.1" 200 -
+2023-09-12 10:17:29 [INFO] 127.0.0.1 - - [12/Sep/2023 10:17:29] "GET / HTTP/1.1" 200 -
+2023-09-12 10:17:57 [INFO] Question: Provide companies from New York with employees > 100
+2023-09-12 10:17:57 [INFO] Running PandasAI with openai LLM...
+2023-09-12 10:17:57 [INFO] Prompt ID: 27bb819f-0e3f-4854-bcd0-f22eb997b254
+2023-09-12 10:17:57 [INFO] error_code=invalid_api_key error_message='Incorrect API key provided: sk-D5O5a***************************************o0tH. You can find your API key at https://platform.openai.com/account/api-keys.' error_param=None error_type=invalid_request_error message='OpenAI API error received' stream_error=False
+2023-09-12 10:17:57 [INFO] 127.0.0.1 - - [12/Sep/2023 10:17:57] "POST /result HTTP/1.1" 200 -
+2023-09-12 10:26:12 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-12 10:26:40 [INFO] Question: Provide companies in Chicago with employees > 50
+2023-09-12 10:26:40 [INFO] Running PandasAI with openai LLM...
+2023-09-12 10:26:40 [INFO] Prompt ID: 60e9849c-57fe-4559-9dea-4e432b49932a
+2023-09-12 10:26:40 [INFO] Using cached response
+2023-09-12 10:26:40 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies in Chicago with employees > 50
+    df = dfs[0]
+    filtered_df = df[(df['City'] == 'Chicago') & (df['Total Employee Range'] > '50')]
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": filtered_df}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 10:26:40 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    df = dfs[0]
+    filtered_df = df[(df['City'] == 'Chicago') & (df['Total Employee Range'] > '50')]
+    return {'type': 'dataframe', 'value': filtered_df}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 10:26:40 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier         Company  ... Total Employee Range                                Company Description
+76         FTTT000179  BloXroute Labs  ...               51-200  With over 120 clients worldwide, Flyer Financi...
+458        FTTT000125          Arturo  ...               51-200  Our mission at Pay.com is to create an all-inc...
+508        FTTT000486   Kin Insurance  ...               51-200  Credit where it's due. Built for financial ins...
+659        FTTT000138           Avant  ...               51-200  Founded in 1987, Croesus is a leading WealthTe...
+714        FTTT000126          Ascent  ...               51-200  Do you have 360-degree visibility of your clie...
+
+[5 rows x 12 columns]}
+2023-09-12 10:26:40 [INFO] Executed in: 0.01815176010131836s
+2023-09-12 10:26:40 [INFO] 127.0.0.1 - - [12/Sep/2023 10:26:40] "POST /result HTTP/1.1" 200 -
+2023-09-12 10:26:54 [INFO] Question: Provide companies in Germany
+2023-09-12 10:26:54 [INFO] Running PandasAI with openai LLM...
+2023-09-12 10:26:54 [INFO] Prompt ID: 1bf10ea0-be5c-4311-ab00-721b858d24c1
+2023-09-12 10:27:06 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies in Germany
+    germany_companies = dfs[0][dfs[0]['Country'] == 'Germany']['Company']
+    
+    # Return the filtered companies
+    return {"type": "dataframe", "value": germany_companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 10:27:06 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    germany_companies = dfs[0][dfs[0]['Country'] == 'Germany']['Company']
+    return {'type': 'dataframe', 'value': germany_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 10:27:06 [INFO] Answer: {'type': 'dataframe', 'value': 69                    Kontist
+85                       BITA
+166                       TIS
+270          Scalable Capital
+282                     Mondu
+308                  Payrails
+377                   Traxpay
+402                      xbAV
+405                    Billie
+445             Lemon.markets
+447                    Upvest
+473                     wefox
+484                 Kreditech
+512                   Getsafe
+514               Luko (Coya)
+547            Trade Republic
+573                     Mambu
+600                       N26
+628                   Stocard
+651                     IDnow
+652         IDnow (AriadNEXT)
+744                    Raisin
+753                  Moonfare
+793    Friendsurance Business
+801                 CollectAI
+833                   CoCoNet
+838                     NDGIT
+844                   Solaris
+878                    Ginmon
+905               Fundsaccess
+923                   Elinvar
+927                   Fincite
+950                     Niiio
+952                    Aixigo
+954                     QPLIX
+Name: Company, dtype: object}
+2023-09-12 10:27:06 [INFO] Executed in: 12.175428867340088s
+2023-09-12 10:27:06 [INFO] 127.0.0.1 - - [12/Sep/2023 10:27:06] "POST /result HTTP/1.1" 200 -
+2023-09-12 10:28:10 [INFO] Question: Provide companies in Germany
+2023-09-12 10:28:10 [INFO] Running PandasAI with openai LLM...
+2023-09-12 10:28:10 [INFO] Prompt ID: 23873eb5-8620-4e30-bfb4-3644c195d75b
+2023-09-12 10:28:21 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies in Germany
+    germany_companies = dfs[0][dfs[0]['Country'] == 'Germany']['Company']
+    
+    # Prepare the output
+    output = {
+        "type": "text",
+        "value": germany_companies.to_string(index=False)
+    }
+    
+    return output
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 10:28:21 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    germany_companies = dfs[0][dfs[0]['Country'] == 'Germany']['Company']
+    return output
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 10:28:21 [WARNING] Error of executing code
+2023-09-12 10:28:21 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2023-09-12 10:28:21 [INFO] Failed with error: name 'output' is not defined. Retrying
+2023-09-12 10:28:32 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    germany_companies = dfs[0][dfs[0]['Country'] == 'Germany']['Company']
+    return output
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 10:28:32 [WARNING] Error of executing code
+2023-09-12 10:28:32 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2023-09-12 10:28:32 [INFO] Failed with error: name 'output' is not defined. Retrying
+2023-09-12 10:28:44 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    germany_companies = dfs[0][dfs[0]['Country'] == 'Germany']['Company']
+    return output
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 10:28:44 [WARNING] Error of executing code
+2023-09-12 10:28:44 [INFO] 127.0.0.1 - - [12/Sep/2023 10:28:44] "POST /result HTTP/1.1" 200 -
+2023-09-12 10:29:09 [INFO] 127.0.0.1 - - [12/Sep/2023 10:29:09] "GET / HTTP/1.1" 200 -
+2023-09-12 10:29:14 [INFO] Question: Provide Companies in New York
+2023-09-12 10:29:14 [INFO] Running PandasAI with openai LLM...
+2023-09-12 10:29:14 [INFO] Prompt ID: e38bc7f3-b36c-4dc4-abb4-8708990c60aa
+2023-09-12 10:29:14 [INFO] Using cached response
+2023-09-12 10:29:14 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the companies in New York
+    companies_in_ny = dfs[0][dfs[0]['State'] == 'New York']['Company']
+    
+    # Return the result as a dataframe
+    return {"type": "dataframe", "value": companies_in_ny}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 10:29:14 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    companies_in_ny = dfs[0][dfs[0]['State'] == 'New York']['Company']
+    return {'type': 'dataframe', 'value': companies_in_ny}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 10:29:14 [INFO] Answer: {'type': 'dataframe', 'value': 431    Orum.io
+684      Array
+Name: Company, dtype: object}
+2023-09-12 10:29:14 [INFO] Executed in: 0.004538059234619141s
+2023-09-12 10:29:14 [INFO] 127.0.0.1 - - [12/Sep/2023 10:29:14] "POST /result HTTP/1.1" 200 -
+2023-09-12 10:29:18 [INFO] 127.0.0.1 - - [12/Sep/2023 10:29:18] "GET / HTTP/1.1" 200 -
+2023-09-12 10:29:25 [INFO] Question: Provide list of companies with employees > 100
+2023-09-12 10:29:25 [INFO] Running PandasAI with openai LLM...
+2023-09-12 10:29:25 [INFO] Prompt ID: c5ba34dc-edb6-467c-a8fd-f255e6346ff8
+2023-09-12 10:29:37 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies with employees > 100
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    
+    # Get the list of companies
+    company_list = filtered_companies['Company'].tolist()
+    
+    # Return the list of companies as output
+    return {"type": "text", "value": company_list}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 10:29:37 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_companies = dfs[0][dfs[0]['Total Employee Range'] > '100']
+    company_list = filtered_companies['Company'].tolist()
+    return {'type': 'text', 'value': company_list}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 10:29:37 [INFO] Answer: {'type': 'text', 'value': ['Diligence Vault', 'Credora', 'IMTC', 'AgenaTrader', 'FundSense', 'Amaka', 'Aiviq', 'AirFund (One Wealth Place)', 'FloQast', 'Tipalti', 'Algomi', 'AlphaPoint', 'Assure Hedge', 'Axoni', 'Sunbit', 'Baton Systems', 'Capitolis', 'Chainalysis', 'Circle', 'Debitum Network', 'Finomial', 'Cloud9 (part of Symphony)', 'Copper', 'Curv (acquired by PayPal)', 'Digital Asset', 'dv01', 'Ebury', 'Elliptic', 'Fireblocks', 'Genesis Global', 'Genuine Impact', 'iCapital Network', 'Kooltra', 'Metaco SA', 'Numerix', 'OpenGamma', 'Options Technology', 'R3', 'Securrency', 'T-REX', 'Talos', 'TransFICC', 'TRM Labs', 'Trumid', 'Brassica', 'Shannon.AI', 'martini.ai', 'Wavenure', 'Wequity', 'Archblock', 'Alchemy', 'Algodynamix', 'Anchorage Digital', 'Arcesium', 'Atomic', 'Forge', 'Canalyst', 'ConsenSys', 'interop.io', 'Delio', 'Finalis', 'Genesis Global Technology', 'PeerNova Inc', 'AAAccell', 'Alkymi', 'Gresham Tech', 'DuCo', 'Atominvest', 'Behavox', 'Kontist', 'Monese', 'FundApps', 'SymphonyAI (AyasdiAI)', 'Open Fin', 'BitGo', 'Blockdaemon', 'BloXroute Labs', 'Zero Hash', 'Chime', 'Baanx', 'Accrete', 'Coinfirm', 'Zodia Custody', 'Halo Investing', 'Beacon Platform', 'BITA', 'bondIT', 'Etops AG', 'FalconX', 'Flyer Finance Technologies', 'Refinitiv', 'AlphaSense', 'SteelEye', 'Symphony', 'CipherTrace', 'CloudMargin', 'Alt 5 Sigma', 'GIEOM', 'Marco Polo Network (TradeIX)', 'Silent Eight', 'Fnality International', 'Rimes Technologies', 'Sharegain', 'Adhara', 'Blockchain.com', 'Kraken', 'NeoXam', 'Arachnys (Acquired AML Right Source)', 'Bolero International', 'Arch', 'Canoe', 'elyps', 'KuCoin', 'Smart Communications', 'Spendflo', 'Navos Technologies', 'DailyPay', 'Enable', 'Enkash', 'EverC', 'Extend', 'Ezetap by Razorpay', 'Fenbeitong', 'Fidel API', 'Finagraph', 'Lulalend', 'Finix', 'Forter', 'Harbr', 'Cyberhaven', 'Moxo', 'Anaplan', 'Avidxchange', 'Balance', 'Dataminr', 'Flywire', 'HyperProof', 'Hyperscience', 'Kyriba', 'Level', 'Melio', 'Mesh', 'PayStand', 'Privitar', 'Pushpay', 'Signifyd', 'SpotOn', 'Tipalti', 'Aid:Tech', 'Alt Thirty Six', 'Trantor', 'Beyond Identity', 'Billtrust', 'Bricknode', 'Cacheflow', 'Cashfree', 'Citcon', 'Coda Payments', 'Finaro (nee Credorax)', 'Darwinbox', 'Datameer', 'DataRobot', 'Decentriq', 'Dext (Receipt Bank)', 'TIS', 'Eigen Technologies', 'Mollie', 'Nsure.AI', 'PAAY', 'Payrix', 'Persona', 'Pleo', 'Square', 'Volt', 'Wagestream', 'Silverfin', 'BharatPe', 'BKN301', 'Clip', 'Checkout', 'Cross River Bank', 'Dwolla', 'Modulr', 'NIUM', 'Stripe', 'EBANX', 'Payhawk', 'Spreedly', 'SumUp', 'TerraPay', 'Zoop', 'ZTL Payment Solution', 'Vonage (Nexmo)', 'Kong Inc.', 'MessageBird', 'Blackline (Rimilia)', 'Clickatell', 'Thematic', 'Gemini', 'Bango', 'Kash', 'Bucket Technologies', 'CoinDCX', 'Incognia', 'BetterCloud', 'Quantexa', 'ChargeBee Technologies', 'Anyfin', 'Airwallex', 'Spendesk', 'Belong Home', 'Cambridge Mobile Telematics', 'Cedar', 'Celero Commerce', 'Centrifuge', 'Clearsight Solutions', 'Cowbell Cyber', 'CRED', 'EASYCRÉDITO', 'Ergon Infomatik', 'Eudata', 'EValue', 'Faraday', 'GLMX - Access, Automate, Analyze', 'Hibob', 'HighRadius', 'HubX', 'Hydrogen', 'HYPR', 'Ignition Advice', 'Immuta', 'InAuth', 'InfoTrie', 'Innovest Systems', 'Innoviti Payment Solutions', 'Verimatrix (nee Inside Secure)', 'Integral Development Corp.', 'Integration Alpha', 'Intelligent Systems Corp', 'Jifiti', 'JKL Web Technologies', 'Juni', 'Justt', 'Khatabook', 'LendInvest', 'Kidbrooke', 'Kingfield Corporation', 'Koho Financial', 'Kompliant', 'Koosmik', 'Kueski', 'LCF Global Partners (acquied by TeamApt)', 'Binance', 'Ledger', 'Ledgex', 'C6 Bank', 'Banco Agibank', 'Ledgy', 'Lendflow', 'LendingCrowd', 'Leveris', 'Apply Financial (Acquired LexisNexis)', 'LightPoint Financial Technology', 'Tonik Bank', 'Bitfinex', 'Limonetik (Acquired Thunes)', 'Liquefy', 'Lithic', 'Scalable Capital', 'LOQR', 'Lukka Inc', 'Lumiant', 'M2P Fintech', 'MarketFactory', 'Monzo', 'Marketwolfe (FnO)', 'MFS Africa', 'Miro', 'Mission Lane', 'Modulus Global', 'Mondu', 'Monetha', 'MoneyOnMobile', 'MOS', 'Mosaic Smart Data', 'Movius', 'MyVest (Acquired TIAA)', 'Nansen', 'Narmi, Inc', 'Affirm', 'Nayya', 'Wayflyer', 'Nova Credit', 'Numerated', 'OakNorth Analytical Intelligence', 'ODX', 'Velocity Global', 'Onegini (acquired Thales)', 'Opay', 'OpenInvest (Acquired JP Morgan)', 'Ophelos', 'Owlin', 'Panaseer', 'Parafin', 'PayKey', 'Paymentez', 'Payrails', 'PayRange', 'Capdesk', 'Paytweak', 'Pendo Systems', 'Performline', 'Perspectium', 'Petal', 'Jeeves', 'Plenitude', 'Point Digital Finance', 'Pollinate', 'Prepaid2Cash', 'Prime Trust', 'Propelld', 'Pyze', 'Current', 'QRails', 'QuintoAndar', 'Raise Partner', 'Ramp', 'Rapyd', 'Razorpay', 'Regtech Associates', 'Republic', 'Rev Worldwide', 'RightIndem', "RiskFirst (Acquired Moody's)", 'Riskified', 'Newline (nee Rize) (Acquired Fifth Third)', 'Scanovate', 'Secureframe', 'SecurityScorecard', 'Sensibill (Acquired Q2)', 'Sentifi', 'Settle (Auka)', 'Shaype', 'Shift Technology', 'Silverflow', 'Simetrik, Inc', 'Simon Data', 'SirionLabs', 'Built Technologies', 'Smarsh', 'PensionBee', 'Socure', 'Spark Systems', 'SparkCognition', 'Spycloud', 'StarkWare', 'Streak', 'SuiteBox', 'Sumsub', 'Super Payments', 'Tactive', 'Tala', 'TenX', 'DirectID (nee The ID Co)', 'Theta Lake', 'Tier1 Financial Solutions (Acquired SS&C)', 'Tilled', 'Tokeny', 'Total Expert', 'Tractable', 'Tracxn', 'Tradesocio', 'Clearco', 'Transcard', 'Traxpay', 'Tribal Credit', 'AlphaSwap', 'Trovata', 'Trove', 'Truework', 'Two Sigma', 'Uala', 'Unico', 'Uplift', 'Ushur Inc', 'Utrust', 'Utrust (xMoney)', 'Valon', 'Venminder', 'Veriday', 'Verrency', 'Verse Technologies Inc', 'Vizolution', 'Voxsmart', 'Voyager Innovations', 'WeLab', 'WireBarley', 'Wyden (AlgoTrader)', 'Elevate', 'xbAV', 'Yokoy', 'YouPass', 'Billie', 'YoYo Wallet', 'Yubi', 'Moneymour (acquired by Klarna)', 'Zaam', 'Zepto Payments', 'Zest AI', 'Green Dot', 'banyan', 'BVNK', 'Carta', 'Deliverect', 'GoCardless', 'Symmetrical.ai', 'Lemon Way', 'Novopayment', 'Starling Bank', 'Paytrix', 'YouTrip', 'Pilot.com', 'Zilch', 'Upgrade', 'Pine Labs', 'Teya', 'Sila', 'Trezeo (Acquired Monese)', 'Orum.io', 'Xendit', 'Qonto', 'Matchmove Pay', 'Konfio', 'Datavisor', 'Bits Technology', 'Zopa', 'Iwoca', 'Alpaca', 'Apex Fintech Solutions', 'Tradier', 'Velexa', 'DriveWealth', 'Lemon.markets', 'Seccl', 'Upvest', 'Transfermate', 'Broker Buddha', 'Cape Analytics', 'Easysend', 'Friss', '360f', 'Worksmart', 'At-Bay', 'AKUR8', 'Arturo', 'Papaya Global', 'bolttech', 'Guideline', 'Guidewire', 'Pipe', 'LIQUiDITY Group', 'Kasko', 'Zipari', 'Omna Search', 'Creditas', 'FA Solutions', 'Fluidly (Acquired OakNorth)', 'Fundbox', 'Caribou', 'Funding Circle', 'Kreditech', 'CreditEnable', 'Behalf', 'Kala', 'Kabbage', 'Nano (nee Verteva)', 'Trust Science', 'Trade Ledger', 'Divido', 'Payable', 'Neuro-ID', 'eOriginal (Acquired Wolters Kluwer)', 'Curve', 'Ocrolus', 'Appriza Pay', 'Branch', 'PolicyGenius', 'Chargeback Gurus', 'Zego', 'The Zebra', 'CloudWalk', 'Embroker', 'ManyPets', 'CoverWallet', 'Kin Insurance', 'Cybertonica', 'Enigma Technologies', 'Digit Insurance', 'Getsafe', 'Next Insurance', 'Luko (Coya)', 'Hummingbird', 'Zivver', 'Conpend', 'Belleron', 'Icon Solutions', 'Volante Technologies', 'Squirro', 'Trade Republic', 'Digital Reasoning (Smarsh)', 'Augmentum Fintech', 'ClauseMatch', 'FinzlyOS', 'Anodot', 'CDLK', 'Constella Intelligence', 'FISPAN', 'BlueCode', 'CredoLab', 'JUMO', 'Trifacta (Acquired Alteryx)', 'Daon', 'OpenLegacy', 'OakNorth Bank', 'Alma', 'Lendable', 'Atome', 'Ladder', 'Ethos', 'Antelop Solutions (Acquired Entrust)', 'Apto Payments', 'ClickSWITCH (acquired by Q2)', 'Snapdocs', 'Happy Money', 'Mambu', 'Codat', 'Crowdz', 'Entersekt', 'Mantl', 'Minna Technologies', 'Ohpen', 'Pinwheel', 'Sonect', 'Tookitaki', 'Zafin', 'Callsign Inc', 'Uniken', 'Avoka (Acquired Temenos)', 'Kyckr Limited', 'Alviere', 'Moov', 'PPRO', 'Sardine', 'Pagaya', 'Unit', 'Bond', 'CardAssets', 'Cardless', 'Cardworks', 'Cascade Fintech', 'Revolut', 'N26', 'CoreCard', 'Varo Bank', 'Klar', 'Corserv', 'FIS', 'Galileo', 'GPS (Global Processing Services)', 'HUBUC', 'i2c', 'Increase', 'MasterCard Processing', 'Pay.com', 'Payfare', 'Billpocket', 'Q2/Helix', 'Qolo', 'Chillr', 'Railsbank', 'Satispay', 'Rise', 'Shazam', 'SynapseFi', 'Synctera', 'Tallied', 'TCI', 'TCM', 'TreasuryPrime', 'Stocard', 'TSYS', 'Visa DPS', 'XTMinc.', 'Apto', 'Tabby', 'Plum Fintech', 'Highnote', 'Chipper Cash', 'Paga', 'Wise (TransferWise)', 'Toss', 'OFX', 'FiVerity', 'BioCatch', 'Payveris (Acquired Paymentus)', 'Solid', 'Swap', 'Aware, Inc', 'Kore.ai', 'Envizage', 'Arkose Labs', 'Flux (Closed)', 'IDnow', 'IDnow (AriadNEXT)', 'Buckzy Payments', 'Earnix', 'Spitch', 'Active.ai', 'Glia', 'EFS Technology (acquired Formpipe)', 'Avant', 'Blend', 'Roostify', 'Turnkey Lender', 'ZEPZ', 'NewBanking', 'CreditVidya', 'Klarna', 'LoanPro', 'Facephi', 'CognitiveScale', 'AU10TIX', 'Deserve', 'Cerebreon', 'Lydia', 'Cloudcase Software Solutions', 'Eltropy', 'Pagaya Technologies', 'Numeral', 'Pulse (Aire)', 'Finova (DPR Limited)', 'LenddoEFL', 'PrecisionLender (Acquired Q2)', 'Abrigo', 'Clerkie', 'Array', 'Heron Data', 'FinGoal', 'Ntropy Network', 'Deel', 'Yeahka', 'Spade', 'MX', 'Yodlee', 'Teller', 'Pave', 'Trustly', 'iDENTIFY', 'QFPay', 'Meld', 'Agreement Express', 'IDology', 'Ekata', 'Instnt', 'Deeplabs', 'Unit21', 'NuDetect', 'Resistant AI', 'MinervaAI', 'Cognito', 'Cable', 'Sandbar', 'Taktile', 'nCino, Inc.', 'Ascent', 'Mambu', 'Backbase', 'Euronovate', 'Check', 'PayFit', 'Gusto', 'Pismo', 'Qualco', 'Flinks', 'Recordsure', 'BPC Technologies', 'Kevin', 'Zeta', 'Wealthfront', 'Marqeta', 'Oscilar', 'Fintech Automation', 'DreamQuark', 'Meniga', 'Strands', 'UnBlu', 'Paxos', 'BUSINESSNEXT', 'AppZen', 'BitSight', 'Doxim', 'Alkami Technology', 'Amount', 'Harvest Savings & Wealth Technologies', 'Raisin', 'Earnix', 'ERI Bancaire', 'Profile Software', 'Fiserv', 'Previse', 'Ripple', 'NorthRow', 'Very Good Security', 'Moonfare', 'Know Your Customer', 'Prove']}
+2023-09-12 10:29:37 [INFO] Executed in: 12.214545011520386s
+2023-09-12 10:29:37 [INFO] 127.0.0.1 - - [12/Sep/2023 10:29:37] "POST /result HTTP/1.1" 200 -
+2023-09-12 10:31:50 [INFO] Question: copanies in Capital Markets in New York
+2023-09-12 10:31:50 [INFO] Running PandasAI with openai LLM...
+2023-09-12 10:31:50 [INFO] Prompt ID: b171de37-a629-41d8-a986-f90dad1dbb09
+2023-09-12 10:32:03 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe based on the given conditions
+    filtered_df = dfs[0][(dfs[0]['Market Segment'] == 'Capital Markets') & (dfs[0]['State'] == 'New York')]
+    
+    # Get the list of companies
+    companies = filtered_df['Company'].tolist()
+    
+    # Return the list of companies as the result
+    return {"type": "text", "value": companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 10:32:03 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Market Segment'] == 'Capital Markets') & (dfs[0]['State'] == 'New York')]
+    companies = filtered_df['Company'].tolist()
+    return {'type': 'text', 'value': companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 10:32:03 [INFO] Answer: {'type': 'text', 'value': []}
+2023-09-12 10:32:03 [INFO] Executed in: 12.858487844467163s
+2023-09-12 10:32:03 [INFO] 127.0.0.1 - - [12/Sep/2023 10:32:03] "POST /result HTTP/1.1" 200 -
+2023-09-12 10:32:06 [INFO] 127.0.0.1 - - [12/Sep/2023 10:32:06] "GET / HTTP/1.1" 200 -
+2023-09-12 10:32:18 [INFO] Question: Companies in Digital Assets
+2023-09-12 10:32:18 [INFO] Running PandasAI with openai LLM...
+2023-09-12 10:32:18 [INFO] Prompt ID: 7a8096ce-c9db-4994-98f7-7f603cbecb82
+2023-09-12 10:32:31 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to include only companies in the Digital Assets industry
+    digital_assets_df = dfs[0][dfs[0]['Industry'] == 'Digital Assets']
+    
+    # Get the count of companies in the Digital Assets industry
+    num_companies = len(digital_assets_df)
+    
+    # Return the result as a text
+    return {"type": "text", "value": f"There are {num_companies} companies in the Digital Assets industry."}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 10:32:31 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    digital_assets_df = dfs[0][dfs[0]['Industry'] == 'Digital Assets']
+    num_companies = len(digital_assets_df)
+    return {'type': 'text', 'value': f'There are {num_companies} companies in the Digital Assets industry.'}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 10:32:31 [INFO] Answer: {'type': 'text', 'value': 'There are 0 companies in the Digital Assets industry.'}
+2023-09-12 10:32:31 [INFO] Executed in: 12.96306037902832s
+2023-09-12 10:32:31 [INFO] 127.0.0.1 - - [12/Sep/2023 10:32:31] "POST /result HTTP/1.1" 200 -
+2023-09-12 10:33:10 [INFO] Question: Companies in Toronto
+2023-09-12 10:33:10 [INFO] Running PandasAI with openai LLM...
+2023-09-12 10:33:10 [INFO] Prompt ID: 1aa02908-0d8d-4bee-a218-ab6067a6be42
+2023-09-12 10:33:22 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to include only companies in Toronto
+    toronto_companies = dfs[0][dfs[0]['City'] == 'Toronto']
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": toronto_companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 10:33:22 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    toronto_companies = dfs[0][dfs[0]['City'] == 'Toronto']
+    return {'type': 'dataframe', 'value': toronto_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 10:33:22 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier                                    Company  ... Total Employee Range                                Company Description
+32         FTTT000497                                    Kooltra  ...               51-200  Securrency is a financial and regulatory techn...
+342        FTTT000733                    Sensibill (Acquired Q2)  ...                 2-10  Bits Technology is the powerhouse for customer...
+368        FTTT000813  Tier1 Financial Solutions (Acquired SS&C)  ...            1001-5000  wefox was founded in 2015 by Julian Teicke, Fa...
+375        FTTT000236                                    Clearco  ...                11-50  Approximately 64 million US consumers have lim...
+603        FTTT000488                                       Klar  ...           5001-10000  Our mission at Temenos is to power a world of ...
+613        FTTT000944                                    Payfare  ...              201-500  Pindrop® solutions are leading the way to the ...
+653        FTTT000193                            Buckzy Payments  ...               51-200  Working together with our partners and clients...
+773        FTTT000213                            Carta Worldwide  ...                                                                        
+824        FTTT000247                           Coconut Software  ...                                                                        
+899        FTTT000062                                Nest Wealth  ...                                                                        
+900        FTTT000318                               Dynamic Mind  ...                                                                        
+907        FTTT000073                                      d1g1t  ...                                                                        
+911        FTTT000075                                   CapIntel  ...                                                                        
+947        FTTT000057                                  PureFacts  ...                                                                        
+
+[14 rows x 12 columns]}
+2023-09-12 10:33:22 [INFO] Executed in: 11.37478518486023s
+2023-09-12 10:33:22 [INFO] 127.0.0.1 - - [12/Sep/2023 10:33:22] "POST /result HTTP/1.1" 200 -
+2023-09-12 10:34:39 [INFO] Question: Companies in Segment Capital Markets in city New York
+2023-09-12 10:34:39 [INFO] Running PandasAI with openai LLM...
+2023-09-12 10:34:39 [INFO] Prompt ID: e5fd676d-ea07-4374-b08d-16eb1d124976
+2023-09-12 10:34:52 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe based on the given conditions
+    filtered_df = dfs[0][(dfs[0]['Market Segment'] == 'Capital Markets') & (dfs[0]['City'] == 'New York')]
+    
+    # Get the count of companies in the filtered dataframe
+    count = len(filtered_df)
+    
+    # Return the result as a text
+    result = {
+        "type": "text",
+        "value": f"There are {count} companies in the Capital Markets segment in New York."
+    }
+    
+    return result
+
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 10:34:52 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Market Segment'] == 'Capital Markets') & (dfs[0]['City'] == 'New York')]
+    count = len(filtered_df)
+    result = {'type': 'text', 'value': f'There are {count} companies in the Capital Markets segment in New York.'}
+    return result
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 10:34:52 [INFO] Answer: {'type': 'text', 'value': 'There are 19 companies in the Capital Markets segment in New York.'}
+2023-09-12 10:34:52 [INFO] Executed in: 13.599730968475342s
+2023-09-12 10:34:52 [INFO] 127.0.0.1 - - [12/Sep/2023 10:34:52] "POST /result HTTP/1.1" 200 -
+2023-09-12 10:34:59 [INFO] 127.0.0.1 - - [12/Sep/2023 10:34:59] "GET / HTTP/1.1" 200 -
+2023-09-12 10:35:25 [INFO] Question: List companies in segment Digital Markets in city New York
+2023-09-12 10:35:25 [INFO] Running PandasAI with openai LLM...
+2023-09-12 10:35:25 [INFO] Prompt ID: 7bf045d5-78f3-4292-aecb-a0ec98c9b258
+2023-09-12 10:35:38 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe based on the given conditions
+    filtered_df = dfs[0][(dfs[0]['Market Segment'] == 'Digital Markets') & (dfs[0]['City'] == 'New York')]
+    
+    # Get the list of companies
+    companies = filtered_df['Company'].tolist()
+    
+    # Return the list of companies as output
+    return {"type": "text", "value": companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 10:35:38 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Market Segment'] == 'Digital Markets') & (dfs[0]['City'] == 'New York')]
+    companies = filtered_df['Company'].tolist()
+    return {'type': 'text', 'value': companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 10:35:38 [INFO] Answer: {'type': 'text', 'value': []}
+2023-09-12 10:35:38 [INFO] Executed in: 12.542936086654663s
+2023-09-12 10:35:38 [INFO] 127.0.0.1 - - [12/Sep/2023 10:35:38] "POST /result HTTP/1.1" 200 -
+2023-09-12 10:35:43 [INFO] 127.0.0.1 - - [12/Sep/2023 10:35:43] "GET / HTTP/1.1" 200 -
+2023-09-12 10:36:13 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-12 10:36:43 [INFO] Question: Provide Companies in segment Capital Markets in city New York
+2023-09-12 10:36:43 [INFO] Running PandasAI with openai LLM...
+2023-09-12 10:36:43 [INFO] Prompt ID: f4ff853c-aea8-4ef1-9a4c-cf6dee87f59a
+2023-09-12 10:36:44 [INFO] error_code=invalid_api_key error_message='Incorrect API key provided: sk-D5O5a***************************************o0tH. You can find your API key at https://platform.openai.com/account/api-keys.' error_param=None error_type=invalid_request_error message='OpenAI API error received' stream_error=False
+2023-09-12 10:36:44 [INFO] 127.0.0.1 - - [12/Sep/2023 10:36:44] "POST /result HTTP/1.1" 200 -
+2023-09-12 10:38:03 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-12 10:38:16 [INFO] Question: Provide Companies in segment Capital Markets in city New York
+2023-09-12 10:38:16 [INFO] Running PandasAI with openai LLM...
+2023-09-12 10:38:16 [INFO] Prompt ID: 1d4fa86b-1f77-454f-8755-6cbaff96df6b
+2023-09-12 10:38:29 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe based on the given conditions
+    filtered_df = dfs[0][(dfs[0]['Market Segment'] == 'Capital Markets') & (dfs[0]['City'] == 'New York')]
+    
+    # Get the list of companies
+    companies = filtered_df['Company'].tolist()
+    
+    # Return the result as a text
+    result = {
+        "type": "text",
+        "value": f"The companies in the Capital Markets segment in New York are: {', '.join(companies)}"
+    }
+    
+    return result
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 10:38:29 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    filtered_df = dfs[0][(dfs[0]['Market Segment'] == 'Capital Markets') & (dfs[0]['City'] == 'New York')]
+    companies = filtered_df['Company'].tolist()
+    result = {'type': 'text', 'value': f"The companies in the Capital Markets segment in New York are: {', '.join(companies)}"}
+    return result
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 10:38:29 [INFO] Answer: {'type': 'text', 'value': 'The companies in the Capital Markets segment in New York are: IMTC, AlphaPoint, Axoni, Capitolis, Chainalysis, Cloud9 (part of Symphony), Curv (acquired by PayPal), Digital Asset, dv01, Fireblocks, iCapital Network, Numerix, Options Technology, T-REX, Talos, Trumid, Arcesium, Kingfield Corporation, Two Sigma'}
+2023-09-12 10:38:29 [INFO] Executed in: 13.06799602508545s
+2023-09-12 10:38:29 [INFO] 127.0.0.1 - - [12/Sep/2023 10:38:29] "POST /result HTTP/1.1" 200 -
+2023-09-12 10:38:34 [INFO] 127.0.0.1 - - [12/Sep/2023 10:38:34] "GET / HTTP/1.1" 200 -
+2023-09-12 11:28:42 [INFO] Question: Provide list of companies with employees > 100
+2023-09-12 11:28:42 [INFO] Running PandasAI with openai LLM...
+2023-09-12 11:28:42 [INFO] Prompt ID: 1cd395ea-ab9e-4a40-865c-db1530b029c7
+2023-09-12 11:28:43 [INFO] error_code=invalid_api_key error_message='Incorrect API key provided: sk-D5O5a***************************************o0tH. You can find your API key at https://platform.openai.com/account/api-keys.' error_param=None error_type=invalid_request_error message='OpenAI API error received' stream_error=False
+2023-09-12 11:28:43 [INFO] 127.0.0.1 - - [12/Sep/2023 11:28:43] "POST /result HTTP/1.1" 200 -
+2023-09-12 11:28:45 [INFO] 127.0.0.1 - - [12/Sep/2023 11:28:45] "GET / HTTP/1.1" 200 -
+2023-09-12 11:30:40 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading
+2023-09-12 11:30:49 [INFO] Question: Provide companies in Poland
+2023-09-12 11:30:49 [INFO] Running PandasAI with openai LLM...
+2023-09-12 11:30:49 [INFO] Prompt ID: fb6fdccf-5018-4dd9-8d9e-a40e69c055f5
+2023-09-12 11:30:49 [INFO] Using cached response
+2023-09-12 11:30:49 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter companies in Poland
+    poland_companies = dfs[0][dfs[0]['Country'] == 'Poland']['Company']
+    
+    # Return the filtered companies
+    return {"type": "dataframe", "value": poland_companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 11:30:49 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    poland_companies = dfs[0][dfs[0]['Country'] == 'Poland']['Company']
+    return {'type': 'dataframe', 'value': poland_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 11:30:49 [INFO] Answer: {'type': 'dataframe', 'value': 611    MasterCard Processing
+Name: Company, dtype: object}
+2023-09-12 11:30:49 [INFO] Executed in: 0.007811069488525391s
+2023-09-12 11:30:49 [INFO] 127.0.0.1 - - [12/Sep/2023 11:30:49] "POST /result HTTP/1.1" 200 -
+2023-09-12 11:30:51 [INFO] 127.0.0.1 - - [12/Sep/2023 11:30:51] "GET / HTTP/1.1" 200 -
+2023-09-12 11:30:58 [INFO] Question: companies in Belgium
+2023-09-12 11:30:58 [INFO] Running PandasAI with openai LLM...
+2023-09-12 11:30:58 [INFO] Prompt ID: 30b3f695-23ac-4a20-b418-fa8f1e7e026e
+2023-09-12 11:31:11 [INFO] 
+                    Code generated:
+                    ```
+                    # TODO import all the dependencies required
+import pandas as pd
+
+# Analyze the data
+# 1. Prepare: Preprocessing and cleaning data if necessary
+# 2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+# 3. Analyze: Conducting the actual analysis (if the user asks to create a chart save it to an image in exports/charts/temp_chart.png and do not show the chart.)
+# 4. Output: return a dictionary of:
+# - type (possible values "text", "number", "dataframe", "plot")
+# - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+# Example output: { "type": "text", "value": "The average loan amount is $15,000." }
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    # Filter the dataframe to get companies in Belgium
+    belgium_companies = dfs[0][dfs[0]['Country'] == 'Belgium']
+    
+    # Return the filtered dataframe
+    return {"type": "dataframe", "value": belgium_companies}
+
+# Declare a result variable
+result = analyze_data(dfs)
+                    ```
+                
+2023-09-12 11:31:11 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    belgium_companies = dfs[0][dfs[0]['Country'] == 'Belgium']
+    return {'type': 'dataframe', 'value': belgium_companies}
+
+
+result = analyze_data(dfs)
+        ```
+2023-09-12 11:31:11 [INFO] Answer: {'type': 'dataframe', 'value':     Unique Identifier                   Company  ... Total Employee Range                                Company Description
+48         FTTT000048                   Wequity  ...              101-250  interop.io was formed in June 2023 through the...
+177        FTTT000744                 Silverfin  ...                11-50  Feedback analytics solution delivering custome...
+416        FTTT000300                Deliverect  ...              201-500  Constella Intelligence is a leading global Dig...
+864        FTTT000007  Abbove (nee Pax Familia)  ...                                                                        
+929        FTTT000468               InvestSuite  ...                                                                        
+982        FTTT000354         Everyone Invested  ...                                                                        
+
+[6 rows x 12 columns]}
+2023-09-12 11:31:11 [INFO] Executed in: 12.767037868499756s
+2023-09-12 11:31:11 [INFO] 127.0.0.1 - - [12/Sep/2023 11:31:11] "POST /result HTTP/1.1" 200 -
+2023-09-12 11:35:02 [INFO]  * Detected change in '/Users/marcinchmielnicki/panda/app.py', reloading

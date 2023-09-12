@@ -6,12 +6,12 @@
         body {
             font-family: Arial, sans-serif;
             background: linear-gradient(45deg, #E8EEF1, #50667F);
-            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
             color: #2A475A;
+            padding-top: 200px; /* Add padding-top to push content down */
         }
 
         h1 {
@@ -26,21 +26,22 @@
             border: 1px solid #7799A9;
             max-width: 60%;
             list-style-type: none;
-            margin-top: 100px; /* Add this line to lower the list by 100px */
         }
 
         li {
             margin: 10px 0;
             font-size: 18px;
+            border: 1px solid #7799A9;
+            padding: 10px;
+            border-radius: 5px;
         }
-
     </style>
 </head>
 <body>
     <h1>Results:</h1>
-    <ul style="margin-top: -100px;">
+    <ul>
         {% for company in answer_list %}
-            <li style="border: 1px solid #7799A9; padding: 10px; border-radius: 5px;">{{ company }}</li>
+            <li>{{ company }}</li>
         {% endfor %}
     </ul>    
     <a href="/">Go Back</a>
