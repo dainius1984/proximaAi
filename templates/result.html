@@ -35,15 +35,20 @@
             padding: 10px;
             border-radius: 5px;
         }
+
+        .goback-button {
+            margin-top: 20px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <h1>Results:</h1>
+    <h1>Results</h1>
     <ul>
-        {% for company in answer_list %}
-            <li>{{ company }}</li>
-        {% endfor %}
-    </ul>    
-    <a href="/">Go Back</a>
+        <li>{{ answer_list[0] }}</li> <!-- Display the first item in the list -->
+    </ul>
+    <div class="goback-button">
+        <a href="/">Go Back</a>
+    </div>
 </body>
 </html>

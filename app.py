@@ -1,42 +1,56 @@
-import os
 from flask import Flask, render_template, request
 import gspread
 import pandas as pd
 from pandasai import SmartDataframe
 from pandasai.llm import OpenAI
-import json
 
 app = Flask(__name__)
 
 def perform_operations(user_input):
     try:
-        # Retrieve API token and Google Sheets credentials from Heroku config vars
-        api_token = os.environ.get("OPENAI_API_TOKEN")
-        google_credentials = os.environ.get("GOOGLE_SERVICE_ACCOUNT_KEY")
-        print("Google Credentials:", google_credentials)
+        gc = gspread.service_account(filename="/Users/marcinchmielnicki/panda/Proximagoogle.json")
 
-        gc = gspread.service_account_from_dict(json.loads(google_credentials))
-        sheet_title = "THE FS TAM"
-        
-        sheet = gc.open(sheet_title)
-        worksheet = sheet.get_worksheet(0)
-        values = worksheet.get_all_values()
+        sheet_titles = [
+            # "THE FS TAM"  # Replace with the title of your first Google Sheet
+            "LS TECH"     # Add the title of your second Google Sheet
+        ]
 
-        df = pd.DataFrame(values[1:], columns=values[0])
-        df = SmartDataframe(df, config={"llm": OpenAI(api_token=api_token)})
-        
-        answer = df.chat(user_input)
-        print("Type of answer:", type(answer))
-        print("Content of answer:", answer)
-        
         answer_list = []
 
-        if isinstance(answer, SmartDataframe):
-            answer_list = answer['Company'].tolist()
-        elif isinstance(answer, str):
-            answer_list = [item.strip() for item in answer.split(',')]
-        else:
-            answer_list = [answer]
+        for sheet_title in sheet_titles:
+            sheet = gc.open(sheet_title)
+            worksheet = sheet.get_worksheet(0)
+            values = worksheet.get_all_values()
+
+            df = pd.DataFrame(values[1:], columns=values[0])
+            
+            custom_sample_data = {
+                'Industry': ['Financial Services', 'Life Sciences'],  # Provide your own examples here
+                'Market Segment': ['Capital Market', 'CIB', 'Wealth Mgmt'],        # Provide your own examples here
+                'Market Sub-Segment': ['Investment Bank', 'Front Office', 'Digital Assets'],  # Provide your own examples here
+                'Product Category': ['Remittance Services', 'Lending'],  # Provide your own examples here
+            }
+
+            # Create a custom description
+            description = "This SmartDataFrame contains data with custom sample data for each column."
+
+            # Instantiate a SmartDataframe with a custom description
+            df = SmartDataframe(df, config={"llm": OpenAI(api_token="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")},
+                                 description=description)
+
+            # Add custom sample data as an attribute of the SmartDataframe
+            df.custom_sample_data = custom_sample_data
+
+            answer = df.chat(user_input)
+            print("Type of answer:", type(answer))
+            print("Content of answer:", answer)
+
+            if isinstance(answer, SmartDataframe):
+                answer_list.extend(answer['Company'].tolist())
+            elif isinstance(answer, str):
+                answer_list.extend(item.strip() for item in answer.split(','))
+            else:
+                answer_list.append(answer)
 
         return answer_list
 
